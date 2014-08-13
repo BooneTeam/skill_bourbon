@@ -1,0 +1,80 @@
+.bullets {
+
+  @include texture(180deg, lighten(#fff, 1), darken(#000, 10), 67, 0);
+  $icon-bullet-size: 3.5em;
+  $bullet-margin-top:10px;
+  overflow: auto;
+  // margin-bottom: $base-line-height;
+
+  // change ".three-col-bullet" class to this for two bullet layout
+  .two-col-bullet {
+    margin-top:$bullet-margin-top;
+    @include media($large-screen) {
+      @include span-columns(6);
+      @include omega(2n);
+    }
+  }
+
+  .three-col-bullet {
+    margin-top:$bullet-margin-top;
+    @include media($large-screen) {
+      @include span-columns(4);
+      @include omega(3n);
+    }
+  }
+
+  // change ".three-col-bullet" class to this for four bullet layout
+  .four-col-bullet {
+    margin-top:$bullet-margin-top;
+    @include media($large-screen) {
+      @include span-columns(3);
+      @include omega(4n);
+    }
+  }
+
+  .bullet-icon {
+    float: left;
+    background: $base-accent-color;
+    padding: $icon-bullet-size /4;
+    border-radius: 50%;
+    width: $icon-bullet-size;
+    height: $icon-bullet-size;
+  }
+
+  .bullet-icon-1 {
+    background: $base-accent-color;
+  }
+
+  .bullet-icon-2 {
+    background: adjust-hue($base-accent-color, -50);
+  }
+
+  .bullet-icon-3 {
+    background: adjust-hue($base-accent-color, -140);
+  }
+
+  .bullet-content {
+    margin-left: $icon-bullet-size *1.4;
+    margin-bottom: 2em;
+    color:white;
+  }
+
+  h2 {
+    color:black;
+    font-size: $icon-bullet-size /2.5;
+    padding-top: $icon-bullet-size /7;
+    margin-bottom: $icon-bullet-size /6;
+    border-bottom: 1px solid transparentize($base-font-color, .8);
+    display: inline-block;
+  }
+}
+
+.bullets.earning{
+  h2{
+    color:white;
+  }
+  p{
+    color:black;
+  }
+  background:$base-background-color !important;
+}

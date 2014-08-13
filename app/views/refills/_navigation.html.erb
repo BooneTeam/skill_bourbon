@@ -1,0 +1,24 @@
+<header class="centered-navigation">
+  <div class="centered-navigation-wrapper">
+    <a href="javascript:void(0)" class="mobile-logo">
+          <%= image_tag("http://33.media.tumblr.com/f2033cae50aa722d209ad106b6b89f4f/tumblr_mfspw6aC0I1rha3vbo1_1280.png")%>
+    </a>
+
+    <a href="" class="centered-navigation-menu-button" id="js-mobile-menu">MENU</a>
+    <ul class="centered-navigation-menu">
+      <li class="nav-link"><%= link_to "Start Learning",learning_path %></li>
+      <li class="nav-link"><%= link_to "Start Earning",earning_path %></li>
+      <li class="nav-link"><a href="javascript:void(0)">Sign up</a></li>
+      <li class="nav-link logo">
+        <%= link_to image_tag("http://33.media.tumblr.com/f2033cae50aa722d209ad106b6b89f4f/tumblr_mfspw6aC0I1rha3vbo1_1280.png"), {:action => 'home', :controller => 'static_pages'}, :class => 'logo'  %>
+      </li>
+      <li class="nav-link"><%= link_to "What is SkillClimb",what_is_path %></li>
+      <li class="nav-link more"><a href="javascript:void(0)">More Things</a>
+        <ul class="submenu">
+          <li><%= link_to "FAQ",faq_path %></li>
+          <li><%= link_to "Get in touch",contact_path %></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</header>
