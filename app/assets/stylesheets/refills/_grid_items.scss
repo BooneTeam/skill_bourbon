@@ -2,7 +2,7 @@
   width: (100% / 12) * $columns;
 }
 
-.grid-items {
+@mixin grid-items {
   $grid-items-background: $base-background-color;
   $grid-item-background: desaturate($base-accent-color, 30);
   $grid-item-colors:
@@ -106,5 +106,14 @@
     background-repeat: no-repeat;
     background-position: top;
     background-size: cover;
+  }
+}
+
+.grid-items{
+  @include grid-items
+}
+.example-climb .grid-items{
+  p{
+    color:white !important;
   }
 }
