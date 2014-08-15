@@ -24,6 +24,21 @@
  @import "refills/grid_items";
  @import "refills/side_image";
 
+// all custom stuff should go in here or in the refills/* stylesheets dont mess with anything under sass/*
+// maybe make a custom/* folder with all custom things.
  body{
   margin:0px;
+ }
+
+ .sign-up-wrap{
+  @include span-columns(12);
+ }
+
+ .sign-up{
+  @include span-columns(4);
+ }
+
+ .sign-up-content{
+  color:white;
+  @include span-columns(8);
  }
