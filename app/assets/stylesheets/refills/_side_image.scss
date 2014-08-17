@@ -43,6 +43,7 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
   }
 
   .content {
+    background:$base-background-color;
     @include span-columns(12);
     padding: 1em 1em 4em 1em;
 

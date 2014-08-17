@@ -1,38 +1,68 @@
-.search-bar {
-  $search-bar-border-color: $base-border-color;
-  $search-bar-border: 1px solid $search-bar-border-color;
-  $search-bar-background: lighten($search-bar-border-color, 10);
-  margin:10px;
-  position: relative;
-  display: inline-block;
+.search-tools {
+  $search-tools-border-color: $base-border-color;
+  $search-tools-background: lighten($search-tools-border-color, 10);
 
-  input {
-    @include box-sizing(border-box);
-    display: block;
-  }
+  @include clearfix;
+  // border: 1px solid $search-tools-border-color;
+  border:none;
+  background: $search-tools-background;
+  padding: $gutter / 2;
+  border-radius: $base-border-radius;
 
-  div.search-and-submit {
-    position: relative;
+  .filter {
+    margin-bottom: 1em;
 
-    input[type=search] {
-      @include appearance(none);
-      width: 100%;
-      padding: .5em .8em;
-      font-size: .9em;
-      font-style: italic;
-      border-radius: $base-border-radius * 2;
-      margin: 0;
+    @include media($large-screen) {
+      @include span-columns(2.5);
+      margin-bottom: 0;
     }
 
-    button[type=submit] {
-      @include button(simple, lighten($base-border-color, 10));
-      @include position(absolute, 0.3em 0.3em 0.3em 0);
-      outline: none;
-      padding: 5px 10px;
+    > div {
+      @extend input[type="text"];
+      position: relative;
 
-      img {
-        height: 12px;
-        opacity: .7;
+      label {
+        font-weight: 400;
+        cursor: pointer;
+        margin-bottom: 0;
+      }
+    }
+
+    ol label {
+      display: inline;
+    }
+
+    button {
+      @include button(simple, lighten($search-tools-background, 10));
+      @include position(absolute, 5px 5px auto auto);
+      font-size: .7em;
+    }
+
+    .hide-options {
+      margin-bottom: 0;
+
+      ol, button {
+        display: none;
+      }
+    }
+  }
+
+  .trigger {
+    width: 100%;
+
+    @include media($large-screen) {
+      @include span-columns(1.5);
+    }
+
+    button {
+      width: 100%;
+      margin-top: 1em;
+      padding-top: .7em;
+      padding-bottom: .7em;
+      font-size: .7em;
+
+      @include media($large-screen) {
+        margin-top: 1.95em;
       }
     }
   }
