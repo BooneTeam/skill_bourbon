@@ -26,19 +26,29 @@
 
 // all custom stuff should go in here or in the refills/* stylesheets dont mess with anything under sass/*
 // maybe make a custom/* folder with all custom things.
+ $sign-up-height:250px;
  body{
   margin:0px;
  }
 
  .sign-up-wrap{
-  @include span-columns(12);
+  // @include span-columns(12);
+  height:$sign-up-height;
+  background-color:#EFEDDF;
  }
 
  .sign-up{
-  @include span-columns(4);
+  float:left;
+  height:$sign-up-height;
+  background-color:#EFEDDF;
+  border: none;
+  // @include span-columns(4);
  }
 
  .sign-up-content{
-  color:white;
-  @include span-columns(8);
+  height:$sign-up-height;
+  margin-top:20px;
+  color:black;
+  min-width:600px;
+  // @include span-columns(8);
  }

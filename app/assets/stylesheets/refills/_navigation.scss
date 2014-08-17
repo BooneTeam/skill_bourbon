@@ -18,6 +18,7 @@
   height: $centered-navigation-height;
   width: 100%;
   z-index: 9999;
+  font-size: .8em;
 
   // Mobile view
 
@@ -246,6 +247,26 @@
           width: $centered-navigation-submenu-width;
         }
       }
+    }
+  }
+  .sign-in-box{
+   background: $centered-navigation-background;
+   display: block;
+   // line-height: $centered-navigation-height;
+   overflow: hidden;
+   // padding-right: $centered-navigation-submenu-padding;
+   // text-align: right;
+   width: 100%;
+   // z-index: 9999;
+
+   @include media($horizontal-bar-mode) {
+    background: transparent;
+    overflow:initial;
+    margin-top:5px;
+    margin-left:100px;
+    width:100px;
+    display: inline-block;
+    line-height: $centered-navigation-height;
     }
   }
 }

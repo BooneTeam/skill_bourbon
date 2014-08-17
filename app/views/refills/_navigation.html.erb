@@ -1,7 +1,7 @@
 <header class="centered-navigation">
   <div class="centered-navigation-wrapper">
     <a href="javascript:void(0)" class="mobile-logo">
-          <%= image_tag("http://33.media.tumblr.com/f2033cae50aa722d209ad106b6b89f4f/tumblr_mfspw6aC0I1rha3vbo1_1280.png")%>
+      <%= image_tag("http://33.media.tumblr.com/f2033cae50aa722d209ad106b6b89f4f/tumblr_mfspw6aC0I1rha3vbo1_1280.png")%>
     </a>
 
     <a href="" class="centered-navigation-menu-button" id="js-mobile-menu">MENU</a>
@@ -20,12 +20,22 @@
         </ul>
       </li>
       <% if current_user %>
-        <li class="nav-link"><%= link_to "Welcome #{current_user.email}", edit_user_registration_path(current_user) %></li>
-        <li class="nav-link"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+      <li class="nav-link"><%= link_to "Welcome #{current_user.email}", edit_user_registration_path(current_user) %></li>
+      <li class="nav-link"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
       <% else %>
-        <li class="nav-link"><%= link_to "Sign Up", new_user_registration_path %></li>
-        <li class="nav-link"><%= link_to "Sign In", new_user_session_path %></li>
-      <% end %>
-    </ul>
-  </div>
+      <li class="nav-link"><%= link_to "Sign Up", new_user_registration_path %></li>
+      <li class="sign-in-box">
+        <ul>
+        <form>
+         <li><input type="text" placeholder="Email"></input></li>
+         <li><input type="text" placeholder="Password"></input></li>
+       </form>
+       </ul>
+     </li>
+     <li class="nav-link">
+       <input type="submit" value="Sign In"></input>
+     </li>
+     <% end %>
+   </ul>
+ </div>
 </header>
