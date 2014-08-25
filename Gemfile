@@ -22,8 +22,10 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 
-#Devise for Authentication
+#Devise for Authentication and Authorization
 gem 'devise'
+# gem 'cancan'
+# gem 'rolify'
 ##### Assets
 gem 'neat'
 gem 'bitters'

@@ -7,12 +7,27 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   # Example of regular route:
-    get 'learning/' => 'static_pages#learning'
-    get 'earning/'  => 'static_pages#earning'
-    get 'what_is/'  => 'static_pages#what_is'
-    get 'faq/'      => 'static_pages#faq'
-    get 'contact/'      => 'static_pages#contact'
+  get 'what_is/'  => 'static_pages#what_is'
+  get 'faq/'      => 'static_pages#faq'
+  get 'contact/'  => 'static_pages#contact'
 
+  get 'dashboard/' => 'dashboards#show'
+  # resources :skills
+  resources :skills do
+    collection do
+      get 'teaching'
+      get 'learning'
+    end
+  end
+
+
+  # resources :users
+  resources :users do
+    collection do
+      get 'teaching'
+      get 'learning'
+    end
+  end
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

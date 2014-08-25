@@ -4,14 +4,6 @@ class StaticPagesController < ApplicationController
 
   end
 
-  def learning
-
-  end
-
-  def earning
-
-  end
-
   def what_is
 
   end
