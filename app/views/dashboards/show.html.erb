@@ -1,0 +1,50 @@
+<div class="dashboard_container">
+  <div class="dashboard">
+    <div class="sidebar">
+      <div id="learning">
+        <h5 class="title">Learning<span class="title-action"><%= link_to "Search For More", learning_skills_path %></span></h5>
+        <ul>
+          <% @learning_skills.each do |skill| %>
+          <li>
+            <h6>
+              <span>Level: <%=skill.level%></span>
+              <%=link_to skill.skill.name, skill_path(skill.skill)%>
+            </h6>
+            <h6 class="category">
+              <%=skill.skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>
+            </h6>
+          </li>
+          <%end%>
+        </ul>
+      </div>
+      <div id="earning">
+        <h5 class="title">Earning<span class="title-action"><%= link_to "Add More Skills", new_skill_path({skill: {apprentice: false}})%></span></h5>
+        <ul>
+          <% @earning_skills.each do |skill| %>
+          <li>
+            <h6>
+              <span>Level: <%=skill.level%></span>
+              <%=link_to skill.skill.name, skill_path(skill.skill)%>
+            </h6>
+            <h6 class="category">
+              <span><<% binding.pry%>/span>
+              <%=skill.skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>
+            </h6>
+          </li>
+          <%end%>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main">
+      <div id="selected_content">
+        <div class="row">
+          <h1>Some Content</h1>
+          <% @earning_skills.each do |skill| %>
+          <p><%= skill.attributes %></p>
+          <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
