@@ -1,0 +1,21 @@
+<div class="main-dash">
+  <div id="selected_content">
+    <div class="row" id='new-apprentice-requests'>
+      <h4 class="title">New Apprentice Requests</h4>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User','Skill', 'Location', 'Date Scheduled','Please Respond'], table_data: @apprentice_requests.pending, extra_fields: ['accepted_status'] }%>
+    </div>
+    <div class="row" id='your-apprentices'>
+      <h4 class="title">Your Apprentices</h4>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location','Date Scheduled', 'Status'], table_data: @apprentice_requests.confirmed, extra_fields: ['accepted_status'] }%>
+    </div>
+    <div class="row" id='your-apprenticeships'>
+      <h4 class="title">Your Apprenticeships</h4>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location', 'Date Scheduled', 'Status'], table_data: @learning_skills, extra_fields: ['accepted_status'] }%>
+    </div>
+    <div class="row" id='dash-upcoming-calendar'>
+      <h4 class="title">Upcoming Events</h4>
+      <%= render 'calendar_grid' %>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['Learning/Teaching','Location','Time','Date Scheduled','Status'], table_data: @upcoming_events, extra_fields: ['accepted_status'] }%>
+    </div>
+  </div>
+</div>

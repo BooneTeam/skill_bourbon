@@ -1,0 +1,20 @@
+.dates{
+  .date-box{
+    background-color:white;
+    float:left;
+    font-size:.5em;
+    text-align:center;
+  }
+  .date-box.has-events{
+    background-color:$blue;
+  }
+  .date-box.today{
+    background-color:$base-background-color;
+  }
+  .date-box.apprenticeship{
+    color:$blue;
+  }
+  .date-box.apprentice{
+    color:green;
+  }
+}
