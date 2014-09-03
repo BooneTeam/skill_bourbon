@@ -1,12 +1,18 @@
 // Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
+body{
+  background: url("http://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Matterhorn_by_Juan_Rubiano.jpg/1920px-Matterhorn_by_Juan_Rubiano.jpg")no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 .dashboard_container{
   @include outer-container;
   margin:15px auto 15px auto;
+  background-color:rgba(255,255,255,0.75);
   height:100%;
-  background:white;
   box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
 }
 .dashboard{
@@ -54,8 +60,4 @@
   .side-info{
     padding:2px;
   }
-}
-
-.main{
-    @include span-columns(9);
 }
