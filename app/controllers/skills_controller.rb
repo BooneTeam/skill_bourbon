@@ -9,14 +9,6 @@ class SkillsController < ApplicationController
     @skill = Skill.find(params[:id])
   end
 
-  def teaching
-
-  end
-
-  def learning
-
-  end
-
   def new
     @skill = Skill.new(skill_params)
   end

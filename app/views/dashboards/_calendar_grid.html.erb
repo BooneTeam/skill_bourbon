@@ -1,0 +1,23 @@
+<div class='dates'>
+  <% timeline.each do |date, events| %>
+  <div class="date-box tooltip-item <%= date.to_s == DateTime.now.to_date.to_s ? 'today' : ''  %> <%=events.empty? ? '' : 'has-events' %>">
+    <h6><%= date %></h6>
+    <% unless events.empty? %>
+    <div class="tooltip">
+      <% events.each do |event| %>
+      <% skill = event.skill %>
+      <div class="skill-block-<%= skill.creator_id == current_user.id ? 'apprentice' : 'apprenticeship' %>">
+        <h6><%= skill.description %></h6>
+        <p>Apprentice: <%= event.user.email %></p>
+        <p>Creator: <%= event.skill.creator.email %></p>
+        <p>Address: <%= event.location.address %></p>
+        <p>City:<%= event.location.city %></p>
+        <p>State:<%= event.location.state %></p>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
+  <% end %>
+</div>
+

@@ -3,6 +3,16 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,:lockable
-  has_many :user_skills
-  has_many :skills, through: :user_skills, as: :user
+
+  has_many :created_skills, :as => :creator, :class_name => "Skill"
+  has_many :apprentice_requests, through: :created_skills, :source => :apprenticeships
+
+  has_many :apprenticeships
+  has_many :skills, through: :apprenticeships
+  has_many :notes,  through: :apprenticeships
+
+  def confirmed_upcoming_events
+    self.apprenticeships.confirmed_upcoming + self.apprentice_requests.confirmed_upcoming
+  end
+
 end

@@ -5,11 +5,11 @@ class UsersController < ApplicationController
   end
 
   def teaching
-    @skills = current_user.user_skills.earning
+    @skills = current_user.created_skills
   end
 
   def learning
-    @skills = current_user.user_skills.learning
+    @skills = current_user.apprenticeships
   end
 
 end
