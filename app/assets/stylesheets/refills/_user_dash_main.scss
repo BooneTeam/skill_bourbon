@@ -28,20 +28,20 @@
 
     thead {
       th {
-        background-color:rgba(255,255,255,0.75);
-        // background-color: $table-header-color;
+        // background-color:rgba(255,255,255,0.75);
+        background-color: $table-header-color;
         padding: $table-padding;
         border-bottom: 0px;
       }
     }
 
     tbody {
-      background-color:rgba(255,255,255,0.75);
-      // background-color: $table-background;
+      // background-color:rgba(255,255,255,0.75);
+      background-color: $table-background;
 
       td {
         padding: $table-padding;
-        border-top: 1px solid $table-border-color;
+        border-top: 1px dashed $table-border-color;
         border-bottom: 0px;
 
         button {
