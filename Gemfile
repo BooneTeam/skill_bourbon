@@ -21,8 +21,11 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
-#Devise for Authentication
+
+#Devise for Authentication and Authorization
 gem 'devise'
+# gem 'cancan'
+# gem 'rolify'
 ##### Assets
 gem 'neat'
 gem 'bitters'
@@ -34,6 +37,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
+#Debugging
+gem 'pry',       group:[:development, :test]
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -11,7 +11,58 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140815004416) do
+ActiveRecord::Schema.define(version: 20140902003852) do
+
+  create_table "apprenticeships", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.integer  "location_id"
+    t.string   "accepted_status"
+    t.integer  "apprentice_level"
+    t.datetime "date_scheduled"
+    t.datetime "date_requested"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "locations", force: true do |t|
+    t.string   "address"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "notes", force: true do |t|
+    t.integer "apprenticeship_id"
+    t.integer "user_id"
+    t.text    "note"
+  end
+
+  create_table "skill_categories", force: true do |t|
+    t.integer  "category_id"
+    t.integer  "skill_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "skills", force: true do |t|
+    t.text     "description"
+    t.string   "name"
+    t.string   "creator_type"
+    t.integer  "creator_id"
+    t.integer  "creator_level"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

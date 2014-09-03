@@ -1,0 +1,29 @@
+<% if table_headers %>
+<table class="table-minimal">
+  <thead>
+    <tr>
+      <% table_headers.each do |header| %>
+      <th><%= header %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% table_data.each do |data_row| %>
+    <tr>
+      <td><%= data_row.user.email %></td>
+      <td><%= data_row.skill.name %></td>
+      <td><%= data_row.location.address %></td>
+      <td><%= data_row.date_scheduled %></td>
+      <% case data_row.accepted_status %>
+      <% when 'pending' %>
+      <td><button class='confirm'>Confirm</button><button class='reject'>Reject</button></td>
+      <% when 'confirmed' %>
+      <td class='confirmed'>&#10004</td>
+      <% when 'denied' %>
+      <td class='denied'>&#x2717</td>
+      <% end %>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
