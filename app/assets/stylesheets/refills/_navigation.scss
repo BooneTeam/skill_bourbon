@@ -61,7 +61,7 @@
   // Nav menu
 
   .centered-navigation-wrapper {
-    @include outer-container;
+    // @include outer-container;
     @include clearfix;
     position: relative;
     z-index: 999;
