@@ -7,7 +7,7 @@
       <li>
         <h6>
           <span>Level: <%=skill.apprentice_level%></span>
-          <%=link_to skill.skill.name, skill_path(skill.skill)%>
+          <%=link_to skill.skill.title, skill_path(skill.skill)%>
         </h6>
         <h6 class="category">
           <%=skill.skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>
@@ -23,7 +23,7 @@
       <li>
         <h6>
           <span>Level: <%=skill.creator_level%></span>
-          <%=link_to skill.name, skill_path(skill)%>
+          <%=link_to skill.title, skill_path(skill)%>
         </h6>
         <h6 class="category">
           <%=skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>

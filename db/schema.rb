@@ -17,6 +17,8 @@ ActiveRecord::Schema.define(version: 20140902003852) do
     t.integer  "user_id"
     t.integer  "skill_id"
     t.integer  "location_id"
+    t.text     "request_description"
+    t.string   "completion_status"
     t.string   "accepted_status"
     t.integer  "apprentice_level"
     t.datetime "date_scheduled"
@@ -55,8 +57,9 @@ ActiveRecord::Schema.define(version: 20140902003852) do
   end
 
   create_table "skills", force: true do |t|
-    t.text     "description"
-    t.string   "name"
+    t.string   "title"
+    t.string   "subtitle"
+    t.text     "full_description"
     t.string   "creator_type"
     t.integer  "creator_id"
     t.integer  "creator_level"

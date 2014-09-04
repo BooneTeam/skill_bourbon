@@ -1,8 +1,9 @@
 class CreateSkills < ActiveRecord::Migration
   def change
     create_table :skills do |t|
-      t.text    :description
-      t.string  :name
+      t.string  :title
+      t.string  :subtitle
+      t.text    :full_description
 
       t.string  :creator_type
       t.integer :creator_id

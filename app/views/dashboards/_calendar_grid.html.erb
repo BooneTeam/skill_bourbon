@@ -7,7 +7,7 @@
       <% events.each do |event| %>
       <% skill = event.skill %>
       <div class="skill-block-<%= skill.creator_id == current_user.id ? 'apprentice' : 'apprenticeship' %>">
-        <h6><%= skill.description %></h6>
+        <h6><%= skill.subtitle %></h6>
         <p>Apprentice: <%= event.user.email %></p>
         <p>Creator: <%= event.skill.creator.email %></p>
         <p>Address: <%= event.location.address %></p>
