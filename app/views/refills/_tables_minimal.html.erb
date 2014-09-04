@@ -11,12 +11,17 @@
     <% table_data.each do |data_row| %>
     <tr>
       <td><%= data_row.user.email %></td>
-      <td><%= data_row.skill.name %></td>
+      <td><%= data_row.skill.title %></td>
       <td><%= data_row.location.address %></td>
       <td><%= data_row.date_scheduled %></td>
       <% case data_row.accepted_status %>
       <% when 'pending' %>
-      <td><button class='confirm'>Confirm</button><button class='reject'>Reject</button></td>
+        <% if current_user.id == data_row.skill.creator_id %>
+          <td><button class='confirm'>Confirm</button><button class='reject'>Reject</button>
+          </td>
+        <% else %>
+            <td class='pending'>&#8660</td>
+        <% end %>
       <% when 'confirmed' %>
       <td class='confirmed'>&#10004</td>
       <% when 'denied' %>

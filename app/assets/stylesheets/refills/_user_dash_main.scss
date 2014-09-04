@@ -29,7 +29,8 @@
     thead {
       th {
         // background-color:rgba(255,255,255,0.75);
-        background-color: $table-header-color;
+        // background-color: $table-header-color;
+        background:transparentize(gray, .9);
         padding: $table-padding;
         border-bottom: 0px;
       }
@@ -37,7 +38,8 @@
 
     tbody {
       // background-color:rgba(255,255,255,0.75);
-      background-color: $table-background;
+      background:transparentize(gray, .9);
+      // background-color: $table-background;
 
       td {
         padding: $table-padding;
