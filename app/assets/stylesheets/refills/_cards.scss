@@ -20,10 +20,16 @@
   cursor: pointer;
   box-shadow: 0 2px 4px darken($base-body-color, 10);
   position: relative;
+  height:520px;
 
   @include media($large-screen) {
     @include span-columns(3);
     @include omega(4n);
+  }
+
+  .subtitle{
+    font-size:.8em;
+    color:gray;
   }
 
   .card-image {
@@ -77,11 +83,16 @@
     padding: $base-line-height/2 $gutter/2;
     font-size: .9em;
     line-height: 1.5em;
+    height:170px;
+    text-overflow:hidden;
   }
 
   .card-stats {
     padding: $base-line-height/2 $gutter/2;
     overflow: auto;
+    //You Added
+    position: absolute;
+    bottom: 0;
 
     ul li {
       display: inline;

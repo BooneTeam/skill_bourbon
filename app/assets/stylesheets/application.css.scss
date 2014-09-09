@@ -10,6 +10,7 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
+ *= require bootstrap-datetimepicker.min
  *= require_self
  */
  @import "bourbon";
@@ -26,6 +27,7 @@
  @import "refills/tooltip";
  @import "refills/user_dash_main";
  @import "refills/calendar_grid";
+ @import "refills/comment";
  @import "skills";
  @import "dashboard";
 
@@ -58,4 +60,10 @@
   color:black;
   min-width:600px;
   // @include span-columns(8);
+ }
+
+ .small-info{
+  font-size:.6em;
+  color:gray;
+  font-variant: italic;
  }

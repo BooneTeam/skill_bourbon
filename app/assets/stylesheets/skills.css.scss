@@ -46,12 +46,25 @@
   @include shift(1);
   padding-left:10px;
   padding-top:1em;
-}
-.comments-and-recent{
-  .title{
-    text-decoration: underline;
+  button{
+    font-size:.5em;
+    @include media($medium-screen-up){
+      font-size:1em;
   }
-  @include span-columns(7);
+  }
+}
+
+.title{
+  text-decoration: underline;
+}
+
+.comments-and-recent{
+  @include span-columns(6);
+  @include shift(1);
+  margin-right:0px;
+  .comments{
+    font-size: .8em;
+  }
   ul{
     // border-left: solid gray 1px;
     box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
@@ -65,4 +78,32 @@
     }
   }
   padding:1em;
+}
+
+.skill-comments{
+  @include span-columns(10);
+  @include shift(1);
+  clear:both;
+  font-size:.8em;
+}
+
+#new_apprenticeship_true,
+#new_apprenticeship_false{
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+  padding:10px;
+  background-color:white;
+  #apprenticeship_request_description{
+    height:200px;
+  }
+}
+
+.timepicker{
+  tr:first-child,tr:last-child{
+    display:none;
+   }
+  }
+
+.bootstrap-datetimepicker-widget{
+  background-color: white;
+  font-size:.5em;
 }

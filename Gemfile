@@ -32,6 +32,12 @@ gem 'bitters'
 gem 'bourbon'
 gem 'refills'
 
+#Forms
+gem 'momentjs-rails'
+gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'master', :submodules => true
+gem 'simple_form'
+gem 'country_select'
+
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
@@ -39,7 +45,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 #Debugging
 gem 'pry',       group:[:development, :test]
-
+gem "binding_of_caller",group:[:development, :test]
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
