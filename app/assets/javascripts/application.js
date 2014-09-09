@@ -9,10 +9,12 @@
 //
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
-//
+// Removed Turbolinks because of issues.
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require moment
+//= require bootstrap-datetimepicker
+//= require pickers
 //= require_tree .
 
 
