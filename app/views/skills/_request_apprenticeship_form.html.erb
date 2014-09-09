@@ -1,0 +1,7 @@
+
+<%= simple_form_for Apprenticeship.new, html: {id: 'new_apprenticeship_'+new_request.to_s} do |f| %>
+  <%= f.input :request_description, input_html: {value: new_request ? '' : @skill.full_description, maxlength:300, placeholder:"Enter a short description of what you'd like to learn.Try to keep it under 300 characters. You can discuss further later."}%>
+  <%= f.input :date_requested, :as => :datetime_picker %>
+  <%= f.input :apprentice_level %>
+  <%= f.button :submit, value: 'Submit Request' %>
+<% end %>

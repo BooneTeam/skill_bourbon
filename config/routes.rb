@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   # resources :skills
   resources :skills do
     collection do
+      resources :apprenticeships
       get 'teaching'
       get 'learning'
     end

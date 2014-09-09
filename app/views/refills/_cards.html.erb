@@ -1,79 +1,24 @@
 <div class="cards">
+  <% @skills.each do |skill| %>
   <div class="card">
     <div class="card-image">
       <img src="https://raw.github.com/Magnus-G/Random/master/mountains.png" alt="">
     </div>
     <div class="card-header">
-      First Card
+      <p class='title'><%= skill.title %></p>
+      <p class='subtitle'><%= skill.subtitle %></p>
     </div>
     <div class="card-copy">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
+      <p><%= skill.full_description %></p>
     </div>
     <div class="card-stats">
+      <%= link_to 'Read More', skill_path(skill) %>
       <ul>
-        <li>98<span>Items</span></li>
-        <li>298<span>Things</span></li>
-        <li>923<span>Objects</span></li>
+        <li><%= skill.apprentices.count %><span># of Apprentices</span></li>
+        <li>***<span>Avg. Rating</span></li>
       </ul>
     </div>
   </div>
-
-  <div class="card">
-    <div class="card-image">
-      <img src="https://raw.github.com/Magnus-G/Random/master/mountains-3.png" alt="">
-    </div>
-    <div class="card-header">
-      The Last Card
-    </div>
-    <div class="card-copy">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
-    </div>
-    <div class="card-stats">
-      <ul>
-        <li>98<span>Items</span></li>
-        <li>298<span>Things</span></li>
-        <li>923<span>Objects</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="ribbon-wrapper"><div class="ribbon">RIBBON</div></div>
-    <div class="card-image">
-      <img src="https://raw.github.com/Magnus-G/Random/master/mountains-4.png" alt="">
-    </div>
-    <div class="card-header">
-      Another Card
-    </div>
-    <div class="card-copy">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
-    </div>
-    <div class="card-stats">
-      <ul>
-        <li>98<span>Items</span></li>
-        <li>298<span>Things</span></li>
-        <li>923<span>Objects</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="card-image">
-      <img src="https://raw.github.com/Magnus-G/Random/master/mountains-3.png" alt="">
-    </div>
-    <div class="card-header">
-      The Last Card
-    </div>
-    <div class="card-copy">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga, officiis sunt neque facilis culpa molestiae necessitatibus delectus veniam provident.</p>
-    </div>
-    <div class="card-stats">
-      <ul>
-        <li>98<span>Items</span></li>
-        <li>298<span>Things</span></li>
-        <li>923<span>Objects</span></li>
-      </ul>
-    </div>
-  </div>
+  <% end %>
 
 </div>
