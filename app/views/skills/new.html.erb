@@ -1,1 +1,14 @@
-
+<div class="dashboard_container">
+<fieldset>
+<%= simple_form_for Skill.new do |f| %>
+<%= f.input :title, as: :string %>
+<%= f.simple_fields_for :categories do |c| %>
+        <%= c.input :name, label: "Categories" %>
+<% end %>
+<%= f.input :subtitle %>
+<%= f.input :full_description %>
+<%= f.input :creator_level, label: "Skill Level" %>
+<%= f.submit %>
+<%end%>
+</fieldset>
+</div>
