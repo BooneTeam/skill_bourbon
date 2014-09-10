@@ -27,6 +27,7 @@ gem 'devise'
 # gem 'cancan'
 # gem 'rolify'
 ##### Assets
+gem 'font-awesome-rails'
 gem 'neat'
 gem 'bitters'
 gem 'bourbon'

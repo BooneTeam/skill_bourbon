@@ -5,9 +5,8 @@
 $(document).ready(function(){
 
   $('#dash-new-skill-btn').on('click',function(e){
-    e.preventDefault();
-    debugger;
-    $('.main-dash #selected_content').html('<p>Form Yay</p>');
+    // e.preventDefault();
+    // $('.main-dash #selected_content').html('<p>Form Yay</p>');
   });
 
 });
