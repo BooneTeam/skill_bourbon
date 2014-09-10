@@ -16,6 +16,7 @@
  @import "bourbon";
  @import "sass/base/base";
  @import "neat";
+ @import "font-awesome";
  @import "refills/navigation";
  @import "refills/hero";
  @import "refills/icon_bullet_points";
@@ -28,6 +29,7 @@
  @import "refills/user_dash_main";
  @import "refills/calendar_grid";
  @import "refills/comment";
+ @import "refills/hover_tile";
  @import "skills";
  @import "dashboard";
 
@@ -51,14 +53,25 @@
   height:$sign-up-height;
   background-color:#EFEDDF;
   border: none;
+  margin:0px;
   // @include span-columns(4);
  }
 
  .sign-up-content{
+  background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   height:$sign-up-height;
-  margin-top:20px;
+  // margin-top:20px;
   color:black;
   min-width:600px;
+  text-align: center;
+  content{
+    @include outer-container;
+    @include span-columns(3);
+  }
   // @include span-columns(8);
  }
 

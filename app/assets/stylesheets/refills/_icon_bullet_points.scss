@@ -1,8 +1,9 @@
 .bullets {
 
-  @include texture(180deg, lighten(#fff, 1), darken(#000, 10), 67, 0);
+  // @include texture(180deg, lighten(#fff, 1), darken(#000, 10), 67, 0);
   $icon-bullet-size: 3.5em;
   $bullet-margin-top:10px;
+  background:tomato;
   overflow: auto;
   // margin-bottom: $base-line-height;
 
@@ -76,5 +77,5 @@
   p{
     color:black;
   }
-  background:$base-background-color !important;
+  background:tomato;
 }
