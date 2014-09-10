@@ -1,7 +1,7 @@
 
 <div class="sidebar">
   <div id="learning">
-    <h5 class="title">Learning<span class="title-action"><%= link_to "Search For More", learning_skills_path, id:'dash-learning-search' %></span></h5>
+    <h5 class="title">Learning<span class="title-action"><%= link_to "Search For More", skills_path, id:'dash-learning-search' %></span></h5>
     <ul>
       <% @learning_skills.each do |skill| %>
       <li>
@@ -17,7 +17,7 @@
     </ul>
   </div>
   <div id="earning">
-    <h5 class="title">Earning<span class="title-action"><%= link_to "Add More Skills", id:'dash-new-skill-btn'%></span></h5>
+    <h5 class="title">Earning<span class="title-action"><%= link_to "Add More Skills",new_skill_path, id:'dash-new-skill-btn'%></span></h5>
     <ul>
       <% @earning_skills.each do |skill| %>
       <li>
