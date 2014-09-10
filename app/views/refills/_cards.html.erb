@@ -1,26 +1,21 @@
 <div class="dashboard_container">
-<div class="cards">
-  <% @skills.each do |skill| %>
-  <div class="card">
-    <div class="card-image">
-      <img src="https://raw.github.com/Magnus-G/Random/master/mountains.png" alt="">
+  <div class="cards">
+    <% 2.times do  %>
+    <% @skills.each do |skill| %>
+    <div class="hover-tile-outer">
+      <div class="hover-tile-container">
+        <div class="hover-tile hover-tile-visible">
+          <p class='title'><%= skill.title %></p>
+          <p class='subtitle'><%= skill.subtitle %></p>
+        </div>
+        <div class="hover-tile hover-tile-hidden">
+          <p><%= skill.full_description %></p>
+          <%= link_to 'Read More', skill_path(skill) %>
+        </div>
+      </div>
     </div>
-    <div class="card-header">
-      <p class='title'><%= skill.title %></p>
-      <p class='subtitle'><%= skill.subtitle %></p>
-    </div>
-    <div class="card-copy">
-      <p><%= skill.full_description %></p>
-    </div>
-    <div class="card-stats">
-      <%= link_to 'Read More', skill_path(skill) %>
-      <ul>
-        <li><%= skill.apprentices.count %><span># of Apprentices</span></li>
-        <li>***<span>Avg. Rating</span></li>
-      </ul>
-    </div>
-  </div>
-  <% end %>
+    <% end %>
+    <% end %>
 
-</div>
+  </div>
 </div>

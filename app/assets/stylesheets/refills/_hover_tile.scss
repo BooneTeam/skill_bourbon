@@ -1,18 +1,20 @@
 .hover-tile-outer {
-  $hover-tile-height: 10em;
+  $hover-tile-height: 8em;
 
   background-position: bottom;
   background-size: cover;
   background: url("/images/mountains.png");
   background-size: cover;
-  background-color: #BEB56E;
+  // background-color: #BEB56E;
+  background-color: white;
   border: 1px solid $base-border-color;
   height: $hover-tile-height;
   margin-bottom: $base-line-height;
+  margin-left: 3px;;
   cursor: pointer;
-
+  float:left;
   @include media($medium-screen) {
-    width: 40%;
+    width: 33%;
   }
 
   .hover-tile-container {
@@ -33,8 +35,11 @@
   }
 
   .hover-tile-visible {
-    color: transparentize(white, .3);
-    font-size: 2em;
+    .title{
+      font-size:1.2em;
+    }
+    color: transparentize(black, .3);
+    font-size: .8em;
     font-weight: 200;
     padding-top: 2em;
     text-align: center;
@@ -42,6 +47,7 @@
 
   .hover-tile-hidden {
     background: transparentize(black, .5);
+    font-size: .7em;
     h4 {
       margin-bottom: .5em;
     }
