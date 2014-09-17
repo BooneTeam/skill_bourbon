@@ -6,7 +6,7 @@
       <% @learning_skills.each do |skill| %>
       <li>
         <h6>
-          <span class='level'><%=skill.apprentice_level%></span> <%=link_to skill.skill.title, skill_path(skill.skill)%>
+          <span class='level learning'><%=skill.apprentice_level%></span> <%=link_to skill.skill.title, skill_path(skill.skill)%>
         </h6>
         <h6 class="category">
           <%=skill.skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>
@@ -21,10 +21,25 @@
       <% @earning_skills.each do |skill| %>
       <li>
         <h6>
-          <span class='level'><%=skill.creator_level%></span> <%=link_to skill.title, skill_path(skill)%>
+          <span class='level earning'><%=skill.creator_level%></span> <%=link_to skill.title, skill_path(skill)%>
         </h6>
         <h6 class="category">
           <%=skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>
+        </h6>
+      </li>
+      <%end%>
+    </ul>
+  </div>
+  <div id="requests">
+    <h5 class="title">My Requests<span class="title-action"></h5>
+    <ul>
+      <% @current_user_requests.each do |request| %>
+      <li>
+        <h6>
+          <span class='filled-<%=request.filled%>'></span> <%=link_to request.title, skill_request_path(request)%>
+        </h6>
+        <h6 class="category">
+          <%=request.categories.limit(3).map{|category| category.name}.join(",").to_s%>
         </h6>
       </li>
       <%end%>

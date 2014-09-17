@@ -8,7 +8,9 @@
   color:black;
   margin-top: 1em;
   .categories{
+    padding:10px;
     font-size:.7em;
+    @include shift(1);
   }
 }
 
@@ -18,19 +20,27 @@
   background:transparentize(white, .4);
   background-size:100% 100%;
   .info{
+    *{
+      line-height:2.5em;
+    }
+    font-size:.8em;
     padding:10px;
+    float:left;
     @include shift(1);
-    @include span-columns(3);
+    // @include span-columns(3);
   }
   .profile-image{
+    font-size:.8em;
+    float:right;
     padding:10px;
     img{
      height:100px;
     }
   }
   .skill-creator{
-    @include shift(1);
-    @include span-columns(12);
+    padding:1em;
+    // @include shift(1);
+    // @include span-columns(12);
   }
 }
 .skill-container{
@@ -43,9 +53,8 @@
   @include outer-container;
   @include span-columns(4);
   @include shift(1);
-  padding-left:10px;
-  padding-top:1em;
-  background:transparentize(white, .3);
+  padding:1em;
+  // background:transparentize(white, .3);
   button{
     font-size:.5em;
     @include media($medium-screen-up){
