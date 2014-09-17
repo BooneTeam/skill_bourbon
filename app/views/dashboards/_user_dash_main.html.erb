@@ -15,7 +15,7 @@
     <div class="row" id='dash-upcoming-calendar'>
       <h4 class="title">Upcoming Events</h4>
       <%= render 'calendar_grid' %>
-      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['Learning/Teaching','Location','Time','Date Scheduled','Status'], table_data: @upcoming_events, extra_fields: ['accepted_status'] }%>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['Role','Location','Time','Date Scheduled','Status'], table_data: @upcoming_events, extra_fields: ['accepted_status'] }%>
     </div>
   </div>
 </div>

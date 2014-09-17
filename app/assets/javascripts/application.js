@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require moment
 //= require bootstrap-datetimepicker
+//= require select2
 //= require pickers
 //= require_tree .
 
@@ -104,7 +105,7 @@ $(document).ready(function() {
   };
 
   Filter.prototype._updateSummary = function() {
-    var summary = 'All';
+    var summary = '';
     var checked = this._checkboxes().filter(':checked');
 
     if (checked.length > 0) {
@@ -144,5 +145,46 @@ $(function() {
   Filter.enhance();
 });
 
+// $(function() {
+    /* Convenience for forms or links that return HTML from a remote ajax call.
+    The returned markup will be inserted into the element id specified.
+     */
+    $('.search-tools form[data-update-target]').on('ajax:success', function(e,data) {
+        var target = $(this).data('update-target');
+        $('.' + target).html(data);
+    });
+// });
+
+  $('#search-trigger button').on('click', function(){
+    debugger;
+    $.ajax({
+
+      type: "POST",
+      data: { },
+      dataType: "html"
+    }).success(function(response){
+      debugger;
+    });
+  })
+
+  $('.select2').each(function(i, e){
+  var select = $(e)
+  options = {
+
+    allowClear: true,
+    multiple:true,
+    maximumSelectionSize:3}
+  if (select.hasClass('ajax')) {
+    options.ajax = {
+      url: select.data('source'),
+      dataType: 'json',
+      // data: function(term, page) { return { q: term, page: page, per: 10 } },
+      data: function(term, page) { return { q: term, page: page, per: 10 }},
+      results: function(data) { return { results: data } }
+    }
+    options.dropdownCssClass = "bigdrop"
+  }
+  select.select2(options)
+})
 
 });

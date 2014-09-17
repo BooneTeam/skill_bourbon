@@ -1,5 +1,5 @@
 <!-- <div class="sign-up-wrap"> -->
-<div class="dashboard_container">
+<div class="dashboard_container user-container">
 <fieldset class="sign-up">
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -16,6 +16,5 @@
 <%= render "devise/shared/links" %>
 </fieldset>
 <%= render "refills/user_sign_up_side_image" %>
-
 </div>
 </div>

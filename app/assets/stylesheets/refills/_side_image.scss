@@ -43,7 +43,7 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
   }
 
   .content {
-    background:$base-background-color;
+    background:$hero-background;
     @include span-columns(12);
     padding: 1em 1em 4em 1em;
 
@@ -56,11 +56,12 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
   .content h1 {
     margin-bottom: .9em;
     font-size:1.5em;
+    color:$base-body-color;
   }
 
   .content h4 {
     background: $side-image-background-bottom;
-    color: white;
+    color: $base-body-color;
     display: inline-block;
     font-size: .75em;
     font-weight: 800;
@@ -70,9 +71,9 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
   }
 
   .content p {
-    color: gray;
+    color: black;
     margin-bottom: 1em;
-    font-size: .8em;
+    font-size: 1em;
   }
 
   .content button {

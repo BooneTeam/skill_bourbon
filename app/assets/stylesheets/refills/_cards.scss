@@ -5,11 +5,11 @@
 .cards {
   @include clearfix;
   padding:1em;
-  background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  // background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
+  // -webkit-background-size: cover;
+  // -moz-background-size: cover;
+  // -o-background-size: cover;
+  // background-size: cover;
 }
 
 .card {
@@ -150,4 +150,13 @@
       background-color: $card-background;
     }
   }
+}
+
+.cards-container{
+  background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed !important;
+  background-color: desaturate(darken($base-accent-color, 20), 30) !important;
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  background-size: cover !important;
 }

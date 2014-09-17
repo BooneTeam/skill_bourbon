@@ -1,8 +1,9 @@
 .centered-navigation {
-  @include texture(180deg, lighten(#DDF0EF, 1), darken(#DDF0EF, 10), 67, 0);
+  // @include texture(180deg, lighten(#DDF0EF, 1), darken(#DDF0EF, 10), 67, 0);
+  @include texture(180deg, lighten($nav-color, 1), darken($nav-color, 10), 67, 0);
   $centered-navigation-padding: 1em;
   $centered-navigation-logo-height: 2em;
-  $centered-navigation-background: #E7F1EC;
+  $centered-navigation-background: $nav-color;
   $centered-navigation-color: transparentize($base-font-color, 0.3);
   $centered-navigation-color-hover: $base-font-color;
   $centered-navigation-height: 60px;

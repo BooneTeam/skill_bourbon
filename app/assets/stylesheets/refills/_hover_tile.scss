@@ -6,7 +6,7 @@
   background: url("/images/mountains.png");
   background-size: cover;
   // background-color: #BEB56E;
-  background-color: white;
+  background-color: $base-background-color;
   border: 1px solid $base-border-color;
   height: $hover-tile-height;
   margin-bottom: $base-line-height;
@@ -54,5 +54,13 @@
     p {
       color: transparentize(white, .3);
     }
+  }
+}
+.category-tiles{
+  .hover-tile-outer{
+    width: 10%;
+  }
+  .hover-tile-visible{
+   font-size: .5em;
   }
 }

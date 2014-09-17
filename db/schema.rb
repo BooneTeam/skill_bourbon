@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20140902003852) do
     t.string   "creator_type"
     t.integer  "creator_id"
     t.integer  "creator_level"
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
