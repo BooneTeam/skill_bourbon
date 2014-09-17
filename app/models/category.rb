@@ -4,6 +4,9 @@ class Category < ActiveRecord::Base
  has_many :skill_categories
  has_many :skills, through: :skill_categories
 
+ has_many :skill_request_categories
+ has_many :skill_requests,through: :skill_request_categories
+
   def as_json(options)
     { id: id, text: name }
   end

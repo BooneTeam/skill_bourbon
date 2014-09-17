@@ -43,6 +43,9 @@
   margin:0px;
  }
 
+ //Get Rid of datepicker showing at bottom of pages
+ .bootstrap-datetimepicker-widget { display: none; }
+
  .sign-up-wrap{
   // @include span-columns(12);
   height:$sign-up-height;
@@ -88,7 +91,7 @@
  }
 
  .small-info{
-  font-size:.6em;
-  color:gray;
-  font-variant: italic;
+  font-size:.7em;
+  color:white;
+  font-style: italic;
  }
