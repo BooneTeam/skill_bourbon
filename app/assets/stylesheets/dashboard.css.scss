@@ -19,6 +19,9 @@ body{
   box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
 }
 .dashboard{
+  .title{
+    text-decoration: none;
+  }
   @include outer-container;
   padding:30px 30px 30px 0px;;
 }
@@ -58,10 +61,18 @@ body{
         border-radius: .3em; /* or 50% */
         margin:.2em;
         padding:.3em;
-        background-color: $bullet-background;
         color: white;
         text-align: center;
         // font-size: 2em;
+      }
+      span.earning,span.learning{
+         background-color: $bullet-background;
+        }
+      span.filled-true{
+         background-color: green;
+        }
+      span.filled-false{
+        background-color: yellow;
       }
     }
   }

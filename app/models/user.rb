@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
   has_many :created_skills, :as => :creator, :class_name => "Skill"
   has_many :apprentice_requests, through: :created_skills, :source => :apprenticeships
 
+  has_many :skill_requests
+
   has_many :apprenticeships
   has_many :skills, through: :apprenticeships
   has_many :notes,  through: :apprenticeships

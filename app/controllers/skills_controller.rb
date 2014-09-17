@@ -35,7 +35,7 @@ class SkillsController < ApplicationController
 
   def new
     if current_user
-      @categories = Category.all
+      @categories = Category.order('name')
       @skill = Skill.new
       @skill.categories.build
       @skill.build_location
