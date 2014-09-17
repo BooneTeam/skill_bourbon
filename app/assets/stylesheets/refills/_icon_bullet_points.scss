@@ -3,7 +3,7 @@
   // @include texture(180deg, lighten(#fff, 1), darken(#000, 10), 67, 0);
   $icon-bullet-size: 3.5em;
   $bullet-margin-top:10px;
-  background:tomato;
+  background:$bullet-background;
   overflow: auto;
   // margin-bottom: $base-line-height;
 
@@ -57,11 +57,11 @@
   .bullet-content {
     margin-left: $icon-bullet-size *1.4;
     margin-bottom: 2em;
-    color:white;
+    color:$bullet-text;
   }
 
   h2 {
-    color:black;
+    color:$bullet-text;
     font-size: $icon-bullet-size /2.5;
     padding-top: $icon-bullet-size /7;
     margin-bottom: $icon-bullet-size /6;
@@ -72,10 +72,10 @@
 
 .bullets.earning{
   h2{
-    color:white;
+    color:$bullet-text;
   }
   p{
-    color:black;
+    color:$bullet-text;
   }
-  background:tomato;
+  background:$bullet-background;
 }

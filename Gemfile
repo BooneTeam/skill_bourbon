@@ -37,6 +37,7 @@ gem 'refills'
 gem 'momentjs-rails'
 gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'master', :submodules => true
 gem 'simple_form'
+gem "select2-rails"
 gem 'country_select'
 
 # bundle exec rake doc:rails generates the API under doc/api.

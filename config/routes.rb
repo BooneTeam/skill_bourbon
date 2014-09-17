@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'contact/'  => 'static_pages#contact'
 
   get 'dashboard/' => 'dashboards#show'
-  # resources :skills
+
   resources :skills do
     collection do
       resources :apprenticeships
@@ -29,6 +29,9 @@ Rails.application.routes.draw do
       get 'learning'
     end
   end
+
+  resources :categories
+  resources :locations
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

@@ -2,7 +2,8 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body{
-  background: #bae0de;
+  // background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
+  background-color:$hero-background;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -13,7 +14,7 @@ body{
   margin:15px auto 15px auto;
   // background-color:rgba(255,255,255,0.75);
   // background-color:white;
-  background:transparentize(white, .4);
+  background:transparentize($base-body-color, .1);
   height:100%;
   box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
 }
@@ -41,13 +42,26 @@ body{
     li{
       h6{
         font-size:.7em;
+        padding:.6em;
       }
     .category{
       color:gray;
       border-bottom:black thin solid;
     }
       span{
-        float:right
+        // display: block;
+        height: .6em;
+        width: .6em;
+        // line-height: 60px;
+
+        -moz-border-radius: .3em; /* or 50% */
+        border-radius: .3em; /* or 50% */
+        margin:.2em;
+        padding:.3em;
+        background-color: $bullet-background;
+        color: white;
+        text-align: center;
+        // font-size: 2em;
       }
     }
   }

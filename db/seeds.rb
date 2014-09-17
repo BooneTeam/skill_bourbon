@@ -35,9 +35,17 @@ users.each do |user|
   User.create(user)
 end
 
+addresses = [{ address: "305 Stansted Manor",city: "Pflugerville" ,state: "TX", zip: 78660 },
+             { address: "1001 Mistyville Dr",city: "Austin" ,state: "TX", zip: 78810 },
+             { address: "123 Nice Street",city: "Round Rock" ,state: "TX", zip: 78660 }]
+
+addresses.each do |address|
+  Location.create(address)
+end
+
 [0,1,2].each do |place|
   skill = skills[place]
-  skill.merge!({:creator_id => User.find(place + 1).id, :creator_level => rand(10)})
+  skill.merge!({:creator_id => User.find(place + 1).id, :creator_level => rand(10), location_id: Location.find(rand(1..addresses.count)).id })
   Skill.create(skill)
 end
 
@@ -49,13 +57,6 @@ Category.all.each do |cat|
   SkillCategory.create(category_id: cat.id, skill_id: cat.id)
 end
 
-addresses = [{ address: "305 Stansted Manor",city: "Pflugerville" ,state: "TX", zip: 78660 },
-             { address: "1001 Mistyville Dr",city: "Austin" ,state: "TX", zip: 78810 },
-             { address: "123 Nice Street",city: "Round Rock" ,state: "TX", zip: 78660 }]
-
-addresses.each do |address|
-  Location.create(address)
-end
 # user           = User.create!(email: "admin@example.com", password:"password", password_confirmation: "password")
 # skill          = Skill.create!(name: "R134a recharge", description: "Recharge your ac for the summer")
 # skill2         = Skill.create!(name: "Ruby Development", description: "Get You Started on App Setup")

@@ -14,8 +14,9 @@
     margin-bottom: 1em;
 
     @include media($large-screen) {
-      @include span-columns(2.5);
-      margin-bottom: 0;
+      @include span-columns(4);
+      // @include span-columns(2.5);
+      margin-bottom: .5em;
     }
 
     > div {

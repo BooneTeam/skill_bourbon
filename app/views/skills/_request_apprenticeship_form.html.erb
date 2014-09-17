@@ -1,7 +1,13 @@
-
-<%= simple_form_for Apprenticeship.new, html: {id: 'new_apprenticeship_'+new_request.to_s} do |f| %>
-  <%= f.input :request_description, input_html: {value: new_request ? '' : @skill.full_description, maxlength:300, placeholder:"Enter a short description of what you'd like to learn.Try to keep it under 300 characters. You can discuss further later."}%>
-  <%= f.input :date_requested, :as => :datetime_picker %>
-  <%= f.input :apprentice_level %>
-  <%= f.button :submit, value: 'Submit Request' %>
+<%= @skill.location.attributes %>
+<%= simple_form_for @skill.apprenticeships.build, html: {id: 'new_apprenticeship_'+new_request.to_s} do |f| %>
+<%= f.input :request_description, input_html: {value: new_request ? '' : @skill.full_description, maxlength:500, placeholder:"Enter a short description of what you'd like to learn. \n Max Characters: 500. You can discuss further later."}%>
+<%= f.input :date_requested, :as => :datetime_picker %>
+<%= f.simple_fields_for @skill.apprenticeships.build.build_location do |c| %>
+<%= c.input :address, label: "Address" %>
+<%= c.input :city, label: "City", value: @skill.location.city    %>
+<%= c.input :state, label: "State", default: @skill.location.state %>
+<%= c.input :zip, label: "Zip", html:{ value: @skill.location.zip }%>
+<% end %>
+<%= f.input :apprentice_level %>
+<%= f.button :submit, value: 'Submit Request' %>
 <% end %>

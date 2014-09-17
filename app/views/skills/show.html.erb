@@ -1,6 +1,6 @@
 <div class='skill-container-transparent'>
   <div class='skill-intro'>
-    <h6 class='categories'><%= Category.all.map{|cat| cat.name }.take(3).join(", ") %></h6>
+    <h6 class='categories'><%= @skill.categories.map{|cat| cat.name }.join(", ") %></h6>
     <div class='info'>
       <h4><%= @skill.title %></h4>
       <h5><%= @skill.subtitle %></h6>

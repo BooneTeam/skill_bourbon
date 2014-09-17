@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require bootstrap-datetimepicker.min
+ *= require select2
  *= require_self
  */
  @import "bourbon";
@@ -36,7 +37,7 @@
 
 // all custom stuff should go in here or in the refills/* stylesheets dont mess with anything under sass/*
 // maybe make a custom/* folder with all custom things.
- $sign-up-height:250px;
+ $sign-up-height:100%;
  body{
   @include span-columns(12);
   margin:0px;
@@ -45,31 +46,42 @@
  .sign-up-wrap{
   // @include span-columns(12);
   height:$sign-up-height;
-  background-color:#EFEDDF;
+  // background-color:#EFEDDF;
  }
 
+  fieldset.sign-up{
+    background:none;
+  }
+
+.dashboard_container.user-container{
+  background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
  .sign-up{
+  font-size:1em;
   float:left;
   height:$sign-up-height;
-  background-color:#EFEDDF;
+  // background-color:#EFEDDF;
   border: none;
   margin:0px;
   // @include span-columns(4);
  }
 
  .sign-up-content{
-  background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+  @include outer-container;
+  font-size:1em;
   height:$sign-up-height;
-  // margin-top:20px;
-  color:black;
+  margin-right:0px;
+  color:$base-body-color;
   min-width:600px;
-  text-align: center;
+  text-align: left;
+  padding:25px;
   content{
-    @include outer-container;
+    // @include outer-container;
     @include span-columns(3);
   }
   // @include span-columns(8);

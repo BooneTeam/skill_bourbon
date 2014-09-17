@@ -13,4 +13,11 @@ $(document).ready(function(){
   });
 
   $('.datepicker').datetimepicker();
+
+  $('input#skill_title').on("blur",function(){
+    debugger;
+    if ($(this).val() === ""){
+      $(this).parent().append("<p class='error'>This Cannot Be Blank</p>");
+    }
+  });
 });

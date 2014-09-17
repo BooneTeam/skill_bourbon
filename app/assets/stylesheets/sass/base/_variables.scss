@@ -1,8 +1,18 @@
+//import fonts from google
+
+@import url("http://fonts.googleapis.com/css?family=Bitter");
+@import url("http://fonts.googleapis.com/css?family=Raleway:300");
 // Typography
 $sans-serif: $helvetica;
-$serif: $georgia;
-$base-font-family: $sans-serif;
-$header-font-family: $base-font-family;
+// $serif: $georgia;
+// $base-font-family: $sans-serif;
+// $header-font-family: $base-font-family;
+
+// Lobster
+$serif:Bitter;
+$base-font-family:Raleway;
+$header-font-family:Bitter;
+
 
 // Sizes
 $base-font-size: 1em;
@@ -19,16 +29,34 @@ $light-gray: #DDD;
 $light-red: #FBE3E4;
 $light-yellow: #FFF6BF;
 $light-green: #E6EFC2;
+//nav-color
+// $nav-color: #04C4D9;
 
-// Body Color
-$base-body-color:white;
-// Background Color
-// $base-background-color: #EFEDDF;
-$base-background-color: #bae0de;
 
-// Font Colors
-$base-font-color: $dark-gray;
-$base-accent-color: $blue;
+//Tom Dick and Harry
+$base-accent-color:#67BCDB;
+$hero-background: desaturate(darken($base-accent-color, 20), 30);
+$nav-color: #FFFFFF;
+$base-body-color:#FFFFFF;
+$base-background-color:#FFFFFF;
+$bullet-background:#E44424;
+$bullet-text:black;
+$base-font-color: black;
+
+
+// //originals
+// // Body Color
+// $base-body-color:black;
+// // Background Color
+// // $base-background-color: #EFEDDF;
+// $base-background-color: #F1FDF5;
+// // #1E5B5C ;
+// $bullet-background: #F1FDF5;
+// $bullet-text: black;
+
+// // Font Colors
+// $base-font-color: $dark-gray;
+// $base-accent-color: #049DBF;
 
 // Link Colors
 $base-link-color: $base-accent-color;

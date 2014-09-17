@@ -1,73 +1,23 @@
 <div class="search-tools">
-  <div class="filter">
-    <label>City</label>
-    <div>
-      <ol>
-        <li>
-          <input id="red" type="checkbox">
-          <label for="red">Red</label>
-        </li>
-        <li>
-          <input id="green" type="checkbox">
-          <label for="green">Green</label>
-        </li>
-        <li>
-          <input id="blue" type="checkbox">
-          <label for="blue">Blue</label>
-        </li>
-      </ol>
-    </div>
+<%= simple_form_for :search, :html => {:"data-update-target" => 'cards-container'}, remote: true, method: "get" do |f| %>
+  <div class='filter'>
+  <%= f.input :city, label: "City" %>
   </div>
-  <div class="filter">
-    <label>State</label>
-    <div>
-      <ol>
-        <li>
-          <input id="small" type="checkbox">
-          <label for="small">Small</label>
-        </li>
-        <li>
-          <input id="medium" type="checkbox">
-          <label for="medium">Medium</label>
-        </li>
-        <li>
-          <input id="large" type="checkbox">
-          <label for="large">Large</label>
-        </li>
-      </ol>
-    </div>
+  <div class='filter'>
+      <%= f.input :state,label: "State" %>
   </div>
-  <div class="filter">
-    <label>Zip</label>
-    <div>
-      <ol>
-        <li>
-          <input id="short" type="checkbox">
-          <label for="short">Short</label>
-        </li>
-        <li>
-          <input id="long" type="checkbox">
-          <label for="long">Long</label>
-        </li>
-      </ol>
-    </div>
+  <div class='filter'>
+  <%= f.input :zip, label: "Zip" %>
   </div>
-  <div class="filter">
-    <label>Keyword Search</label>
-    <div>
-      <ol>
-        <li>
-          <input id="short" type="checkbox">
-          <label for="short">Short</label>
-        </li>
-        <li>
-          <input id="long" type="checkbox">
-          <label for="long">Long</label>
-        </li>
-      </ol>
-    </div>
+  <div class='filter'>
+    <%= f.input_field :categories,label: "Categories", class: 'select2 categories ajax', placeholder:"Select a Category",data: { source: categories_path }%>
   </div>
-  <div class="trigger">
-    <button>Update</button>
+  <div class='filter'>
+  <%= f.input :keywords, label: "Keywords" %>
   </div>
+  <%= f.submit value: 'Search Skills'%>
+<% end %>
 </div>
+<p class='subtitle'>Can't find what your'e looking for?</p>
+<%= button_to "Post a request", new_skill_path, method: :get %>
+
