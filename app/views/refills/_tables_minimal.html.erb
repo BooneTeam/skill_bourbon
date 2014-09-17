@@ -10,6 +10,12 @@
   <tbody>
     <% table_data.each do |data_row| %>
     <tr>
+      <% if data_row.is_a?(SkillRequest) %>
+        <td><%= data_row.user.email %></td>
+        <td><%= data_row.title %></td>
+        <td><%= data_row.location.try(:address) %></td>
+        <td><button class='confirm'>Confirm</button><button class='reject'>Reject</button>
+      <%else %>
       <td><%= data_row.user.email %></td>
       <td><%= data_row.skill.title %></td>
       <td><%= data_row.location.address %></td>
@@ -27,6 +33,7 @@
       <% when 'denied' %>
       <td class='denied'>&#x2717</td>
       <% end %>
+    <% end %>
     </tr>
     <% end %>
   </tbody>
