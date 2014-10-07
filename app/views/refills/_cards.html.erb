@@ -8,7 +8,7 @@
         <p class='subtitle'><%= skill.subtitle %></p>
       </div>
       <div class="hover-tile hover-tile-hidden">
-        <p><%= shorten_text(skill.full_description) %></p>
+        <p><%= truncate(skill.full_description, length: 250, separator: '.') %></p>
         <%= link_to 'Read More', skill_path(skill) %>
       </div>
     </div>
