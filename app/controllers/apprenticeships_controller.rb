@@ -10,11 +10,15 @@ class ApprenticeshipsController < ApplicationController
 
   def create
     apprenticeship = Apprenticeship.new(apprenticeship_params)
-    binding.pry
+    #all this should be moved to the Apprentice class as after_create or something
+    apprenticeship.user_id = current_user.id
+    apprenticeship.accepted_status = "pending"
+    apprenticeship.location_id = find_location
+    apprenticeship.completion_status = "not-applicable" #could be completed, or in-progess.. these values suck
     if apprenticeship.save
       redirect_to dashboard_path
     else
-      redirect_to :back
+      render 'new'
     end
   end
 
@@ -29,7 +33,11 @@ class ApprenticeshipsController < ApplicationController
     private
 
     def apprenticeship_params
-      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:date_scheduled)
+      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:date_requested,:date_scheduled, :skill_id,:location_id)
+    end
+
+    def find_location
+      params[:apprenticeship][:location_id].to_s.blank? ? Location.find_or_create_by(params[:apprenticeship][:location].symbolize_keys).id : params[:apprenticeship][:location_id]
     end
 
 end

@@ -36,10 +36,17 @@
       <% @current_user_requests.each do |request| %>
       <li>
         <h6>
-          <span class='filled-<%=request.filled%>'></span> <%=link_to request.title, skill_request_path(request)%>
+          <span class='status-<%=request.try(:accepted_status) %> tooltip-item'><div class="tooltip pending">Status: <%= request.try(:accepted_status)%></div></span>
+          <% if request.class == Apprenticeship
+                path = skill_path(request.skill.id)
+             else
+                path = edit_skill_request_path(request)
+             end  %>
+          <%=link_to request.try(:title) || request.try(:skill).try(:title), path %>
         </h6>
         <h6 class="category">
-          <%=request.categories.limit(3).map{|category| category.name}.join(",").to_s%>
+          <% categories = request.try(:categories) || request.try(:skill).try(:categories) || [] %>
+          <%= categories.limit(3).map{|category| category.name}.join(",").to_s%>
         </h6>
       </li>
       <%end%>

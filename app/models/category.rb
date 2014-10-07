@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
+ # validates :col_a, :col_b, :col_c, :presence => true
  scope :finder, lambda { |q| where("name like :q", q: "%#{q}%") }
 
  has_many :skill_categories

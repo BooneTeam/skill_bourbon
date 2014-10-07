@@ -8,8 +8,8 @@
       <% skill = event.skill %>
       <div class="skill-block-<%= skill.creator_id == current_user.id ? 'apprentice' : 'apprenticeship' %>">
         <h6><%= skill.subtitle %></h6>
-        <p>Apprentice: <%= event.user.email %></p>
-        <p>Creator: <%= event.skill.creator.email %></p>
+        <p>Apprentice: <%= event.user.username %></p>
+        <p>Creator: <%= event.skill.creator.username %></p>
         <p>Address: <%= event.location.address %></p>
         <p>City:<%= event.location.city %></p>
         <p>State:<%= event.location.state %></p>

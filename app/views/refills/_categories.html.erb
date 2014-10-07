@@ -1,7 +1,7 @@
 <div>
   <p>Categories</p>
   <ul>
-    <% @categories.each do |c| %>
+    <% Category.all.each do |c| %>
     <li>
       <%= c.name %>
     </li>

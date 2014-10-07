@@ -17,11 +17,26 @@
 .skill-intro{
   @include outer-container;
   min-height:150px;
-  background:transparentize(white, .4);
+  background:url("mtn.png");
+  // background:transparentize(white, .4);
   background-size:100% 100%;
   .info{
     *{
       line-height:2.5em;
+    }
+    .taking-true{
+      &:before{
+        font-family:FontAwesome;
+        color:green;
+        content:"";
+      }
+    }
+    .creator-true{
+      &:before{
+        font-family:FontAwesome;
+        color:green;
+        content:"";
+      }
     }
     font-size:.8em;
     padding:10px;
@@ -46,7 +61,8 @@
 .skill-container{
   @include outer-container;
   box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
-  background:transparentize(white, .4);
+  // background:transparentize(white, .4);
+  background:whitesmoke;
 }
 
 .skill-bio{

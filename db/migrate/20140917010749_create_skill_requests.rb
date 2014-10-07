@@ -5,7 +5,7 @@ class CreateSkillRequests < ActiveRecord::Migration
       t.string  :subtitle
       t.text    :full_description
 
-      t.boolean :filled
+      t.string     :filled, default: "pending"
       t.references :location
       t.references :user
 
