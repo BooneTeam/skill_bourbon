@@ -1,23 +1,23 @@
 <div class="search-tools">
 <%= simple_form_for :search, :html => {:"data-update-target" => 'cards-container'}, remote: true, method: "get" do |f| %>
   <div class='filter'>
-  <%= f.input :city, label: "City" %>
+  <%= f.input :city, required: false,label:false,placeholder: "Search City" %>
   </div>
   <div class='filter'>
-      <%= f.input :state,label: "State" %>
+      <%= f.input :state,required: false,label:false,placeholder: "Search State" %>
   </div>
   <div class='filter'>
-  <%= f.input :zip, label: "Zip" %>
+  <%= f.input :zip, label:false,required: false,placeholder: "Search Zip" %>
   </div>
   <div class='filter'>
-    <%= f.input_field :categories,label: "Categories", class: 'select2 categories ajax', placeholder:"Select a Category",data: { source: categories_path }%>
+    <%= f.input_field :categories, required: false, class: 'select2 categories ajax', label:false ,placeholder:"Select Up To 3 Categories",  data: { source: categories_path }%>
   </div>
   <div class='filter'>
-  <%= f.input :keywords, label: "Keywords" %>
+  <%= f.input :keywords, required: false, label:false,placeholder: "Search Keywords" %>
   </div>
   <%= f.submit value: 'Search Skills'%>
 <% end %>
 </div>
 <p class='subtitle'>Can't find what your'e looking for?</p>
-<%= button_to "Post a request", new_skill_request_path, method: :get %>
+  <%= button_to "Post a request", new_skill_request_path, method: :get %>
 

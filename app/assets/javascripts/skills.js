@@ -14,10 +14,11 @@ $(document).ready(function(){
 
   $('.datepicker').datetimepicker();
 
-  $('input#skill_title').on("blur",function(){
-    debugger;
+  $('input.required').on("blur",function(){
     if ($(this).val() === ""){
-      $(this).parent().append("<p class='error'>This Cannot Be Blank</p>");
+      if ($(this).parent().find('.error').length <= 0 ){
+       $(this).parent().append("<p class='error'>This cannot be blank</p>");
+      }
     }
   });
 });

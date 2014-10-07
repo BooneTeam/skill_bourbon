@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body{
   // background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
-  background-color:$hero-background;
+  @include Gradient;
+  // background-color:#67bcdb;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -63,16 +64,33 @@ body{
         padding:.3em;
         color: white;
         text-align: center;
-        // font-size: 2em;
+        &.tooltip-item{
+          border:none;
+        }
       }
       span.earning,span.learning{
          background-color: $bullet-background;
         }
-      span.filled-true{
-         background-color: green;
+      span.status-accepted{
+        &:before{
+          font-family:FontAwesome;
+          color:green;
+          content:"";
         }
-      span.filled-false{
-        background-color: yellow;
+        }
+      span.status-pending{
+        &:before{
+          font-family:FontAwesome;
+          color:gold;
+          content:"";
+        }
+      }
+      span.status-denied{
+        &:before{
+          font-family:FontAwesome;
+          color:red;
+          content:"";
+        }
       }
     }
   }

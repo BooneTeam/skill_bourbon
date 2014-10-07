@@ -20,29 +20,31 @@
         </ul>
       </li>
       <% if current_user %>
-      <li class="nav-link more"><%= link_to "Welcome #{current_user.email}", edit_user_registration_path(current_user) %>
+      <li class="nav-link more"><%= link_to "#{current_user.username}", edit_user_registration_path(current_user) %>
         <ul class="submenu">
-          <li><%= link_to "Teaching",teaching_users_path %></li>
-          <li><%= link_to "Learning",learning_users_path %></li>
+          <!-- <li><%= link_to "Teaching",teaching_users_path %></li> -->
+          <!-- <li><%= link_to "Learning",learning_users_path %></li> -->
           <li><%= link_to "Dashboard",dashboard_path %></li>
+          <li class="nav-link">
+            <%= link_to destroy_user_session_path, method: :delete do %>
+              <%= fa_icon "fa-fw sign-out" %>
+              Sign Out
+            <% end %>
+          </li>
         </ul>
       </li>
-      <li class="nav-link"><%= fa_icon "sign-out" %> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
       <% else %>
-      <%= fa_icon "rocket"%>
-      <li class="nav-link"><%= link_to "Sign Up", new_user_registration_path %></li>
-      <li class="sign-in-box">
+      <li class="nav-link"><%= fa_icon "rocket"%> <%= link_to "Sign Up", new_user_registration_path %></li>
+      <div class="sign-in-box">
         <ul>
           <%= form_for(User.new, as: :user, url: session_path(:user)) do |f| %>
-          <li><%= f.email_field :email, autofocus: true, placeholder:"Email" %></li>
+          <li><%= f.text_field :username, autofocus: true, placeholder:"Username" %></li>
           <li><%= f.password_field :password, autocomplete: "off", placeholder: "Password" %></li>
+
+          <li class='sign-in-button'><%= fa_icon "sign-in"%> <%= f.submit "Sign In" %></li>
         </ul>
-      </li>
-      <li class="nav-link">
-       <%= fa_icon "sign-in"%>
-       <%= f.submit "Sign In" %>
        <% end %>
-     </li>
+     </div>
      <% end %>
    </ul>
  </div>

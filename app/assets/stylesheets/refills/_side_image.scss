@@ -20,8 +20,10 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
 }
 
 .side-image {
-  background: #F9F9F9;
+  //this is the actual background for whole page
+  // background: #F9F9F9;
 
+  font-size:.7em;
   @include media($large-screen) {
     @include row(table);
   }
@@ -30,20 +32,22 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
     background-color: $side-image-background-top;
     border-bottom: $side-image-border;
     background-size: cover;
-    display: block;
-    min-height: 12em;
+    // display: block;
+    // min-height: 12em;
     padding: 3em;
 
     @include media($large-screen) {
       @include span-columns(4);
       background-position: bottom;
-      background-size: cover;
+      // background-size: cover;
       border-right: $side-image-border;
     }
   }
 
   .content {
-    background:$hero-background;
+    //per side image thing
+    // @include Gradient;
+    // background:$hero-background;
     @include span-columns(12);
     padding: 1em 1em 4em 1em;
 

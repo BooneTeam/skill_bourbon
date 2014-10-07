@@ -10,18 +10,17 @@ class SkillsController < ApplicationController
       categories = search_hash[:categories].split(',').map{|x| "\'" + x + "\'"}.join(',')
       locations = Location.where("city LIKE ? AND state LIKE ? AND zip LIKE ?", city,state,zip)
       query = "SELECT * FROM skills
-      JOIN locations  on locations.id = skills.location_id
+      JOIN locations on locations.id = skills.location_id
       JOIN skill_categories on skill_categories.skill_id = skills.id
-      JOIN categories on skill_categories.skill_id = categories.id
+      JOIN categories on skill_categories.category_id = categories.id
       WHERE locations.zip LIKE '#{zip}'
       AND locations.city LIKE '#{city}'
       AND locations.state LIKE '#{state}'"
       unless categories.blank?
-        query += "AND categories.name IN (#{categories})"
+        query += " AND categories.id IN (#{categories})"
       end
-      binding.pry
       results = ActiveRecord::Base.connection.execute(query);
-      skill_ids = results.map{|r| r["id"]}
+      skill_ids = results.map{|r| r["skill_id"]}
       @skills = Skill.find(skill_ids)
       render :partial =>  'refills/cards', :content_type => 'text/html'
     else
@@ -46,20 +45,37 @@ class SkillsController < ApplicationController
 
   def create
     params[:skill].merge!({creator_id: current_user.id})
-    binding.pry
-    skill = Skill.new(skill_params)
-    binding.pry
-    if skill.save
+    category_ids = params[:skill]["category_ids"].split(',')
+    params[:skill].merge!({category_ids: category_ids})
+    @skill = Skill.new(skill_params)
+    @skill.location_id = find_location
+    if @skill.save
       redirect_to dashboard_path
     else
-      # binding.pry
-      flash[:error] = "An error message for the user"
-      redirect_to :back
+      # flash[:error] = "An error message for the user"
+      render 'new'
     end
   end
 
-  def update
+  def edit
+    @skill = Skill.find(params[:id])
+    # binding.pry
+  end
 
+  def update
+    @skill = Skill.find(params['id'])
+    category_ids = params[:skill]["category_ids"].split(',')
+    params[:skill].merge!({category_ids: category_ids})
+    if @skill.update_attributes(skill_params)
+      @skill.location_id = find_location
+      if @skill.save
+       redirect_to @skill
+      else
+        render 'edit'
+      end
+    else
+      render 'edit'
+    end
   end
 
   def destroy
@@ -69,7 +85,12 @@ class SkillsController < ApplicationController
   private
 
     def skill_params
-      params.require(:skill).permit(:title,:subtitle,:full_description,:creator_level,:creator_id,:category_ids, location_attributes:[:city,:state,:zip])
+      params.require(:skill).permit(:title,:subtitle,:full_description,:creator_level,:creator_id,category_ids:[],location_attributes:[:city,:state,:zip, :id])
     end
+
+    def find_location
+      params[:skill][:location_id].to_s.blank? ? Location.find_or_create_by(params[:skill][:location_attributes].symbolize_keys).id : params[:skill][:location_id]
+    end
+
 
 end

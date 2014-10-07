@@ -2,7 +2,8 @@
 	$hero-background: desaturate(darken($base-accent-color, 20), 30);
 	$hero-color: white;
 
-	background: url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png);
+	// background: url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png);
+	background:url("mtn.png");
 	background-color: $hero-background;
 	background-repeat: no-repeat;
 	background-position: top;

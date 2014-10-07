@@ -1,22 +1,5 @@
 <div class="dashboard_container">
-  <div id='new-skill-form'>
-    <fieldset>
-      <%= simple_form_for @skill do |f| %>
-      <%= f.input :title, as: :string, placeholder:"ie: Make a doggy door" %>
-      <%= f.label "Categories" %>
-      <%= f.input_field :category_ids, style:"width:100%", class: 'select2 ajax', placeholder:"Select a Category", data: { source: categories_path }, value: '' %>
-      <%= f.simple_fields_for :location do |c| %>
-      <%= c.input :city, label: "City" %>
-      <%= c.input :state, label: "State" %>
-      <%= c.input :zip, label: "Zip" %>
-      <% end %>
-      <%= f.input :subtitle, placeholder:"ie: Making an exterior doggy door from start to finish." %>
-      <%= f.input :full_description, placeholder:"\n500 Characters Max. You can discuss further later. \n\nie: I will show you what type of door you need, the tools needed, and how to install it.This includes going to your residence and measuring the door, helping at the store and picking out the correct size doggy door and door and finally installing it. I will help you purchase the correct tools or you can use mine. The only thing I ask for you to purchase for the tools is the saw blade if needed." ,maxlength:500%>
-      <%= f.input :creator_level, label: "Skill Level", as: :select,  collection: 1..10 %>
-      <%= f.submit %>
-      <%end%>
-    </fieldset>
-  </div>
+  <%= render "refills/skill_form" %>
   <div class='form-description'>
     <h5>Awesome! You've decided to add some of your skills.</h5>
     <p>Fill out the form and you're on your way to helping others, making friendships, and earning some sweet cash.</p>
@@ -24,5 +7,5 @@
     <p> As soon as someone requests to learn this skill from you you'll be notified via email and on your dashboard.</p>
     <p>After the initial contact it's all up to you guys to figure it out. You can communicate from on here for the initial meetup or by email. It's up to you. Have fun!</p>
   </div>
-  <%= render 'refills/categories' %>
+  <!-- <%= render 'refills/categories' %> -->
 </div>

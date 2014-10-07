@@ -1,5 +1,5 @@
 class Skill < ActiveRecord::Base
-  validates :title, presence: true
+  validates :title, :subtitle, :full_description,:creator_id, :creator_level, :location_id, :presence => true
   before_save :add_creator_type
 
   belongs_to :creator, :class_name => 'User'
@@ -11,7 +11,7 @@ class Skill < ActiveRecord::Base
   has_many :apprenticeships
   has_many :apprentices, through: :apprenticeships, :source => :user
 
-  accepts_nested_attributes_for :categories, :location
+  accepts_nested_attributes_for :categories, :location, :skill_categories
   def add_creator_type
     self.creator_type = "User"
   end
