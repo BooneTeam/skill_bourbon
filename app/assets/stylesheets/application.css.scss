@@ -147,6 +147,14 @@ body{
   font-style: italic;
  }
 
+
+ .text-link{
+    color:$base-accent-color !important;
+    &:hover{
+      color:white !important;
+    }
+ }
+
  .error{
   color:red;
   font-weight:bold;

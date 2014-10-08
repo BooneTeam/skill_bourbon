@@ -22,7 +22,8 @@
   <div class='form-description'>
     <h5>Almost there!</h5>
 
-    <p>Fill out the form and we'll post it to the request skills page as well as notify anyone who has similar skills in your surrounding area to see if they can help.</p>
+    <p>Fill out the form and we'll post it to the <%= link_to 'Requested Skills', skill_requests_path %> page</p>
+    <p>We'll also notify anyone who has similar skills in your surrounding area to see if they can help.</p>
   </div>
   <% else %>
   <%= render 'refills/sign_up_in_post_request' %>

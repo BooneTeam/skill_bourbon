@@ -15,9 +15,9 @@
   <div class='filter'>
   <%= f.input :keywords, required: false, label:false,placeholder: "Search Keywords" %>
   </div>
-  <%= f.submit value: 'Search Skills'%>
+  <%= f.submit value: "Search #{@skills.first.class.model_name.human + "s"}"%>
 <% end %>
 </div>
-<p class='subtitle'>Can't find what your'e looking for?</p>
-  <%= button_to "Post a request", new_skill_request_path, method: :get %>
+<p class='subtitle'>Can't find what you're looking for?</p>
+  <%= button_to "Post a Skill Request", new_skill_request_path, method: :get %>
 

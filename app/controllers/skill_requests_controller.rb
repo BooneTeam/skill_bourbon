@@ -1,4 +1,34 @@
 class SkillRequestsController < ApplicationController
+  def index
+    if params[:search]
+      search_hash = params[:search]
+      zip   = search_hash[:zip].blank?   ? "%%" : search_hash[:zip]
+      city  = search_hash[:city].blank?  ? "%%" : search_hash[:city]
+      state = search_hash[:state].blank? ? "%%" : search_hash[:state]
+      categories = search_hash[:categories].split(',').map{|x| "\'" + x + "\'"}.join(',')
+      locations = Location.where("city LIKE ? AND state LIKE ? AND zip LIKE ?", city,state,zip)
+      query = "SELECT * FROM skills
+      JOIN locations on locations.id = skill_requests.location_id
+      JOIN skill_request_categories on skill_request_categories.skill_id = skill_requests.id
+      JOIN categories on skill_requests_categories.category_id = categories.id
+      WHERE locations.zip LIKE '#{zip}'
+      AND locations.city LIKE '#{city}'
+      AND locations.state LIKE '#{state}'"
+      unless categories.blank?
+        query += " AND categories.id IN (#{categories})"
+      end
+      results = ActiveRecord::Base.connection.execute(query);
+      skill_ids = results.map{|r| r["skill_id"]}
+      @skills = SkillRequest.find(skill_ids)
+      render :partial =>  'refills/cards', :content_type => 'text/html'
+    else
+      @skills = SkillRequest.all
+    end
+  end
+
+  def show
+    @skill_request = SkillRequest.find(params[:id])
+  end
 
   def new
     if current_user
