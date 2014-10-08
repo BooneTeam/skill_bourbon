@@ -1,6 +1,7 @@
 
 <div class="cards">
   <% @skills.each do |skill| %>
+  <%= link_to skill.base_uri do %>
   <div class="hover-tile-outer">
     <div class="hover-tile-container">
       <div class="hover-tile hover-tile-visible">
@@ -9,9 +10,11 @@
       </div>
       <div class="hover-tile hover-tile-hidden">
         <p><%= truncate(skill.full_description, length: 250, separator: '.') %></p>
-        <%= link_to 'Read More', skill_path(skill) %>
+        <p class="text-link">Read More</p>
       </div>
     </div>
   </div>
   <% end %>
+  <% end %>
 </div>
+
