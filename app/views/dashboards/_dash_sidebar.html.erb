@@ -7,6 +7,9 @@
       <li>
         <h6>
           <span class='level learning'><%=skill.apprentice_level%></span> <%=link_to skill.skill.title, skill_path(skill.skill)%>
+           <%= link_to skill_path(skill.skill) do %>
+            <i class="fa fa-gear"></i>
+          <% end %>
         </h6>
         <h6 class="category">
           <%=skill.skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>
@@ -22,6 +25,9 @@
       <li>
         <h6>
           <span class='level earning'><%=skill.creator_level%></span> <%=link_to skill.title, skill_path(skill)%>
+          <%= link_to edit_skill_path(skill) do %>
+            <i class="fa fa-gear"></i>
+          <% end %>
         </h6>
         <h6 class="category">
           <%=skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>
@@ -40,9 +46,12 @@
           <% if request.class == Apprenticeship
                 path = skill_path(request.skill.id)
              else
-                path = edit_skill_request_path(request)
+                path = skill_request_path(request)
              end  %>
           <%=link_to request.try(:title) || request.try(:skill).try(:title), path %>
+          <%= link_to path do %>
+            <i class="fa fa-gear"></i>
+          <% end %>
         </h6>
         <h6 class="category">
           <% categories = request.try(:categories) || request.try(:skill).try(:categories) || [] %>

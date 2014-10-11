@@ -14,8 +14,14 @@
         <td><%= data_row.user.username %></td>
         <td><%= data_row.title %></td>
         <td><%= data_row.location.try(:address) %></td>
-        <td><%= data_row.date_scheduled %></td>
-        <td><button class='confirm'>Confirm</button><button class='reject'>Reject</button>
+        <td><%= data_row.created_at %></td>
+        <td>
+          <%= button_to skill_request_path(data_row.id, skill_request:{accepted_status:'confirmed'}), :method => :put, :remote => true,data: { disable_with: 'loading...'},class: 'confirm update-status' do %>
+            Confirm
+          <% end %>
+          <!-- Add Button to remove this from displaying in this users dashboard if rejected. -->
+ <!--          <button class='confirm update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-changed-to='confirmed'>Confirm</button> -->
+          <!-- <button class='reject update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-change-to='rejected'>Reject</button> -->
       <%else %>
       <td><%= data_row.user.username %></td>
       <td><%= data_row.skill.title %></td>
@@ -24,7 +30,12 @@
       <% case data_row.accepted_status %>
       <% when 'pending' %>
         <% if current_user.id == data_row.skill.creator_id %>
-          <td><button class='confirm'>Confirm</button><button class='reject'>Reject</button>
+          <td>
+            <%= button_to apprenticeship_path(data_row.id, apprenticeship:{accepted_status:'confirmed'}), :method => :put, :remote => true,data: { disable_with: 'loading...'},class: 'confirm update-status' do %>
+            Confirm
+          <% end %>
+            <button class='confirm update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-change-to='confirmed'>Confirm</button>
+            <button class='reject update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-change-to='rejected' >Reject</button>
           </td>
         <% else %>
             <td class='pending'>&#8660</td>

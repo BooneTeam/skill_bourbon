@@ -4,6 +4,7 @@
     <div class='info'>
       <h4><%= @skill_request.title %>
       </h4>
+      <p class='small-info'><%= "#{@skill_request.location.city}, #{@skill_request.location.state}, #{@skill_request.location.zip}" %></p>
       <h5><%= @skill_request.subtitle %></h6>
       <% if current_user && current_user.id == @skill_request.user_id %>
         <%= button_to "Edit", edit_skill_request_path(@skill_request), method: :get %>

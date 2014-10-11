@@ -30,14 +30,24 @@ class ApprenticeshipsController < ApplicationController
 
   end
 
+  def update
+    apprenticeship = Apprenticeship.find(params[:id])
+    if apprenticeship.update_attributes(apprenticeship_params)
+      apprenticeship.location_id = find_location(apprenticeship)
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
+
     private
 
     def apprenticeship_params
-      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:date_requested,:date_scheduled, :skill_id,:location_id)
+      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:date_requested,:date_scheduled, :skill_id,:location_id, :accepted_status)
     end
 
-    def find_location
-      params[:apprenticeship][:location_id].to_s.blank? ? Location.find_or_create_by(params[:apprenticeship][:location].symbolize_keys).id : params[:apprenticeship][:location_id]
+    def find_location(apprenticeship = Apprenticeship.new)
+      apprenticeship.location_id.to_s.blank? ? Location.find_or_create_by(params[:apprenticeship][:location].symbolize_keys).id : apprenticeship.location_id
     end
 
 end

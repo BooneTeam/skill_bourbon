@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917011112) do
+ActiveRecord::Schema.define(version: 20141011180820) do
 
   create_table "apprenticeships", force: true do |t|
     t.integer  "user_id"
@@ -19,12 +19,13 @@ ActiveRecord::Schema.define(version: 20140917011112) do
     t.integer  "location_id"
     t.text     "request_description"
     t.string   "completion_status"
-    t.string   "accepted_status"
+    t.string   "accepted_status",     default: "pending"
     t.integer  "apprentice_level"
     t.datetime "date_scheduled"
     t.datetime "date_requested"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "skill_request_id"
   end
 
   create_table "categories", force: true do |t|
@@ -67,11 +68,13 @@ ActiveRecord::Schema.define(version: 20140917011112) do
     t.string   "title"
     t.string   "subtitle"
     t.text     "full_description"
-    t.string   "filled",           default: "pending"
+    t.string   "accepted_status",  default: "pending"
     t.integer  "location_id"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "acceptor_type"
+    t.integer  "acceptor_id"
   end
 
   create_table "skills", force: true do |t|
