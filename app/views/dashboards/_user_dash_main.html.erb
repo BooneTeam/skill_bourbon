@@ -6,24 +6,24 @@
       <h4 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">New requests that a user has sent you that need action.</div></i>New Apprentice Requests</h4>
         <!-- Confirm: Accept request as is. Deny: Deny request completely. Modify: Modify a few fields and re-send the request back the user so they can review and accept the changes. Note: Add some notes for you and the user such as what they will need to bring or extra directions. -->
       <!-- </div> -->
-      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User','Skill', 'Location', 'Date Scheduled','Please Respond'], table_data: @apprentice_requests.pending, extra_fields: ['accepted_status'] }%>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User','Skill', 'Location', 'Meeting Date Scheduled','Meeting Date Requested', 'Please Respond'], table_data: @apprentice_requests.pending, extra_fields: ['accepted_status'] }%>
     </div>
     <div class="row" id='open-requests'>
         <h4 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Recently posted requests that are similar to the skills you have.</div></i>Posted Requests</h4><p class='small-info'>(last 3 days)</p>
-      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location','Date Posted','Accept/Reject?'], table_data: @open_requests, extra_fields: ['accept?'] }%>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location','Date Posted','Meeting Date Requested','Accept/Reject?'], table_data: @open_requests, extra_fields: ['accept?'] }%>
     </div>
     <div class="row" id='your-apprentices'>
       <h4 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">People and skills that you are sharing with others.</div></i>Your Apprentices</h4>
-      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location','Date Scheduled', 'Status'], table_data: @apprentice_requests.confirmed, extra_fields: ['accepted_status'] }%>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location','Meeting Date Scheduled','Meeting Date Requested', 'Status'], table_data: @apprentice_requests.confirmed, extra_fields: ['accepted_status'] }%>
     </div>
     <div class="row" id='your-apprenticeships'>
         <h4 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Skills that you have requested.</div></i>Your Apprenticeships</h4>
-      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location', 'Date Scheduled', 'Status'], table_data: @learning_skills, extra_fields: ['accepted_status'] }%>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location', 'Meeting Date Scheduled','Meeting Date Requested', 'Status'], table_data: @learning_skills, extra_fields: ['accepted_status'] }%>
     </div>
     <div class="row" id='dash-upcoming-calendar'>
         <h4 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Upcoming apprenticeships. Green Icon: You'll be learning. Blue Icon: You'll be teaching.</div></i>Upcoming Events</h4>
-      <%= render 'calendar_grid' %>
-      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['Role','Location','Time','Date Scheduled','Status'], table_data: @upcoming_events, extra_fields: ['accepted_status'] }%>
+      <%= render 'dashboards/calendar_grid' %>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['Role','Location','Time','Meeting Date Scheduled','Status'], table_data: @upcoming_events, extra_fields: ['accepted_status'] }%>
     </div>
   </div>
 </div>

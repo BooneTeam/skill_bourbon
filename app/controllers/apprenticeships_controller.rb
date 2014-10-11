@@ -43,7 +43,7 @@ class ApprenticeshipsController < ApplicationController
     private
 
     def apprenticeship_params
-      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:date_requested,:date_scheduled, :skill_id,:location_id, :accepted_status)
+      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:meeting_date_requested,:meeting_date_scheduled, :skill_id,:location_id, :accepted_status)
     end
 
     def find_location(apprenticeship = Apprenticeship.new)

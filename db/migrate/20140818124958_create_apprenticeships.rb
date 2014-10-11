@@ -9,8 +9,8 @@ class CreateApprenticeships < ActiveRecord::Migration
       t.string     :completion_status
       t.string     :accepted_status, default: "pending"
       t.integer    :apprentice_level
-      t.datetime   :date_scheduled
-      t.datetime   :date_requested
+      t.datetime   :meeting_date_scheduled
+      t.datetime   :meeting_date_requested
 
       t.timestamps
     end

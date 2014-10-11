@@ -30,7 +30,9 @@ Rails.application.routes.draw do
       get 'learning'
     end
   end
-  resources :skill_requests
+  resources :skill_requests do
+    post 'check_accepted_status', on: :member
+  end
   resources :categories
   resources :locations
   # Example of named route that can be invoked with purchase_url(id: product.id)

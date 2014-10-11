@@ -59,7 +59,6 @@ class SkillsController < ApplicationController
 
   def edit
     @skill = Skill.find(params[:id])
-    # binding.pry
   end
 
   def update
