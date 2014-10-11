@@ -7,7 +7,9 @@ class DashboardsController < ApplicationController
     @apprentice_requests   = current_user.apprentice_requests
     @upcoming_events       = current_user.confirmed_upcoming_events
     @current_user_requests = current_user.skill_requests + @pending_learnings
-    @open_requests         = @earning_skills.map(&:categories).flatten.map(&:skill_requests).flatten
+    binding.pry
+    #make this better
+    @open_requests         = @earning_skills.map(&:categories).flatten.map(&:skill_requests).flatten.select{|x| x.created_at > Time.now - 3.days }
   end
 
 end

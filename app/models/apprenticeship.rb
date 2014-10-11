@@ -1,5 +1,5 @@
 class Apprenticeship < ActiveRecord::Base
-  validates :user_id, :skill_id, :location_id, :request_description, :apprentice_level, :date_scheduled, :presence => true
+  validates :user_id, :location_id, :request_description,:skill_id, :apprentice_level, :date_scheduled, :presence => true
   belongs_to :user
   belongs_to :skill
   belongs_to :location

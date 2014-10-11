@@ -71,7 +71,7 @@ body{
       span.earning,span.learning{
          background-color: $bullet-background;
         }
-      span.status-accepted{
+      span.status-confirmed{
         &:before{
           font-family:FontAwesome;
           color:green;
