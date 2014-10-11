@@ -7,6 +7,7 @@
       <%= f.input :title, as: :string, placeholder:"ie: Make a doggy door" %>
       <%= f.label "Categories" %>
       <%= f.input_field :category_ids, style:"width:100%", class: 'select2 categories ajax', placeholder:"Select up to 3 Categories", data: { source: categories_path }, value: '' %>
+      <%= f.input :meeting_date_requested, :as => :datetime_picker, label: "When Would you Like to Meet With Schedule this apprentice?" %>
       <%= f.simple_fields_for :location do |c| %>
         <%= c.input :city, label: "City", placeholder:"Select City"%>
         <%= c.input :state, label: "State", placeholder:"Select State"%>
@@ -14,6 +15,7 @@
       <% end %>
       <%= f.input :subtitle, placeholder:"ie: Making an exterior doggy door from start to finish." %>
       <%= f.input :full_description, placeholder:"\n500 Characters Max. You can discuss further later. \n\nie: I will show you what type of door you need, the tools needed, and how to install it.This includes going to your residence and measuring the door, helping at the store and picking out the correct size doggy door and door and finally installing it. I will help you purchase the correct tools or you can use mine. The only thing I ask for you to purchase for the tools is the saw blade if needed." ,maxlength:500%>
+      <%= f.input :apprentice_level, label: "Your skill Level", as: :select,  collection: 1..10 %>
       <%= f.submit %>
       <%end%>
     </fieldset>
