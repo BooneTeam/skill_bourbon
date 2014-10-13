@@ -1,7 +1,12 @@
 class ApprenticeshipsController < ApplicationController
-
+  include DashboardHelper
   def index
 
+  end
+
+  def show
+    @apprenticeship = Apprenticeship.find(params[:id])
+    @skill = @apprenticeship.skill
   end
 
   def new
@@ -34,16 +39,41 @@ class ApprenticeshipsController < ApplicationController
     apprenticeship = Apprenticeship.find(params[:id])
     if apprenticeship.update_attributes(apprenticeship_params)
       apprenticeship.location_id = find_location(apprenticeship)
-      redirect_to :back
+      current_user_dash_items
+      respond_to do |format|
+        format.html { redirect_to(:back) }
+        format.js { render  :template => "skill_requests/update_dashboard.js.erb" }
+      end
     else
       redirect_to :back
     end
   end
 
+  def accept_date
+    apprenticeship = Apprenticeship.find(params[:id])
+    if current_user.id == apprenticeship.skill.creator_id
+      apprenticeship.creator_accept_date = true
+      apprenticeship.save
+      respond_to do |format|
+        format.html {redirect_to(:back)}
+        format.js {}
+      end
+    elsif current_user.id == apprenticeship.user_id
+      apprenticeship.apprentice_accept_date = true
+      apprenticeship.save
+      respond_to do |format|
+        format.html {redirect_to(:back)}
+        format.js {}
+      end
+    end
+  end
+
     private
 
+
+
     def apprenticeship_params
-      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:date_requested,:date_scheduled, :skill_id,:location_id, :accepted_status)
+      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:meeting_date_requested,:meeting_date_scheduled, :skill_id,:location_id, :accepted_status)
     end
 
     def find_location(apprenticeship = Apprenticeship.new)

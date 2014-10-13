@@ -3,15 +3,23 @@
 // # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(document).ready(function(){
-
   $('#dash-new-skill-btn').on('click',function(e){
     // e.preventDefault();
     // $('.main-dash #selected_content').html('<p>Form Yay</p>');
   });
 
-  // $('button.update-status').on('click',function(e){
+  // $('button#confirm-skill-request').on('click',function(e){
     // e.preventDefault();
-    // debugger;
+    // var id = $(this).data("id");
+    // $.ajax({
+      // type: "POST",
+      // url: "/skill_requests/"+id+"/check_accepted_status",
+      // data: { id: "John", location: "Boston" },
+      // success: function(data,stuff,error){
+        // debugger;
+      // }
+    // });
   // });
 
 });
+

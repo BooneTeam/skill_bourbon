@@ -2,13 +2,16 @@
   <div id='new-skill-form'>
     <fieldset>
       <%= simple_form_for @skill do |f| %>
+      <%= f.input :is_active, as: :boolean, label: "Set Skill Active?" %>
       <%= f.input :title, as: :string, placeholder:"ie: Make a doggy door" %>
       <%= f.label "Categories" %>
       <%= f.input_field :category_ids,placeholder:"Select up to 3 categories", style:"width:100%", class: 'select2 categories ajax', data: { source: categories_path, initSelection: @skill.categories.map{|category|{id: category.id, text: category.name}}},value:' '%>
       <%= f.simple_fields_for :location do |c| %>
-      <%= c.input :city, label: "City", placeholder:"Select City"%>
-      <%= c.input :state, label: "State", placeholder:"Select State"%>
-      <%= c.input :zip, label: "Zip", placeholder:"Select Zip"%>
+       <input id="autocomplete" placeholder="Enter your address"
+             onFocus="geolocate()" type="text"></input>
+        <%= c.input_field :city, label: "City", placeholder:"Select City", class: 'locality',:readonly => true %>
+        <%= c.input_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
+        <%= c.input_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
       <% end %>
       <%= f.input :subtitle, placeholder:"ie: Making an exterior doggy door from start to finish." %>
       <%= f.input :full_description, placeholder:"\n500 Characters Max. You can discuss further later. \n\nie: I will show you what type of door you need, the tools needed, and how to install it.This includes going to your residence and measuring the door, helping at the store and picking out the correct size doggy door and door and finally installing it. I will help you purchase the correct tools or you can use mine. The only thing I ask for you to purchase for the tools is the saw blade if needed." ,maxlength:500%>
