@@ -16,7 +16,9 @@ Rails.application.routes.draw do
 
   resources :skills do
     collection do
-      resources :apprenticeships
+      resources :apprenticeships do
+        post 'accept_date', on: :member
+      end
       get 'teaching'
       get 'learning'
     end
