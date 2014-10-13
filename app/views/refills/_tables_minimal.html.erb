@@ -9,24 +9,34 @@
   </thead>
   <tbody>
     <% table_data.each do |data_row| %>
-    <tr>
+    <tr id="skill-id-<%= data_row.id %>">
       <% if data_row.is_a?(SkillRequest) %>
         <td><%= data_row.user.username %></td>
         <td><%= data_row.title %></td>
         <td><%= data_row.location.try(:address) %></td>
         <td><%= data_row.created_at %></td>
+        <td><%= simple_form_for(data_row, :html => {:multipart => true, :class=> '.form-inline'} ) do |f| %>
+          <%= f.input :meeting_date_requested, :as => :datetime_picker, label:false,class: 'dash-date-change' %>
+          <%= f.button :submit, value:"Save Date" %>
+          <% end %></td>
         <td>
-          <%= button_to skill_request_path(data_row.id, skill_request:{accepted_status:'confirmed'}), :method => :put, :remote => true,data: { disable_with: 'loading...'},class: 'confirm update-status' do %>
+          <%= button_to check_accepted_status_skill_request_path(data_row.id, skill_request:{accepted_status:'confirmed'}), :method => :post, :remote => true,data: { disable_with: 'loading...'},class: 'confirm update-status', id:"skill-id-#{data_row.id}-button" do %>
             Confirm
           <% end %>
-          <!-- Add Button to remove this from displaying in this users dashboard if rejected. -->
- <!--          <button class='confirm update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-changed-to='confirmed'>Confirm</button> -->
-          <!-- <button class='reject update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-change-to='rejected'>Reject</button> -->
       <%else %>
-      <td><%= data_row.user.username %></td>
+      <td>        <% if data_row.class == Apprenticeship %>
+          <%= link_to apprenticeship_path(data_row) do %>
+            <i class="fa fa-gear"></i>
+          <% end %>
+        <% end %><%= data_row.skill.creator.username %></td>
       <td><%= data_row.skill.title %></td>
       <td><%= data_row.location.try(:address) %></td>
-      <td><%= data_row.date_scheduled %></td>
+      <td><%= data_row.meeting_date_scheduled %></td>
+<!--       <td><%= simple_form_for(data_row, :html => {:multipart => true, :class=> '.form-inline'} ) do |f| %>
+      <%= f.input :meeting_date_requested, :as => :datetime_picker, label:false, class: 'dash-date-change' %>
+      <%= f.button :submit, value:"Save Date" %>
+      <% end %></td> -->
+      <td><%= data_row.meeting_date_requested %></td>
       <% case data_row.accepted_status %>
       <% when 'pending' %>
         <% if current_user.id == data_row.skill.creator_id %>
@@ -34,8 +44,8 @@
             <%= button_to apprenticeship_path(data_row.id, apprenticeship:{accepted_status:'confirmed'}), :method => :put, :remote => true,data: { disable_with: 'loading...'},class: 'confirm update-status' do %>
             Confirm
           <% end %>
-            <button class='confirm update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-change-to='confirmed'>Confirm</button>
-            <button class='reject update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-change-to='rejected' >Reject</button>
+            <!-- <button class='confirm update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-change-to='confirmed'>Confirm</button> -->
+            <!-- <button class='reject update-status' data-model=<%= data_row.class%> data-id=<%=data_row.id%> data-change-to='rejected' >Reject</button> -->
           </td>
         <% else %>
             <td class='pending'>&#8660</td>
