@@ -8,7 +8,7 @@ class Skill < ActiveRecord::Base
 
   has_many :skill_categories
   has_many :categories, through: :skill_categories
-
+  validates_presence_of :categories
   has_many :apprenticeships
   has_many :apprentices, through: :apprenticeships, :source => :user
 

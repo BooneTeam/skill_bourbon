@@ -42,7 +42,7 @@
     padding:10px;
     float:left;
     @include shift(1);
-    // @include span-columns(3);
+    @include span-columns(3);
   }
   .profile-image{
     font-size:.8em;

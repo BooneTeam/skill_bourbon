@@ -15,7 +15,8 @@ class SkillsController < ApplicationController
       JOIN categories on skill_categories.category_id = categories.id
       WHERE locations.zip LIKE '#{zip}'
       AND locations.city LIKE '#{city}'
-      AND locations.state LIKE '#{state}'"
+      AND locations.state LIKE '#{state}'
+      AND is_active = 't'"
       unless categories.blank?
         query += " AND categories.id IN (#{categories})"
       end
@@ -24,7 +25,7 @@ class SkillsController < ApplicationController
       @skills = Skill.find(skill_ids)
       render :partial =>  'refills/cards', :content_type => 'text/html'
     else
-      @skills = Skill.all
+      @skills = Skill.where(is_active: true)
     end
   end
 
@@ -84,7 +85,7 @@ class SkillsController < ApplicationController
   private
 
     def skill_params
-      params.require(:skill).permit(:title,:subtitle,:full_description,:creator_level,:creator_id,category_ids:[],location_attributes:[:city,:state,:zip, :id])
+      params.require(:skill).permit(:title,:subtitle,:full_description,:creator_level,:creator_id,:is_active,category_ids:[],location_attributes:[:city,:state,:zip, :id])
     end
 
     def find_location

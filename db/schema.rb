@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141011194124) do
+ActiveRecord::Schema.define(version: 20141013013431) do
 
   create_table "apprenticeships", force: true do |t|
     t.integer  "user_id"
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20141011194124) do
     t.datetime "meeting_date_requested"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "apprentice_accept_date", default: false
+    t.boolean  "creator_accept_date",    default: false
   end
 
   create_table "categories", force: true do |t|
@@ -88,6 +90,7 @@ ActiveRecord::Schema.define(version: 20141011194124) do
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "is_active",        default: false
   end
 
   create_table "users", force: true do |t|

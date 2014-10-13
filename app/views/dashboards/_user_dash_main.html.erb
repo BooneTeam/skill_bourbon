@@ -18,7 +18,7 @@
     </div>
     <div class="row" id='your-apprenticeships'>
         <h4 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Skills that you have requested.</div></i>Your Apprenticeships</h4>
-      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location', 'Meeting Date Scheduled','Meeting Date Requested', 'Status'], table_data: @learning_skills, extra_fields: ['accepted_status'] }%>
+      <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['Teacher', 'Skill', 'Location', 'Meeting Date Scheduled','Meeting Date Requested', 'Status'], table_data: @learning_skills, extra_fields: ['accepted_status'] }%>
     </div>
     <div class="row" id='dash-upcoming-calendar'>
         <h4 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Upcoming apprenticeships. Green Icon: You'll be learning. Blue Icon: You'll be teaching.</div></i>Upcoming Events</h4>

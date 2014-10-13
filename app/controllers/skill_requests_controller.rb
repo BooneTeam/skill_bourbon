@@ -16,7 +16,8 @@ class SkillRequestsController < ApplicationController
       JOIN categories on skill_request_categories.category_id = categories.id
       WHERE locations.zip LIKE '#{zip}'
       AND locations.city LIKE '#{city}'
-      AND locations.state LIKE '#{state}'"
+      AND locations.state LIKE '#{state}'
+      AND skill_requests.accepted_status != 'confirmed' "
       unless categories.blank?
         query += " AND categories.id IN (#{categories})"
       end
@@ -25,7 +26,7 @@ class SkillRequestsController < ApplicationController
       @skills = SkillRequest.find(skill_ids)
       render :partial =>  'refills/cards', :content_type => 'text/html'
     else
-      @skills = SkillRequest.all
+      @skills = SkillRequest.where("accepted_status" != 'confirmed')
     end
   end
 
@@ -95,7 +96,7 @@ class SkillRequestsController < ApplicationController
         end
         current_user_dash_items
         respond_to do |format|
-          format.js
+          format.js { render :action => 'update_dashboard.js.erb'}
         end
       else
         respond_to do |format|
@@ -114,6 +115,7 @@ class SkillRequestsController < ApplicationController
         location_id: skill_request.location_id,
         creator_id: current_user.id,
         creator_level:skill_request.apprentice_level + 1)
+      skill.categories << skill_request.categories
       skill.save
       skill
     end
