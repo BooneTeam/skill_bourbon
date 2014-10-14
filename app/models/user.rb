@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_many :apprentice_requests, through: :created_skills, :source => :apprenticeships
 
   has_many :skill_requests
-
+  has_many :comments
   has_many :apprenticeships
   has_many :skills, through: :apprenticeships
   has_many :notes,  through: :apprenticeships

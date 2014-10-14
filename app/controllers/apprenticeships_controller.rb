@@ -6,6 +6,7 @@ class ApprenticeshipsController < ApplicationController
 
   def show
     @apprenticeship = Apprenticeship.find(params[:id])
+    # @apprenticeship.comments.build
     @skill = @apprenticeship.skill
   end
 
@@ -73,7 +74,7 @@ class ApprenticeshipsController < ApplicationController
 
 
     def apprenticeship_params
-      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:meeting_date_requested,:meeting_date_scheduled, :skill_id,:location_id, :accepted_status)
+      params.require(:apprenticeship).permit(:request_description,:apprentice_level,:meeting_date_requested,:meeting_date_scheduled, :skill_id,:location_id, :accepted_status, comments_attributes:[])
     end
 
     def find_location(apprenticeship = Apprenticeship.new)

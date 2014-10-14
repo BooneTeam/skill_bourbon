@@ -170,6 +170,11 @@ body{
 .table-minimal .date .input-group-btn{
   float:left;
 }
+
+.apprenticeship-show-header{
+  @include outer-container;
+  text-align:center;
+}
  // .sign-out-btn::before{
   // content: "Watqsdf";
  // }/

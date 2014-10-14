@@ -26,7 +26,7 @@ class SkillRequestsController < ApplicationController
       @skills = SkillRequest.find(skill_ids)
       render :partial =>  'refills/cards', :content_type => 'text/html'
     else
-      @skills = SkillRequest.where("accepted_status" != 'confirmed')
+      @skills = SkillRequest.where("accepted_status != 'confirmed' ")
     end
   end
 
@@ -96,6 +96,7 @@ class SkillRequestsController < ApplicationController
         end
         current_user_dash_items
         respond_to do |format|
+          format.html{redirect_to(dashboard_path)}
           format.js { render :action => 'update_dashboard.js.erb'}
         end
       else
