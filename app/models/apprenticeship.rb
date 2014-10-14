@@ -1,5 +1,4 @@
 class Apprenticeship < ActiveRecord::Base
-
   before_save :check_accepted_date
 
   validates :user_id, :location_id, :request_description,:skill_id, :apprentice_level, :meeting_date_requested, :presence => true
@@ -7,6 +6,7 @@ class Apprenticeship < ActiveRecord::Base
   belongs_to :skill
   belongs_to :location
   has_many   :notes
+  has_many   :comments, :as => :commentable
 
   scope :learning, -> {where(apprentice:true, accepted_status: "confirmed")}
   scope :earning,  -> {where(apprentice:false)}
@@ -15,7 +15,7 @@ class Apprenticeship < ActiveRecord::Base
   scope :pending,  -> {where(accepted_status:"pending")}
   scope :confirmed_upcoming,  -> {confirmed.where('meeting_date_scheduled >= ? AND meeting_date_scheduled <= ?', DateTime.now.beginning_of_day, DateTime.now + 15.days)}
 
-  accepts_nested_attributes_for :location
+  accepts_nested_attributes_for :location, :comments
 
   def check_accepted_date
     change_date_scheduled if has_accepted_dates?

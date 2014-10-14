@@ -1,0 +1,24 @@
+
+<% @apprenticeship.comments.each do |comment| %>
+<div class="comment">
+  <div class="comment-image">
+    <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_2.png" alt="">
+  </div>
+  <div class="comment-content">
+    <h6><%= comment.user.username %></h6>
+    <p><%= comment.content %></p>
+    <p class="comment-detail"><%= comment.created_at %></p>
+  </div>
+</div>
+<% end %>
+<fieldset>
+<%= form_for [@apprenticeship, Comment.new] do |f| %>
+  <p>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :type, value: @apprenticeship.class %>
+    <%= f.label "Enter a new comment" %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
+</fieldset>

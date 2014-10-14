@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013013431) do
+ActiveRecord::Schema.define(version: 20141013232052) do
 
   create_table "apprenticeships", force: true do |t|
     t.integer  "user_id"
@@ -32,6 +32,15 @@ ActiveRecord::Schema.define(version: 20141013013431) do
   create_table "categories", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", force: true do |t|
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -90,7 +99,8 @@ ActiveRecord::Schema.define(version: 20141013013431) do
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "is_active",        default: false
+    t.boolean  "is_active",                                default: false
+    t.decimal  "price",            precision: 8, scale: 2, default: 0.0
   end
 
   create_table "users", force: true do |t|

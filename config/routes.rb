@@ -17,13 +17,13 @@ Rails.application.routes.draw do
   resources :skills do
     collection do
       resources :apprenticeships do
+        resources :comments
         post 'accept_date', on: :member
       end
       get 'teaching'
       get 'learning'
     end
   end
-
 
   # resources :users
   resources :users do
