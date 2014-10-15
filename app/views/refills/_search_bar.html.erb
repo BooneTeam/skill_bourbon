@@ -1,23 +1,25 @@
 <div class="search-tools">
-<%= simple_form_for :search, :html => {:"data-update-target" => 'cards-container'}, remote: true, method: "get" do |f| %>
+  <%= simple_form_for :search, :html => {:"data-update-target" => 'cards-container'}, remote: true, method: "get" do |f| %>
+  <%= f.simple_fields_for :location do |c| %>
   <div class='filter'>
-  <%= f.input :city, required: false,label:false,placeholder: "Search City" %>
+    <div class="input string optional search_keywords hide-options">
+      <input id="autocomplete" placeholder="Enter a City" class=''
+  onFocus="geolocate()" type="text"></input>
+    </div>
   </div>
-  <div class='filter'>
-      <%= f.input :state,required: false,label:false,placeholder: "Search State" %>
-  </div>
-  <div class='filter'>
-  <%= f.input :zip, label:false,required: false,placeholder: "Search Zip" %>
-  </div>
-  <div class='filter'>
-    <%= f.input_field :categories, required: false, class: 'select2 categories ajax', label:false ,placeholder:"Select Up To 3 Categories",  data: { source: categories_path }%>
-  </div>
-  <div class='filter'>
+    <%= c.hidden_field :city, label: "City", placeholder:"Select City", class: 'locality location',:readonly => true %>
+    <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1 location', :readonly => true %>
+    <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code location', :readonly => true%>
+  <% end %>
+<div class='filter'>
+  <%= f.input_field :categories, required: false, class: 'select2 categories ajax', label:false ,placeholder:"Select Up To 3 Categories",  data: { source: categories_path }%>
+</div>
+<div class='filter'>
   <%= f.input :keywords, required: false, label:false,placeholder: "Search Keywords" %>
-  </div>
-  <%= f.submit value: "Search #{(@skills.first || Skill.new).class.model_name.human + "s"}"%>
+</div>
+<%= f.submit value: "Search #{(@skills.first || Skill.new).class.model_name.human + "s"}"%>
 <% end %>
 </div>
 <p class='subtitle'>Can't find what you're looking for?</p>
-  <%= button_to "Post a Skill Request", new_skill_request_path, method: :get %>
+<%= button_to "Post a Skill Request", new_skill_request_path, method: :get %>
 
