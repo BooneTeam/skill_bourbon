@@ -28,7 +28,7 @@
           <%= link_to apprenticeship_path(data_row) do %>
             <i class="fa fa-gear"></i>
           <% end %>
-        <% end %><%= data_row.skill.creator.username %></td>
+        <% end %><%= data_row.user == current_user ? data_row.skill.creator.username : data_row.user.username %></td>
       <td><%= data_row.skill.title %></td>
       <td><%= data_row.location.try(:address) %></td>
       <td><%= data_row.meeting_date_scheduled %></td>

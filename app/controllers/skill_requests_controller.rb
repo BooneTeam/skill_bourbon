@@ -5,9 +5,9 @@ class SkillRequestsController < ApplicationController
   def index
     if params[:search]
       search_hash = params[:search]
-      zip   = search_hash[:zip].blank?   ? "%%" : search_hash[:zip]
-      city  = search_hash[:city].blank?  ? "%%" : search_hash[:city]
-      state = search_hash[:state].blank? ? "%%" : search_hash[:state]
+      zip   = search_hash[:location][:zip].blank?   ? "%%" : search_hash[:location][:zip]
+      city  = search_hash[:location][:city].blank?  ? "%%" : search_hash[:location][:city]
+      state = search_hash[:location][:state].blank? ? "%%" : search_hash[:location][:state]
       categories = search_hash[:categories].split(',').map{|x| "\'" + x + "\'"}.join(',')
       locations = Location.where("city LIKE ? AND state LIKE ? AND zip LIKE ?", city,state,zip)
       query = "SELECT * FROM skill_requests
