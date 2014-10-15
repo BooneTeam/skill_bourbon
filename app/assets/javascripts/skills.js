@@ -21,4 +21,13 @@ $(document).ready(function(){
       }
     }
   });
+
+  $(".simple_form #autocomplete").on('change',function(){
+    if ($(this).val() == ''){
+      var inputs = $('.simple_form.search').find('input.location');
+      $(inputs).each(function(){
+        $(this).val('');
+      });
+    }
+  });
 });
