@@ -44,12 +44,14 @@
         <h6>
           <span class='status-<%=request.try(:accepted_status) %> tooltip-item'><div class="tooltip pending">Status: <%= request.try(:accepted_status)%></div></span>
           <% if request.class == Apprenticeship
-                path = skill_path(request.skill.id)
+                path      = skill_path(request.skill)
+                edit_path = edit_skill_path(request.skill)
              else
                 path = skill_request_path(request)
+                edit_path = edit_skill_request_path(request)
              end  %>
           <%=link_to request.try(:title) || request.try(:skill).try(:title), path %>
-          <%= link_to path do %>
+          <%= link_to edit_path do %>
             <i class="fa fa-gear"></i>
           <% end %>
         </h6>
