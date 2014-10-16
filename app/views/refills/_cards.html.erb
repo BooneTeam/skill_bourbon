@@ -9,9 +9,9 @@
           <% skill.categories.each do |cat| %>
             <p class='small-info'><%= cat.name %></p>
             <% end %>
-            <!-- {|category| category.name}.join(",").to_s %> -->
         </div>
         <p class='title'><%= skill.title %></p>
+        <p class='small-info card-city'><%= skill.location.city %>,<%= skill.location.state %></p>
         <p class='subtitle'><%= skill.subtitle %></p>
       </div>
       <div class="hover-tile hover-tile-hidden">

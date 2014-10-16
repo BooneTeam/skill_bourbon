@@ -1,13 +1,13 @@
 class Apprenticeship < ActiveRecord::Base
   before_save :check_accepted_date
 
-  validates :user_id, :location_id, :request_description,:skill_id, :apprentice_level, :meeting_date_requested, :presence => true
+  validates  :user_id, :location_id, :request_description,:skill_id, :apprentice_level, :meeting_date_requested, :presence => true
   belongs_to :user
   belongs_to :skill
   belongs_to :location
   has_many   :notes
   has_many   :comments, :as => :commentable
-
+  has_one    :skill_level
   scope :learning, -> {where(apprentice:true, accepted_status: "confirmed")}
   scope :earning,  -> {where(apprentice:false)}
   scope :denied,  -> {where(accepted_status:"denied")}
