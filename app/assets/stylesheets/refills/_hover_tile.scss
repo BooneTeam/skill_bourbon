@@ -46,10 +46,19 @@
         margin:2px;
         padding:2px;
         float:left;
+        font-size:.5em;
       }
     }
     .title{
+      color:#67bcdb;
+      font-weight:bold;
       font-size:1.2em;
+      text-decoration: none;
+      margin-bottom:0px;
+    }
+    .subtitle{
+      color: #67bcdb;
+      font-weight:bold;
     }
     color: transparentize(black, .3);
     font-size: .8em;
