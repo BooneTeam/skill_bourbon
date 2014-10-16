@@ -14,12 +14,13 @@
 <div class='filter'>
   <%= f.input_field :categories, required: false, class: 'select2 categories ajax', label:false ,placeholder:"Select Up To 3 Categories",  data: { source: categories_path }%>
 </div>
-<div class='filter'>
-  <%= f.input :keywords, required: false, label:false,placeholder: "Search Keywords" %>
-</div>
+<!-- <div class='filter'> -->
+  <%#= f.input :keywords, required: false, label:false,placeholder: "Search Keywords" %>
+<!-- </div> -->
 <%= f.submit value: "Search #{(@skills.first || Skill.new).class.model_name.human + "s"}"%>
 <% end %>
 </div>
-<p class='subtitle'>Can't find what you're looking for?</p>
 <%= button_to "Post a Skill Request", new_skill_request_path, method: :get %>
+
+
 

@@ -9,6 +9,7 @@ class CreateSkills < ActiveRecord::Migration
       t.integer :creator_id
       t.integer :creator_level
 
+      t.references :skill_level
       t.references :location
 
       t.timestamps
