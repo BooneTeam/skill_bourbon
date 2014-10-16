@@ -11,6 +11,8 @@ class CreateSkillRequests < ActiveRecord::Migration
       t.string     :accepted_status, default: "pending"
       t.references :location
       t.references :user
+      t.references :skill_level
+
 
       t.timestamps
     end
