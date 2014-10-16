@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141013232052) do
+ActiveRecord::Schema.define(version: 20141016121829) do
 
   create_table "apprenticeships", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "skill_id"
-    t.integer  "location_id"
     t.text     "request_description"
     t.string   "completion_status"
     t.string   "accepted_status",        default: "pending"
     t.integer  "apprentice_level"
     t.datetime "meeting_date_scheduled"
     t.datetime "meeting_date_requested"
+    t.integer  "user_id"
+    t.integer  "skill_id"
+    t.integer  "location_id"
+    t.integer  "skill_level_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "apprentice_accept_date", default: false
@@ -67,6 +68,14 @@ ActiveRecord::Schema.define(version: 20141013232052) do
     t.datetime "updated_at"
   end
 
+  create_table "skill_levels", force: true do |t|
+    t.string   "title"
+    t.string   "description"
+    t.integer  "level_num"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "skill_request_categories", force: true do |t|
     t.integer  "category_id"
     t.integer  "skill_request_id"
@@ -84,6 +93,7 @@ ActiveRecord::Schema.define(version: 20141013232052) do
     t.string   "accepted_status",        default: "pending"
     t.integer  "location_id"
     t.integer  "user_id"
+    t.integer  "skill_level_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "has_apprenticeship"
@@ -96,6 +106,7 @@ ActiveRecord::Schema.define(version: 20141013232052) do
     t.string   "creator_type"
     t.integer  "creator_id"
     t.integer  "creator_level"
+    t.integer  "skill_level_id"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
