@@ -248,7 +248,11 @@
           text-align: left;
           width: $centered-navigation-submenu-width;
         }
+        &:hover{
+          background-color:darken($centered-navigation-background, 3);
+        }
       }
+
     }
   }
   .sign-in-box{
