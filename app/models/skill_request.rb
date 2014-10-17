@@ -4,7 +4,7 @@ class SkillRequest < ActiveRecord::Base
 
   has_many :skill_request_categories
   has_many :categories, through: :skill_request_categories
-  has_one  :skill_level
+  belongs_to  :skill_level
 
   belongs_to :location
   belongs_to :user
