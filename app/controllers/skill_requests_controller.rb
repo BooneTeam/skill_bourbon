@@ -115,7 +115,8 @@ class SkillRequestsController < ApplicationController
         full_description: skill_request.full_description,
         location_id: skill_request.location_id,
         creator_id: current_user.id,
-        creator_level:skill_request.apprentice_level + 1)
+        skill_level_id:skill_request.skill_level.id
+        )
       skill.categories << skill_request.categories
       skill.save
       skill
@@ -128,7 +129,7 @@ class SkillRequestsController < ApplicationController
         location_id: skill_request.location_id,
         request_description: skill_request.full_description,
         accepted_status:"confirmed",
-        apprentice_level:  skill_request.apprentice_level,
+        skill_level_id:  skill_request.skill_level.id,
         meeting_date_scheduled: skill_request.meeting_date_scheduled,
         meeting_date_requested: skill_request.meeting_date_requested)
       apprenticeship.save
@@ -136,7 +137,7 @@ class SkillRequestsController < ApplicationController
     end
 
     def skill_request_params
-      params.require(:skill_request).permit(:title,:subtitle,:accepted_status,:meeting_date_requested,:apprentice_level,:full_description,:user_id,:location_id,category_ids:[])
+      params.require(:skill_request).permit(:title,:subtitle,:accepted_status,:meeting_date_requested,:skill_level_id,:full_description,:user_id,:location_id,category_ids:[])
     end
 
     def find_location(skill_request = SkillRequest.new)

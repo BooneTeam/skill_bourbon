@@ -62,14 +62,14 @@ end
 
 skills.each_with_index do |skill,i|
   # skill = skills[place]
-  skill.merge!({:creator_id => User.find(i + 1).id, :creator_level => rand(10), location_id: Location.find(rand(1..addresses.count)).id, is_active: true })
+  skill.merge!({:creator_id => User.find(i + 1).id, :skill_level_id => rand(1..5), location_id: Location.find(rand(1..addresses.count)).id, is_active: true })
   skill = Skill.new(skill)
   skill.categories << Category.find(rand(1..15))
   skill.save!
 end
 
 
-skillrequest = {title: "Title", subtitle: "subtitle", full_description: "full description", apprentice_level: rand(10), meeting_date_scheduled: nil, meeting_date_requested: DateTime.now + (rand(5).days), location_id: Location.find(rand(1..addresses.count)).id,has_apprenticeship: false}
+skillrequest = {title: "Title", subtitle: "subtitle", full_description: "full description",:skill_level_id => rand(1..5), meeting_date_scheduled: nil, meeting_date_requested: DateTime.now + (rand(5).days), location_id: Location.find(rand(1..addresses.count)).id,has_apprenticeship: false}
 
 start = 1
 5.times do |count|

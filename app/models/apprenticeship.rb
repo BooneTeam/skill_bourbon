@@ -1,7 +1,7 @@
 class Apprenticeship < ActiveRecord::Base
   before_save :check_accepted_date
 
-  validates  :user_id, :location_id, :request_description,:skill_id, :apprentice_level, :meeting_date_requested, :presence => true
+  validates  :user_id, :location_id, :request_description,:skill_id, :skill_level_id, :meeting_date_requested, :presence => true
   belongs_to :user
   belongs_to :skill
   belongs_to :location

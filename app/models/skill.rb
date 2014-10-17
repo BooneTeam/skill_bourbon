@@ -2,7 +2,7 @@ class Skill < ActiveRecord::Base
 
   include Rails.application.routes.url_helpers
 
-  validates :title, :subtitle, :full_description,:creator_id, :creator_level, :location_id, :presence => true
+  validates :title, :subtitle, :full_description,:creator_id, :skill_level_id, :location_id, :presence => true
   validates_presence_of :categories
 
   before_save :add_creator_type
