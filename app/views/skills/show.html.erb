@@ -5,14 +5,14 @@
   <div class='recent-apprentices'>
     <h5 class='title'>Recent Apprentices</h5>
     <ul>
-      <% @skill.apprenticeships.each do |aship| %>
+      <% @skill.apprenticeships.each do |apprenticeship| %>
       <li>
         <h6>Requested Apprenticeship Project</h6>
-        <p><%= aship.request_description %></p>
+        <p><%= apprenticeship.request_description %></p>
         <h6>Completion Status</h6>
-        <p><%= aship.completion_status %></p>
+        <p><%= apprenticeship.completion_status %></p>
         <h6>Apprentice Level</h6>
-        <p><%= aship.skill_level.title %></p>
+        <p><%= apprenticeship.skill_level.title %></p>
       </li>
       <% end %>
     </ul>

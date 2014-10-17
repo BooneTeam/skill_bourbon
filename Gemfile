@@ -48,6 +48,21 @@ gem 'spring',        group: :development
 #Debugging
 gem 'pry',       group:[:development, :test]
 gem "binding_of_caller",group:[:development, :test]
+
+group :test do
+  gem 'database_cleaner'
+  # gem 'email_spec',              '1.2.1'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  # gem 'spork',                   '~> 1.0.0rc4'
+  # gem 'test-unit',               '~> 2.4.0', :platforms => :ruby_19
+  # gem 'timecop',                 '~> 0.6.1'
+  # gem 'webmock'
+  gem 'capybara'
+  gem 'capybara-webkit'
+  gem 'capybara-screenshot'
+  gem 'launchy'
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

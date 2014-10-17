@@ -7,7 +7,7 @@ class Apprenticeship < ActiveRecord::Base
   belongs_to :location
   has_many   :notes
   has_many   :comments, :as => :commentable
-  has_one    :skill_level
+  belongs_to  :skill_level
   scope :learning, -> {where(apprentice:true, accepted_status: "confirmed")}
   scope :earning,  -> {where(apprentice:false)}
   scope :denied,  -> {where(accepted_status:"denied")}
