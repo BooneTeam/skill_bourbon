@@ -14,7 +14,7 @@
       <% end %>
       <%= f.input :subtitle, placeholder:"Enter a Subtitle", label:false %>
       <%= f.input :full_description, placeholder:"Enter a longer full description.\n500 Characters Max. You can discuss further later. \n\nie: I will show you what type of door you need, the tools needed, and how to install it.This includes going to your residence and measuring the door, helping at the store and picking out the correct size doggy door and door and finally installing it. I will help you purchase the correct tools or you can use mine. The only thing I ask for you to purchase for the tools is the saw blade if needed." ,maxlength:500, label:false%>
-      <%= f.input :creator_level, label: "Skill Level", as: :select,  collection: 1..10 %>
+      <%= f.input :skill_level_id, label: "Skill Level", as: :select, collection: SkillLevel.all, value_method: :id %>
       <%= f.submit %>
       <%end%>
     </fieldset>

@@ -85,7 +85,7 @@ class SkillsController < ApplicationController
   private
 
     def skill_params
-      params.require(:skill).permit(:title,:subtitle,:full_description,:creator_level,:creator_id,:is_active,category_ids:[],location_attributes:[:city,:state,:zip, :id])
+      params.require(:skill).permit(:title,:subtitle,:full_description,:skill_level_id,:creator_id,:is_active,category_ids:[],location_attributes:[:city,:state,:zip, :id])
     end
 
     def find_location
