@@ -13,6 +13,8 @@ module SkillBourbon
     # -- all .rb files in that directory are automatically loaded.
     config.generators do |g|
       g.test_framework :rspec
+      g.fixture_replacement :factory_girl
+      g.factory_girl dir: './spec/factories'
     end
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.

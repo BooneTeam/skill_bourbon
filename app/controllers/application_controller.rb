@@ -15,4 +15,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def login_required
+    if current_user
+      session[:return_to_url] = request.url
+    else
+      redirect_to new_user_registration_path
+    end
+  end
+
 end
