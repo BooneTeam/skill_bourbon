@@ -6,7 +6,7 @@
 
 ### App Vitals
 
-**DB:** Sqlite3 (Changing to Postgres) 
+**DB:** Sqlite3 (Changing to Postgres)
 
 **Ruby:** Ruby 2.1.1
 
@@ -19,12 +19,12 @@
 3. **Image Placeholder** No Real Icons or backgrounds yet. Images are from Envato,Thoughtbot or Tumblr.
 
 ###Things to Do
-  
-  1.Front-End still needs to be finished. 
-  
+
+  1.Front-End still needs to be finished.
+
   2.All Backend Stuff except signup/in/out (no welcome emails yet)
-  
-  3.Sign In/Up should be able to use Twitter or Facebook..others?
+
+  3.Sign in/Up should be able to use Twitter or Facebook..others?
 
 
 ### Installation

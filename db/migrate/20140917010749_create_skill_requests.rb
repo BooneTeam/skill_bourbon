@@ -4,7 +4,7 @@ class CreateSkillRequests < ActiveRecord::Migration
       t.string  :title
       t.string  :subtitle
       t.text    :full_description
-      t.integer :apprentice_level
+      # t.integer :apprentice_level
       t.datetime   :meeting_date_scheduled
       t.datetime   :meeting_date_requested
 

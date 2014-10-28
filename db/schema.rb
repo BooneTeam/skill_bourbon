@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141016121829) do
+ActiveRecord::Schema.define(version: 20141028133001) do
 
   create_table "apprenticeships", force: true do |t|
     t.text     "request_description"
     t.string   "completion_status"
     t.string   "accepted_status",        default: "pending"
-    t.integer  "apprentice_level"
     t.datetime "meeting_date_scheduled"
     t.datetime "meeting_date_requested"
     t.integer  "user_id"
@@ -61,6 +60,14 @@ ActiveRecord::Schema.define(version: 20141016121829) do
     t.text    "note"
   end
 
+  create_table "paths", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
   create_table "skill_categories", force: true do |t|
     t.integer  "category_id"
     t.integer  "skill_id"
@@ -87,7 +94,6 @@ ActiveRecord::Schema.define(version: 20141016121829) do
     t.string   "title"
     t.string   "subtitle"
     t.text     "full_description"
-    t.integer  "apprentice_level"
     t.datetime "meeting_date_scheduled"
     t.datetime "meeting_date_requested"
     t.string   "accepted_status",        default: "pending"
@@ -105,13 +111,13 @@ ActiveRecord::Schema.define(version: 20141016121829) do
     t.text     "full_description"
     t.string   "creator_type"
     t.integer  "creator_id"
-    t.integer  "creator_level"
     t.integer  "skill_level_id"
     t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "is_active",                                default: false
     t.decimal  "price",            precision: 8, scale: 2, default: 0.0
+    t.integer  "path_id"
   end
 
   create_table "users", force: true do |t|

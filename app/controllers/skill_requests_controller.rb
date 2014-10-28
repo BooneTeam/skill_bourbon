@@ -1,4 +1,5 @@
 class SkillRequestsController < ApplicationController
+  before_filter :login_required, only:[:new]
   # after_filter :check_accepted_status, :only => :update
   include DashboardHelper
 
@@ -35,14 +36,10 @@ class SkillRequestsController < ApplicationController
   end
 
   def new
-    if current_user
-      @categories = Category.order('name')
-      @skill_request = SkillRequest.new
-      @skill_request.categories.build
-      @skill_request.build_location
-    else
-      redirect_to new_user_registration_path
-    end
+    @categories = Category.order('name')
+    @skill_request = SkillRequest.new
+    @skill_request.categories.build
+    @skill_request.build_location
   end
 
   def create
@@ -59,7 +56,12 @@ class SkillRequestsController < ApplicationController
   end
 
   def edit
-    @skill_request = SkillRequest.find(params[:id])
+    skill_request = SkillRequest.find(params[:id])
+    if current_user == skill_request.user
+      @skill_request = skill_request
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -77,6 +79,12 @@ class SkillRequestsController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    skill_request = SkillRequest.find(params[:id])
+    skill_request.destroy
+    redirect_to dashboard_path
   end
 
   def check_accepted_status
@@ -141,6 +149,7 @@ class SkillRequestsController < ApplicationController
     end
 
     def find_location(skill_request = SkillRequest.new)
+      binding.pry
       skill_request.location_id.to_s.blank? ? Location.find_or_create_by(params[:skill_request][:location_attributes].symbolize_keys).id : skill_request.location_id
     end
 

@@ -3,17 +3,17 @@
     <div class="row" id='new-apprentice-requests'>
       <!-- <div class='tooltip-item'> -->
 
-      <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">New requests that a user has sent you that need action.</div></i>New Apprentice Requests</h5>
+      <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">New requests that a user has sent you that need action.</div></i>New student requests</h5>
         <!-- Confirm: Accept request as is. Deny: Deny request completely. Modify: Modify a few fields and re-send the request back the user so they can review and accept the changes. Note: Add some notes for you and the user such as what they will need to bring or extra directions. -->
       <!-- </div> -->
       <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User','Skill', 'Location', 'Meeting Date Scheduled','Meeting Date Requested', 'Please Respond'], table_data: @apprentice_requests.pending, extra_fields: ['accepted_status'] }%>
     </div>
     <div class="row" id='open-requests'>
-        <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Recently posted requests that are similar to the skills you have.</div></i>Posted Requests</h5><p class='small-info'>(last 3 days)</p>
+        <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Recently posted requests that are similar to the skills you have.</div></i>Posted skill requests</h5><p class='small-info'>(last 3 days)</p>
       <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['User', 'Skill', 'Location','Date Posted','Meeting Date Requested','Accept/Reject?'], table_data: @open_requests, extra_fields: ['accept?'] }%>
     </div>
     <div class="row" id='your-apprentices'>
-      <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">People that you are currently scheduled to teach a skill.</div></i>Mentoring</h5>
+      <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">People that you are currently scheduled to teach a skill.</div></i>Current students</h5>
       <%= render partial: 'refills/tables_minimal', locals: {table_headers: ['Student', 'Skill', 'Location','Meeting Date Scheduled','Meeting Date Requested', 'Status'], table_data: @apprentice_requests.confirmed, extra_fields: ['accepted_status'] }%>
     </div>
     <div class="row" id='your-apprenticeships'>

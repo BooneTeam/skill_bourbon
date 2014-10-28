@@ -1,8 +1,10 @@
 class SkillsController < ApplicationController
-
+  before_filter :login_required, only:[:new]
   def index
     #.all calls db immediately
     if params[:search]
+      #
+      # search_active_skills(find_search_variables)
       search_hash = params[:search]
       zip   = search_hash[:location][:zip].blank?   ? "%%" : search_hash[:location][:zip]
       city  = search_hash[:location][:city].blank?  ? "%%" : search_hash[:location][:city]
@@ -31,17 +33,17 @@ class SkillsController < ApplicationController
 
   def show
     @skill = Skill.find(params[:id])
+    if !@skill.is_active? && @skill.creator != current_user
+      redirect_to root_path
+    end
   end
 
   def new
-    if current_user
-      @categories = Category.order('name')
-      @skill = Skill.new
-      @skill.categories.build
-      @skill.build_location
-    else
-      redirect_to new_user_registration_path
-    end
+    @categories = Category.order('name')
+    @skill = Skill.new
+    @path  = Path.new
+    @skill.categories.build
+    @skill.build_location
   end
 
   def create
@@ -59,7 +61,12 @@ class SkillsController < ApplicationController
   end
 
   def edit
-    @skill = Skill.find(params[:id])
+    skill = Skill.find(params[:id])
+    if current_user == skill.creator
+      @skill = skill
+    else
+      redirect_to root_path
+    end
   end
 
   def update
@@ -79,7 +86,9 @@ class SkillsController < ApplicationController
   end
 
   def destroy
-
+    skill = Skill.find(params['id'])
+    skill.destroy()
+    redirect_to dashboard_path
   end
 
   private

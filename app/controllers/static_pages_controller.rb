@@ -23,4 +23,7 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def creating_skills_help
+
+  end
 end
