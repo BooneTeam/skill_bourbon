@@ -1,4 +1,5 @@
 <div class='row skill-bio'>
+  <h6 class='title'>About this skill</h6>
   <p><%= simple_format(@skill.full_description) %></p>
   <% if current_user && current_user.id == @skill.creator_id %>
   <p class='small-info'>You are the owner of this skill and so you cannot sign up to teach yourself. But you can edit it if you wish.<%= button_to "Edit", edit_skill_path, method: :get %></p>
@@ -10,9 +11,9 @@
   <p class='small-info'>Don't hesitate to ask for help on a similar type of project.</p>
   <p class='small-info'> ie: If someone can help teach you how trim your hedges maybe they can also mentor you on how to start a garden. You never know and it can't hurt to ask.</p>
   <% elsif current_user && current_user.is_apprentice?(@skill) %>
-  <p> You're already taking this skill. </p>
+  <p class='small-info'> You're already enrolled in this skill. </p>
   <% else %>
-  <%= button_to "Sign Up and Learn this skill.", new_user_registration_path, method: :get %>
-  <%= button_to "Already a member? Sign In!", new_user_session_path, method: :get %>
+  <%= button_to "Sign Up to learn this skill.", new_user_registration_path, method: :get %>
+  <%#= button_to "Already a member? Sign in!", new_user_session_path, method: :get %>
   <% end %>
 </div>

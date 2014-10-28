@@ -2,7 +2,7 @@ class SkillRequest < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   validates :title, :subtitle, :full_description,:user_id,:meeting_date_requested,:location_id, :presence => true
 
-  has_many :skill_request_categories
+  has_many :skill_request_categories, dependent: :destroy
   has_many :categories, through: :skill_request_categories
   belongs_to  :skill_level
 

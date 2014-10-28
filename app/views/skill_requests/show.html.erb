@@ -25,8 +25,7 @@
     <% elsif current_user && current_user.id != @skill_request.user_id %>
     <%= button_to 'Take on this skill request.', {:controller => "skill_requests", :action => "check_accepted_status", :skill_request => {accepted_status:"confirmed"}, :id=> @skill_request.id , :method=>:post},id:'same-request-button' %>
     <% else %>
-    <%= button_to "Sign Up and Learn this skill_request.", new_user_registration_path, method: :get %>
-    <%= button_to "Already a member? Sign In!", new_user_session_path, method: :get %>
+    <%= button_to "Sign up and teach this skill", new_user_registration_path, method: :get %>
     <% end %>
   </div>
  </div>

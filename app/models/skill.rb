@@ -10,14 +10,15 @@ class Skill < ActiveRecord::Base
   belongs_to :creator, :class_name => 'User'
   belongs_to :location
 
-  has_many :comments, :as => :commentable
+  has_many :comments, :as => :commentable, dependent: :destroy
 
-  has_many :skill_categories
+  has_many :skill_categories, dependent: :destroy
   has_many :categories, through: :skill_categories
 
   belongs_to  :skill_level
+  belongs_to  :path
 
-  has_many :apprenticeships
+  has_many :apprenticeships, dependent: :destroy
   has_many :apprentices, through: :apprenticeships, :source => :user
 
   accepts_nested_attributes_for :categories, :location, :skill_categories

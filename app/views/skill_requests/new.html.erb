@@ -1,5 +1,14 @@
 <div class="dashboard_container user-container">
   <% if current_user  %>
+  <div class='form-description raised-box-content'>
+    <div class='content'>
+      <h4 class='subject'>Almost there!</h4>
+      <p class='description'>Fill out the form and we'll post it to the <%= link_to 'Requested Skills', skill_requests_path %> page</p>
+      <p class='description'>We'll also notify anyone who has similar skills in your surrounding area to see if they can help.</p>
+      <p class='description'>Fill out the form and we'll post it to the <%= link_to 'Requested Skills', skill_requests_path %> page</p>
+      <p class='description'>We'll also notify anyone who has similar skills in your surrounding area to see if they can help.</p>
+    </div>
+  </div>
   <div id='new-skill-form'>
 
     <fieldset>
@@ -17,21 +26,10 @@
       <% end %>
       <%= f.input :subtitle, placeholder:"Enter a Subtitle" ,label: false%>
       <%= f.input :full_description, placeholder:"Enter a longer full description.\n500 Characters Max. You can discuss further later. \n\nie: I will show you what type of door you need, the tools needed, and how to install it.This includes going to your residence and measuring the door, helping at the store and picking out the correct size doggy door and door and finally installing it. I will help you purchase the correct tools or you can use mine. The only thing I ask for you to purchase for the tools is the saw blade if needed." ,maxlength:500, label:false%>
-      <%= f.input :skill_level_id, label: "Skill Level", as: :select, collection: SkillLevel.all, value_method: :id %>
+      <%= f.input :skill_level_id, label: "Your skill level", as: :select, collection: SkillLevel.all, value_method: :id %>
       <%= f.submit %>
       <%end%>
     </fieldset>
-  </div>
-
-<div class='form-description raised-box-content'>
-    <div class='content'>
-    <h4 class='subject'>Almost there!</h4>
-
-   <p>Fill out the form and we'll post it to the <%= link_to 'Requested Skills', skill_requests_path %> page</p>
-   <p>We'll also notify anyone who has similar skills in your surrounding area to see if they can help.</p>
-    <p class='content'>Fill out the form and we'll post it to the <%= link_to 'Requested Skills', skill_requests_path %> page</p>
-    <p class='content'>We'll also notify anyone who has similar skills in your surrounding area to see if they can help.</p>
-  </div>
   </div>
   <% else %>
   <%= render 'refills/sign_up_in_post_request' %>
