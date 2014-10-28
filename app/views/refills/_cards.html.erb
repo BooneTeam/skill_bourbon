@@ -1,5 +1,6 @@
 
 <div class="cards">
+  <h4 class='title'> <%= @skills.first.class.model_name.human + 's' if !@skills.empty? %> </h4>
   <% @skills.each do |skill| %>
   <%= link_to skill.base_uri do %>
   <div class="hover-tile-outer">

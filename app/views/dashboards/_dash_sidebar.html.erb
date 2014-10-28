@@ -6,7 +6,7 @@
       <% @apprenticeships.each do |apprenticeship| %>
       <li>
         <h6>
-          <span class='level learning'><%=apprenticeship.skill_level.level_num%></span> <%=link_to apprenticeship.skill.title, skill_path(apprenticeship.skill)%>
+          <span class='level learning status-<%=apprenticeship.try(:accepted_status)%> tooltip-item'><div class="tooltip pending">Status: <%= apprenticeship.try(:accepted_status)%></div></span> <%=link_to apprenticeship.skill.title, skill_path(apprenticeship.skill)%>
            <%= link_to apprenticeship_path(apprenticeship) do %>
             <i class="fa fa-gear"></i>
           <% end %>
@@ -24,7 +24,7 @@
       <% @earning_skills.each do |skill| %>
       <li>
         <h6>
-          <span class='level earning'><%=skill.skill_level.level_num%></span> <%=link_to skill.title, skill_path(skill)%>
+          <span class='level earning'><%=skill.apprenticeships.count %></span> <%=link_to skill.title, skill_path(skill)%>
           <%= link_to edit_skill_path(skill) do %>
             <i class="fa fa-gear"></i>
           <% end %>
@@ -37,19 +37,14 @@
     </ul>
   </div>
   <div id="requests">
-    <h5 class="title">My Requests<span class="title-action"></h5>
+    <h5 class="title">Wanting<span class="title-action"></h5>
     <ul>
-      <% @current_user_requests.each do |request| %>
+      <% @skill_requests.each do |request| %>
       <li>
         <h6>
           <span class='status-<%=request.try(:accepted_status) %> tooltip-item'><div class="tooltip pending">Status: <%= request.try(:accepted_status)%></div></span>
-          <% if request.class == Apprenticeship
-                path = skill_path(request.skill.id)
-                edit_path = edit_skill_path(request.skill.id)
-             else
-                path = skill_request_path(request)
-                edit_path = edit_skill_request_path(request)
-             end  %>
+          <%    path = skill_request_path(request)
+                edit_path = edit_skill_request_path(request) %>
           <%=link_to request.try(:title) || request.try(:skill).try(:title), path %>
           <%= link_to edit_path do %>
             <i class="fa fa-gear"></i>

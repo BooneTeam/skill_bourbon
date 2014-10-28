@@ -42,7 +42,7 @@
     padding:10px;
     float:left;
     @include shift(1);
-    @include span-columns(3);
+    @include span-columns(8);
   }
   .profile-image{
     font-size:.8em;
@@ -70,6 +70,7 @@
   @include span-columns(4);
   @include shift(1);
   padding:1em;
+  font-size:.8em;
   // background:transparentize(white, .3);
   button{
     font-size:.5em;
@@ -135,7 +136,7 @@
 
 #new-skill-form{
   @include outer-container;
-  @include span-columns(5)
+  // @include span-columns(5)
 }
 
 #skill_full_description{

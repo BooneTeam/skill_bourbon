@@ -7,7 +7,7 @@ class CreateSkills < ActiveRecord::Migration
 
       t.string  :creator_type
       t.integer :creator_id
-      t.integer :creator_level
+      # t.integer :creator_level
 
       t.references :skill_level
       t.references :location

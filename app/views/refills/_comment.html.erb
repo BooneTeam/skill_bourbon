@@ -1,61 +1,33 @@
+<% unless @skill.comments.empty? %>
+<% @skill.comments.each do |comment| %>
 <div class="comment">
-  <!-- <div class="comment-image"> -->
-    <!-- <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_1.png" alt=""> -->
-  <!-- </div> -->
+  <div class="comment-image">
+    <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_2.png" alt="">
+  </div>
   <div class="comment-content">
-    <h6>AuthorName Rating: ***</h6>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed.</p>
-    <p class="comment-detail">Date</p>
+    <h6><%= comment.user.username %></h6>
+    <p><%= comment.content %></p>
+    <p class="comment-detail"><%= comment.created_at %></p>
   </div>
 </div>
-
-<div class="comment">
-  <!-- <div class="comment-image"> -->
-    <!-- <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_2.png" alt=""> -->
-  <!-- </div> -->
-  <div class="comment-content">
-    <h6>AnotherOne Rating: **</h6>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed.</p>
-    <p class="comment-detail">Date</p>
-  </div>
+<% end %>
+<% else %>
+<div class='comment'>
+  <p>No comments or reviews have been posted yet.</p>
 </div>
-<div class="comment">
-  <!-- <div class="comment-image"> -->
-    <!-- <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_2.png" alt=""> -->
-  <!-- </div> -->
-  <div class="comment-content">
-    <h6>Another One</h6>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed.</p>
-    <p class="comment-detail">Date or details about this post</p>
-  </div>
-</div>
-<div class="comment">
-  <!-- <div class="comment-image"> -->
-    <!-- <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_2.png" alt=""> -->
-  <!-- </div> -->
-  <div class="comment-content">
-    <h6>Another One</h6>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed.</p>
-    <p class="comment-detail">Date or details about this post</p>
-  </div>
-</div>
-<div class="comment">
-  <!-- <div class="comment-image"> -->
-    <!-- <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_2.png" alt=""> -->
-  <!-- </div> -->
-  <div class="comment-content">
-    <h6>Another One</h6>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed.</p>
-    <p class="comment-detail">Date or details about this post</p>
-  </div>
-</div>
-<div class="comment">
-  <!-- <div class="comment-image"> -->
-    <!-- <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_2.png" alt=""> -->
-  <!-- </div> -->
-  <div class="comment-content">
-    <h6>Another One</h6>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio, aspernatur, quia modi minima debitis tempora ducimus quam vero impedit alias earum nemo error tenetur sed.</p>
-    <p class="comment-detail">Date or details about this post</p>
-  </div>
-</div>
+<% end %>
+<fieldset>
+<% if current_user and @skill.apprenticeships.map(&:user).include?(current_user) %>
+<%= form_for [@skill, Comment.new] do |f| %>
+  <p>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :type, value: @apprenticeship.class %>
+    <%= f.label "Enter a new comment" %><br />
+    <%= f.text_area :content %>
+  </p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>
+<% else %>
+<p> You must be currently enrolled or have taken this class to comment </p>
+<% end %>
+</fieldset>
