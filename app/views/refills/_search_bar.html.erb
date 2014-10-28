@@ -20,7 +20,8 @@
 <%= f.submit value: "Search #{(@skills.first || Skill.new).class.model_name.human + "s"}"%>
 <% end %>
 </div>
-<%= button_to "Post a Skill Request", new_skill_request_path, method: :get %>
+<p>Can't find what you're looking for? <%= link_to "Post a Skill Request", new_skill_request_path, method: :get %>
+
 
 
 

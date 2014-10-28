@@ -2,7 +2,10 @@
   <%= render "refills/skill_form" %>
    <div class='form-description raised-box-content'>
    <div class='content'>
-     <h4 class='subject'>Edit all you wish!</h4>
+     <h4 class='subject'>Deleting this skill will completely remove it completely.</h4>
+     <%= button_to skill_path(@skill), method: :delete, class: "danger" do  %>
+       Delete Skill
+     <% end %>
    </div>
   <!-- <%= render 'refills/categories' %> -->
 </div>

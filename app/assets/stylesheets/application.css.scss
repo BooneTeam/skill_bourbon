@@ -41,6 +41,9 @@
 body{
   // overflow-x:hidden;
 }
+button.danger{
+  @include button(simple, red);
+}
 
 .select2.categories .select2-choices{
   margin: 0em !important;
@@ -133,7 +136,7 @@ body{
   @include outer-container;
   font-size:1em;
   height:$sign-up-height;
-  margin-right:0px;
+  // margin-right:0px;
   color:$base-body-color;
   min-width:600px;
   text-align: left;

@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   get 'faq/'      => 'static_pages#faq'
   get 'contact/'  => 'static_pages#contact'
   get 'coming_soon/'  => 'static_pages#coming_soon'
+  get 'creating_skills_help/'  => 'static_pages#creating_skills_help'
 
   get 'dashboard/' => 'dashboards#show'
 
   resources :skills do
+    resources :comments
     collection do
       resources :apprenticeships do
         resources :comments
@@ -24,6 +26,10 @@ Rails.application.routes.draw do
       get 'teaching'
       get 'learning'
     end
+  end
+
+  resources :paths do
+
   end
 
   # resources :users

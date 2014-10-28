@@ -15,7 +15,8 @@
 
   <div><%= f.submit "Sign up for SkillClimb" %></div>
 <% end %>
-<%#= button_to "Sign In", new_user_session_path %>
+<p>Already have an account? <%= link_to "Sign in", new_user_session_path, method: :get %></p>
+<%#= button_to "Sign in", new_user_session_path %>
 <%#= render "devise/shared/links" %>
 </fieldset>
 <%= render "refills/user_sign_up_side_image" %>
