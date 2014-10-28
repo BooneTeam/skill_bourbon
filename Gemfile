@@ -58,6 +58,7 @@ group :test do
   # gem 'test-unit',               '~> 2.4.0', :platforms => :ruby_19
   # gem 'timecop',                 '~> 0.6.1'
   # gem 'webmock'
+  gem 'selenium-webdriver'
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'capybara-screenshot'

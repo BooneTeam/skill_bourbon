@@ -31,6 +31,7 @@
  @import "refills/calendar_grid";
  @import "refills/comment";
  @import "refills/hover_tile";
+ @import "refills/browser";
  @import "skills";
  @import "dashboard";
 
@@ -99,7 +100,7 @@ body{
 
 .dashboard_container.user-container{
   background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
-  background-color:black;
+  background-color:#4b7e91;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

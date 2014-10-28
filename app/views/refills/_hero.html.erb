@@ -6,6 +6,10 @@
 			<h6>Learn By Doing $ Earn by Sharing</h6>
       <h6>Skill Climb allows people in the same area to connect,learn, and make some cash.</h6>
 		</div>
-    <%= button_to "Get Started", new_user_registration_path, method:"get" %>
+    <% if current_user %>
+      <%= button_to "Go to your dashboard", dashboard_path, method:"get" %>
+    <% else %>
+      <%= button_to "Get Started", new_user_registration_path, method:"get" %>
+    <% end %>
 	</div>
 </div>

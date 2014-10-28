@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get 'what_is/'  => 'static_pages#what_is'
   get 'faq/'      => 'static_pages#faq'
   get 'contact/'  => 'static_pages#contact'
+  get 'coming_soon/'  => 'static_pages#coming_soon'
 
   get 'dashboard/' => 'dashboards#show'
 
