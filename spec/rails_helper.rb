@@ -23,7 +23,9 @@ require 'controller_helpers'
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.
-ActiveRecord::Migration.maintain_test_schema!
+#wtf does this not work on 4.1?
+# ActiveRecord::Migration.maintain_test_schema!
+ActiveRecord::Migration.check_pending! if defined?(ActiveRecord::Migration)
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
