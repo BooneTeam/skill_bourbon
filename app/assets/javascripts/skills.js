@@ -2,8 +2,11 @@
 //All this logic will automatically be available in application.js.
 //You can use CoffeeScript in this file: http://coffeescript.org/
 $(document).ready(function(){
+
+// Hide the two forms until button is clicked
   $('#new_apprenticeship_false').hide();
   $('#new_apprenticeship_true').hide();
+
   $('#same-request-button').on('click',function(){
     $('#new_apprenticeship_false').slideToggle();
   });
@@ -12,8 +15,11 @@ $(document).ready(function(){
     $('#new_apprenticeship_true').slideToggle();
   });
 
+// Render datetime picker for meeting dates
   $('.datepicker').datetimepicker();
 
+// Watch for empty fields if user has clicked inside
+// field and then clicked off without filling in
   $('input.required').on("blur",function(){
     if ($(this).val() === ""){
       if ($(this).parent().find('.error').length <= 0 ){
@@ -22,6 +28,7 @@ $(document).ready(function(){
     }
   });
 
+// ?
   $(".simple_form #autocomplete").on('change',function(){
     if ($(this).val() == ''){
       var inputs = $('.simple_form.search').find('input.location');

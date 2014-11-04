@@ -1,5 +1,5 @@
 <div class="search-tools">
-  <%= simple_form_for :search, :html => {:"data-update-target" => 'cards-container'}, remote: true, method: "get" do |f| %>
+  <%= simple_form_for :search, :html => {:"data-update-target" => 'cards-container'}, remote: is_remote, method: "get" ,:url => action do |f| %>
   <%= f.simple_fields_for :location do |c| %>
   <div class='filter'>
     <div class="input string optional search_keywords hide-options">
@@ -17,10 +17,10 @@
 <!-- <div class='filter'> -->
   <%#= f.input :keywords, required: false, label:false,placeholder: "Search Keywords" %>
 <!-- </div> -->
-<%= f.submit value: "Search #{(@skills.first || Skill.new).class.model_name.human + "s"}"%>
-<% end %>
 </div>
-<p>Can't find what you're looking for? <%= link_to "Post a Skill Request", new_skill_request_path, method: :get %>
+<%= f.submit value: "#{button_text}"%>
+<% end %>
+<!-- <p>Can't find what you're looking for? <%= link_to "Post a Skill Request", new_skill_request_path, method: :get %> -->
 
 
 

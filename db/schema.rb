@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141028133001) do
+ActiveRecord::Schema.define(version: 20141102230313) do
 
   create_table "apprenticeships", force: true do |t|
     t.text     "request_description"
@@ -58,6 +58,19 @@ ActiveRecord::Schema.define(version: 20141028133001) do
     t.integer "apprenticeship_id"
     t.integer "user_id"
     t.text    "note"
+  end
+
+  create_table "notifications", force: true do |t|
+    t.string   "description"
+    t.string   "title"
+    t.string   "notifiable_type"
+    t.integer  "notifiable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "seen",            default: false
+    t.string   "item_changed"
+    t.integer  "to_notify_id"
+    t.string   "to_notify_type",  default: "User"
   end
 
   create_table "paths", force: true do |t|

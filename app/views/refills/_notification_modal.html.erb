@@ -1,0 +1,14 @@
+<div class="modal">
+  <label for="modal-1">
+    <%= fa_icon("exclamation-circle 3x") %>
+    <h6> You have <%= modal_subjects.count %> Unseen Notifications. </h6>
+  </label>
+  <input class="modal-state" id="modal-1" type="checkbox" />
+  <div class="modal-window">
+    <div class="modal-inner">
+      <label class="modal-close" for="modal-1"></label>
+      <h1> Unseen Notifications </h5>
+        <%= render partial: "refills/notifications", locals: { :notifications => modal_subjects} %>
+    </div>
+  </div>
+</div>

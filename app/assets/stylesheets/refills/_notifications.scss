@@ -1,0 +1,77 @@
+.notification-container{
+  @include outer-container;
+  margin-top:50px;
+}
+
+// This is onl for the table column on dashboard
+.notifications-alert{
+  background: none;
+}
+
+.fa.fa-exclamation-circle{
+  color:red;
+}
+
+.notification {
+  $notification-gutter: 1.4em;
+  $notification-image-padding: .7em;
+  $notification-image-width: 4em;
+  $notification-color: $base-font-color;
+  $notification-background: lighten($base-accent-color, 15);
+  $notification-detail-color: transparentize($notification-color, .5);
+  $notification-image-vert-alignment: top;
+
+  display: table;
+  width: 100%;
+  margin-bottom: $base-line-height;
+  padding: 1em;
+  border: 1px solid white;
+  box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
+  background: $notification-background;
+
+  .notification-image,
+  .notification-content {
+    display: table-cell;
+    vertical-align: $notification-image-vert-alignment;
+  }
+
+  .notification-image {
+    padding-right: $notification-gutter;
+
+    > img {
+      width: $notification-image-width;
+      height: auto;
+      border-radius: $base-border-radius;
+      padding: $notification-image-padding;
+      background: $notification-background;
+      display: block;
+      max-width: none;
+    }
+
+    .notification-reverse-order & {
+      padding-right: 0;
+      padding-left: 10px;
+    }
+  }
+
+  .notification-content {
+    width: 100%;
+
+    h1 {
+      font-size: 1em;
+      margin-bottom: .5em;
+    }
+
+    p {
+      margin-bottom: .5em;
+    }
+
+    p.notification-detail {
+      font-style: italic;
+      font-size: .9em;
+      color: $notification-detail-color;
+    }
+  }
+}
+
+

@@ -25,9 +25,16 @@ class SkillsController < ApplicationController
       results = ActiveRecord::Base.connection.execute(query);
       skill_ids = results.map{|r| r["skill_id"]}
       @skills = Skill.find(skill_ids)
-      render :partial =>  'refills/cards', :content_type => 'text/html'
+      respond_to do |format|
+        format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
+        format.html
+      end
     else
       @skills = Skill.where(is_active: true)
+      respond_to do |format|
+        format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
+        format.html
+      end
     end
   end
 
@@ -64,6 +71,7 @@ class SkillsController < ApplicationController
     skill = Skill.find(params[:id])
     if current_user == skill.creator
       @skill = skill
+      @path  = skill.path || skill.build_path
     else
       redirect_to root_path
     end
@@ -94,7 +102,7 @@ class SkillsController < ApplicationController
   private
 
     def skill_params
-      params.require(:skill).permit(:title,:subtitle,:full_description,:skill_level_id,:creator_id,:is_active,category_ids:[],location_attributes:[:city,:state,:zip, :id])
+      params.require(:skill).permit(:title,:subtitle,:full_description,:skill_level_id,:creator_id,:is_active,:path_id,category_ids:[],location_attributes:[:city,:state,:zip, :id])
     end
 
     def find_location
