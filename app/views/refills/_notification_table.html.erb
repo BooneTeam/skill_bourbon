@@ -1,0 +1,46 @@
+<div class="module short" id="module-alert">
+  <h1>
+    <a class="menu-trigger"> </a>
+  </h1>
+  <div class="module-content" style="height: auto;">
+    <ul class="alert-list" id="yui_3_2_0pr1_1_14151086192831282">
+      <% current_user.notifications.each do |notification| %>
+      <li class="financeCharge fee-icon short" id="alert-72176791-bankAtmFee">
+        <span class="fa fa-exclamation-circle"></span>
+        <a class="dismiss" href="javascript://" title="Dismiss Alert">x</a>
+        <span class="date"><%= notification.created_at %></span>
+        <div class='notification-content'>
+        <span class="headline">
+          <h6><%=  notification.title %></h6>
+        </span>
+          <span class="description">
+            <p><%= notification.description %></p>
+          </span>
+          <%= button_to "Go to #{notification.notifiable.class.to_s}",url_for(notification.notifiable), method: "get" %>
+        </div>
+         <!--  <a href="transaction.event?accountId=6266020">
+            <var class="accountName"><%= notification.title %></var>
+          </a> charged you an
+          <a href="transaction.event?query=category:ATM Fee">
+            <var class="category">ATM Fee</var>
+          </a> of
+          <var class="amount">$2.50</var> -->
+        <!-- </span> -->
+       <!--  <span class="offer"><%= notification.description %>
+          <var class="offer-merchant">Schwab</var>.
+          <a class="trackme" href="/app/leaving.event?offerId=42744&amp;source=alerts&amp;campaign=ALERT_FEE_ATM" target="_blank">Learn More.</a>
+        </span>
+        <i class="icon"> </i -->
+      </li>
+      <% end %>
+     <!--  <li class="financeCharge fee-icon short" id="alert-72138629-bankAtmFee"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Oct 27</span><span class="headline"><a href="transaction.event?accountId=6266020"><var class="accountName">Wells Fargo - Bills</var></a> charged you an <a href="transaction.event?query=category:ATM Fee"><var class="category">ATM Fee</var></a> of <var class="amount">$2.50</var></span><span class="offer">These frustrating fees can add up quickly. Open an account that refunds your ATM fees from <var class="offer-merchant">Schwab</var>. <a class="trackme" href="/app/leaving.event?offerId=42744&amp;source=alerts&amp;campaign=ALERT_FEE_ATM" target="_blank">Learn More.</a></span><i class="icon"> </i></li><li class="financeCharge fee-icon short" id="alert-72138628-bankAtmFee"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Oct 27</span><span class="headline"><a href="transaction.event?accountId=6266020"><var class="accountName">Wells Fargo - Bills</var></a> charged you an <a href="transaction.event?query=category:ATM Fee"><var class="category">ATM Fee</var></a> of <var class="amount">$2.50</var></span><span class="offer">These frustrating fees can add up quickly. Open an account that refunds your ATM fees from <var class="offer-merchant">Schwab</var>. <a class="trackme" href="/app/leaving.event?offerId=42744&amp;source=alerts&amp;campaign=ALERT_FEE_ATM" target="_blank">Learn More.</a></span><i class="icon"> </i></li><li class="financeCharge fee-icon short" id="alert-72138627-bankAtmFee"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Oct 27</span><span class="headline"><a href="transaction.event?accountId=6266020"><var class="accountName">Wells Fargo - Bills</var></a> charged you an <a href="transaction.event?query=category:ATM Fee"><var class="category">ATM Fee</var></a> of <var class="amount">$2.50</var></span><span class="offer">These frustrating fees can add up quickly. Open an account that refunds your ATM fees from <var class="offer-merchant">Schwab</var>. <a class="trackme" href="/app/leaving.event?offerId=42744&amp;source=alerts&amp;campaign=ALERT_FEE_ATM" target="_blank">Learn More.</a></span><i class="icon"> </i></li><li class="billReminderNew all_alert" id="alert-72421311-billReminderNew"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Nov 11</span><span class="headline duefuture">Your <a href="transaction.event?query=description:Gas"><var class="description">Gas</var></a> bill <span class="amount-not-available">of <var class="amount">$40.00</var></span> is due in <strong><var class="days">7</var></strong><var class="daystring"> days</var> on <strong><var class="date">November 11</var></strong>.</span><i class="icon"> </i></li><li class="unusualSpending all_alert" id="alert-72176793-unusualSpending"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Nov 4</span><span class="headline">In the past 30 days, you spent <strong><var class="amount">$1,140.10</var></strong> on <a href="transaction.event?query=category:Entertainment&amp;startDate=10/06/2014&amp;endDate=11/04/2014"><var class="category">Entertainment</var></a>. Usually you spend <strong><var class="amount2">$707</var></strong>.</span><i class="icon"> </i></li><li class="overBudget all_alert" id="alert-72176792-overBudget"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Oct 31</span><span class="headline"><var class="date">Last month</var>, you spent <strong><var class="amount">$233.89</var></strong> on <a href="transaction.event?query=category:Gas+%26+Fuel&amp;startDate=10/01/2014&amp;endDate=10/31/2014&amp;exclHidden=T"><var class="category">Gas &amp; Fuel</var></a>. This exceeds your <a href="#module-budget">budget</a> of <strong><var class="amount2">$200</var></strong> by <strong><var class="amount3">$33</var></strong>.</span><i class="icon"> </i></li><li class="overBudget all_alert" id="alert-71847331-overBudget"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Oct 31</span><span class="headline"><var class="date">Last month</var>, you spent <strong><var class="amount">$536.01</var></strong> on <a href="transaction.event?query=category:Groceries&amp;startDate=10/01/2014&amp;endDate=10/31/2014&amp;exclHidden=T"><var class="category">Groceries</var></a>. This exceeds your <a href="#module-budget">budget</a> of <strong><var class="amount2">$300</var></strong> by <strong><var class="amount3">$236</var></strong>.</span><i class="icon"> </i></li><li class="overBudget all_alert" id="alert-70386721-overBudget"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Oct 31</span><span class="headline"><var class="date">Last month</var>, you spent <strong><var class="amount">$1,158.35</var></strong> on <a href="transaction.event?query=category:Gambling&amp;startDate=10/01/2014&amp;endDate=10/31/2014&amp;exclHidden=T"><var class="category">Gambling</var></a>. This exceeds your <a href="#module-budget">budget</a> of <strong><var class="amount2">$0</var></strong> by <strong><var class="amount3">$1,158</var></strong>.</span><i class="icon"> </i></li><li class="overBudget all_alert" id="alert-70254900-overBudget"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Oct 31</span><span class="headline"><var class="date">Last month</var>, you spent <strong><var class="amount">$195.55</var></strong> on <a href="transaction.event?query=category:Fast+Food&amp;startDate=10/01/2014&amp;endDate=10/31/2014&amp;exclHidden=T"><var class="category">Fast Food</var></a>. This exceeds your <a href="#module-budget">budget</a> of <strong><var class="amount2">$65</var></strong> by <strong><var class="amount3">$130</var></strong>.</span><i class="icon"> </i></li><li class="largeDeposit good all_alert" id="alert-71952864-largeDeposit"><a class="dismiss" href="javascript://" title="Dismiss Alert">x</a><span class="date">Oct 24</span><span class="headline">Your <strong><var class="amount">$1,704.48</var></strong> deposit (<a href="transaction.event?query=description:Lin Digital Llc"><var class="merchant">Lin Digital Llc</var></a>) to your <a href="transaction.event?accountId=7024375"><var class="accountName">Wells Fargo - WAY2SAVE? CHECKING</var></a> account is now available.</span><i class="icon"> </i></li> -->
+   </ul>
+   <!-- <div class="missing"><p class="zero-state-message">It’s all good! You don’t have any new alerts.</p>
+   </div> -->
+ </div><!-- <div class="button-bar clearfix"><a class="see_all_button" href="javascript://">Show All Alerts</a><small>Showing 4 of 11 alerts</small></div><div class="module-menu hide" id="yui_3_2_0pr1_1_14151086192831269"><div class="gear-box-wrapper"><div class="gear-box"> </div></div><div class="gear-box-image"> </div><div class="menu-wrapper"><ul class="menu-list"><li><a class="menu-item com_openAccount-notification" href="javascript://" id="module-alert-trigger">Change your alerts</a></li><li><a class="menu-item com_openAccount-notification" href="javascript://" id="module-mobile-trigger">Set up mobile alerts</a></li></ul></div></div> --></div>
+<!--          <% if !current_user.notifications.empty? %>
+         <td class='notification-alert'>
+          <%= render partial: 'refills/notification_modal', locals: { modal_subjects: current_user.notifications } %>
+        </td>
+        <% end %>
+      -->

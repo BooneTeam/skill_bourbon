@@ -1,8 +1,7 @@
-<div class="dashboard_container user-container">
 <fieldset id='skill-search-box'>
-    <%= render "refills/search_bar" %>
+      <!-- <h4 class='title'> <%= @skills.first.class.model_name.human + 's' if !@skills.empty? %> </h4> -->
+    <%= render partial: "refills/search_bar", locals: {button_text: "Search Skills", is_remote:true, action: '/skills'} %>
 </fieldset>
-</div>
 <div class="dashboard_container cards-container">
 <%= render "refills/cards" %>
 </div>

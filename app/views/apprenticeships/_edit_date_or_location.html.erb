@@ -1,28 +1,29 @@
-<div>
+    <div class='sidebar'>
+      <h6 class="title">Dates Accepted? </h6>
+      <p><%= @apprenticeship.meeting_date_scheduled ? @apprenticeship.meeting_date_scheduled : "No date agreed upon yet" %></p>
+        <h6 class='title'>Apprentice acceptance? </h6>
+        <p><%= @apprenticeship.apprentice_accept_date ? 'Accepted': 'Not Accepted Yet' %></p>
+        <h6 class='title'>Skill creator acceptance? </h6>
+          <p><%= @apprenticeship.creator_accept_date ? 'Accepted': 'Not Accepted Yet' %></p>
+    </div>
+<div class='apprenticeship-form'>
 <fieldset>
   <%= simple_form_for @apprenticeship do |f| %>
       <%= f.simple_fields_for :location do |c| %>
-      <h5> Change the location or date of apprenticeship. </h5>
-      <p>Current Location: <%= @apprenticeship.location.address %>,<%= @apprenticeship.location.city %>, <%= @apprenticeship.location.state %></p>
-       <input id="autocomplete" placeholder="Enter new address"
+      <h6>Current Location: <%= @apprenticeship.location.address %>,<%= @apprenticeship.location.city %>, <%= @apprenticeship.location.state %></h6>
+       <input id="autocomplete" placeholder="Enter new address if you would like to change where to meet."
              onFocus="geolocate()" type="text"></input>
         <%= c.hidden_field :address, label: "City", placeholder:"Select Address", class: 'street_number route',:readonly => true %>
         <%= c.hidden_field :city, label: "City", placeholder:"Select City", class: 'locality',:readonly => true %>
         <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
         <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
       <% end %>
-
-      <%= f.input :meeting_date_requested, :as => :datetime_picker, required: false, label:"Change the date below to request a change in date or click accept date to schedule this on the requested date. The __ will be notified and asked to accept." %>
-
-      <p>Date Requested: <%= @apprenticeship.meeting_date_requested %> </p>
+      <h6>Date Requested: <%= @apprenticeship.meeting_date_requested %> </h6>
       <%= link_to accept_date_apprenticeship_path(@apprenticeship), method: :post do %>
         <i class="fa fa-thumbs-o-up">Accept Date</i>
       <% end %>
-      <p>Date Scheduled: <%= @apprenticeship.meeting_date_scheduled ? @apprenticeship.meeting_date_scheduled : "No date agreed upon yet" %></p>
-      <div>
-        <p>Apprentice accepted date status: <%= @apprenticeship.apprentice_accept_date ? 'Accepted': 'Not Accepted Yet' %></p>
-        <p>Skill creator accepted date status: <%= @apprenticeship.creator_accept_date ? 'Accepted': 'Not Accepted Yet' %></p>
-      </div>
+      <h6> Or </h6>
+      <%= f.input :meeting_date_requested, :as => :datetime_picker, required: false, label:"Request to change the date" %>
       <%= f.submit %>
 <%end%>
 </fieldset>

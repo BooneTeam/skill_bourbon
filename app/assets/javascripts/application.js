@@ -21,6 +21,23 @@
 
 $(document).ready(function() {
 
+$("form").on("keypress", function (e) {
+    if (e.keyCode == 13) {
+        return false;
+    }
+});
+
+$('#contact-us-modal').on("click",function(e){
+  e.preventDefault();
+  $("#contact-us-show input").prop("checked", true);
+});
+
+$('#about-modal').on("click",function(e){
+  e.preventDefault();
+  $("#about-show input").prop("checked", true)
+});
+
+
 
 initialize();
 

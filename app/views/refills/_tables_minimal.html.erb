@@ -31,7 +31,7 @@
         <% end %><%= data_row.user == current_user ? data_row.skill.creator.username : data_row.user.username %></td>
       <td><%= link_to data_row.skill.title, apprenticeship_path(data_row) %></td>
       <td><%= data_row.location.try(:address) %></td>
-      <td><%= data_row.meeting_date_scheduled %></td>
+      <td><%= data_row.meeting_date_scheduled || "Pending Acceptance"%></td>
 <!--       <td><%= simple_form_for(data_row, :html => {:multipart => true, :class=> '.form-inline'} ) do |f| %>
       <%= f.input :meeting_date_requested, :as => :datetime_picker, label:false, class: 'dash-date-change' %>
       <%= f.button :submit, value:"Save Date" %>
