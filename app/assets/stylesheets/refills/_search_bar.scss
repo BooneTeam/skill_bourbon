@@ -1,14 +1,11 @@
 .search-tools {
   $search-tools-border-color: $base-border-color;
   $search-tools-background: lighten($search-tools-border-color, 10);
-
-  @include clearfix;
-  // border: 1px solid $search-tools-border-color;
+  @include outer-container;
+  @include span-columns(9);
+  @include shift(3);
   border:none;
-  // background: $search-tools-background;
-  background: $search-tools-background;
   padding: $gutter / 2;
-  border-radius: $base-border-radius;
 
   .filter {
     margin-bottom: 1em;
@@ -22,6 +19,8 @@
     > div {
       @extend input[type="text"];
       position: relative;
+      background:none;
+      border:1px solid white;
 
       label {
         font-weight: 400;

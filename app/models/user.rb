@@ -14,17 +14,13 @@ class User < ActiveRecord::Base
   has_many :apprenticeships
   has_many :skills, through: :apprenticeships
   has_many :notes,  through: :apprenticeships
-
+  has_many :notifications, :as => :to_notify
   def confirmed_upcoming_events
     self.apprenticeships.confirmed_upcoming + self.apprentice_requests.confirmed_upcoming
   end
 
-  def current_apprenticeship_skill_ids
-    apprenticeships.inject([]){|arr,apprent|  arr << apprent.skill_id }
-  end
-
-  def is_apprentice?(skill)
-    current_apprenticeship_skill_ids.include?(skill.id)
+  def is_apprentice?(item)
+    apprenticeships.include?(item) || skills.include?(item)
   end
 
 end

@@ -30,4 +30,19 @@ class Skill < ActiveRecord::Base
     skill_path(self)
   end
 
+  def create_skill_from_request(skill_request_params = {})
+      skill_request = skill_request_params[:skill_request]
+      user = skill_request_params[:user]
+      self.title =  skill_request.title
+      self.subtitle =  skill_request.subtitle
+      self.full_description =  skill_request.full_description
+      self.location_id =  skill_request.location_id
+      self.creator_id =  user.id
+      self.skill_level_id = skill_request.skill_level.id
+      self.categories << skill_request.categories
+      self.save
+      return self
+  end
+
+
 end

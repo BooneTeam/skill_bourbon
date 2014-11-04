@@ -1,8 +1,6 @@
-<div class="dashboard_container user-container">
 <fieldset id='skill-search-box'>
-    <%= render "refills/search_bar" %>
+    <%= render partial: "refills/search_bar", locals: {button_text:"Search Skill Requests", is_remote:true, action: "/skill_requests"} %>
 </fieldset>
-</div>
 <div class="dashboard_container cards-container">
 <%= render "refills/cards" %>
 </div>

@@ -1,0 +1,27 @@
+#module-alert a.dismiss{
+  background: url("https://images.mint.com/web-client/images/overview/overview_sprite_new.png") no-repeat scroll -60px -234px transparent;
+  height: 10px;
+  width: 10px;
+  margin-top: -6px;
+  visibility: hidden;
+}
+#module-alert .alert-list li {
+border-bottom: 1px dotted #CCCCCC;
+padding: 12px 0 12px 48px;
+word-wrap: break-word;
+zoom: 1;
+position: relative;
+line-height: 1.4em;
+}
+
+#module-alert span.date {
+font: normal 11px Georgia, serif;
+color: #999;
+margin-right: 21px;
+margin-left: 21px;
+text-transform: uppercase;
+}
+
+.notification-content{
+  padding:15px;
+}
