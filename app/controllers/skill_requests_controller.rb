@@ -25,9 +25,16 @@ class SkillRequestsController < ApplicationController
       results = ActiveRecord::Base.connection.execute(query);
       skill_ids = results.map{|r| r["skill_request_id"]}
       @skills = SkillRequest.find(skill_ids)
-      render :partial =>  'refills/cards', :content_type => 'text/html'
+      respond_to do |format|
+        format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
+        format.html
+      end
     else
       @skills = SkillRequest.where("accepted_status != 'confirmed' ")
+      respond_to do |format|
+        format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
+        format.html
+      end
     end
   end
 
@@ -93,7 +100,7 @@ class SkillRequestsController < ApplicationController
     case skill_request.accepted_status
     when "confirmed"
       unless skill_request.has_apprenticeship?
-        skill = create_skill_from_request(skill_request)
+        skill = Skill.new.create_skill_from_request({skill_request:skill_request,user:current_user})
         apprenticeship = create_apprenticeship_from_skill(skill,skill_request)
         if apprenticeship.valid? && skill.valid?
           skill_request.has_apprenticeship = true
@@ -116,33 +123,20 @@ class SkillRequestsController < ApplicationController
   end
 
   private
-    def create_skill_from_request(skill_request)
-      skill = Skill.new(
-        title: skill_request.title,
-        subtitle: skill_request.subtitle,
-        full_description: skill_request.full_description,
-        location_id: skill_request.location_id,
-        creator_id: current_user.id,
-        skill_level_id:skill_request.skill_level.id
-        )
-      skill.categories << skill_request.categories
-      skill.save
-      skill
-    end
 
-    def create_apprenticeship_from_skill(skill, skill_request)
-      apprenticeship = Apprenticeship.new(
-        user_id:  skill_request.user_id,
-        skill_id: skill.id,
-        location_id: skill_request.location_id,
-        request_description: skill_request.full_description,
-        accepted_status:"confirmed",
-        skill_level_id:  skill_request.skill_level.id,
-        meeting_date_scheduled: skill_request.meeting_date_scheduled,
-        meeting_date_requested: skill_request.meeting_date_requested)
-      apprenticeship.save
-      apprenticeship
-    end
+    # def create_apprenticeship_from_skill(skill, skill_request)
+    #   apprenticeship = Apprenticeship.new(
+    #     user_id:  skill_request.user_id,
+    #     skill_id: skill.id,
+    #     location_id: skill_request.location_id,
+    #     request_description: skill_request.full_description,
+    #     accepted_status:"confirmed",
+    #     skill_level_id:  skill_request.skill_level.id,
+    #     meeting_date_scheduled: skill_request.meeting_date_scheduled,
+    #     meeting_date_requested: skill_request.meeting_date_requested)
+    #   apprenticeship.save
+    #   apprenticeship
+    # end
 
     def skill_request_params
       params.require(:skill_request).permit(:title,:subtitle,:accepted_status,:meeting_date_requested,:skill_level_id,:full_description,:user_id,:location_id,category_ids:[])

@@ -1,15 +1,22 @@
 <div class="hero">
 	<div class="hero-inner">
     <a href="" class="hero-logo"><%= image_tag("http://33.media.tumblr.com/f2033cae50aa722d209ad106b6b89f4f/tumblr_mfspw6aC0I1rha3vbo1_1280.png")%></a>
+    <h6>Skill-Climb</h6>
 		<div class="hero-copy">
-			<h1>Welcome to SkillClimb</h1>
-			<h6>Learn By Doing $ Earn by Sharing</h6>
-      <h6>Skill Climb allows people in the same area to connect,learn, and make some cash.</h6>
+			<h1>Learn By Doing $ Earn by Sharing</h1>
+      <h6>Connect, Learn, and Make Some Cash.</h6>
 		</div>
     <% if current_user %>
-      <%= button_to "Go to your dashboard", dashboard_path, method:"get" %>
+      <%= button_to "Your dashboard", dashboard_path, method:"get" %>
+      <h6> Or </h6>
+      <%= button_to "Browse all skills", skills_path, method:"get" %>
     <% else %>
-      <%= button_to "Get Started", new_user_registration_path, method:"get" %>
+      <fieldset id='skill-search-box'>
+        <%= render partial: "refills/search_bar", locals: {button_text: 'Search for a skill to learn today.', action: '/skills', is_remote:false } %>
+        <br />
+        <h6> Or</h6>
+        <%= button_to "Browse all skills", skills_path, method:"get" %>
+      </fieldset>
     <% end %>
 	</div>
 </div>

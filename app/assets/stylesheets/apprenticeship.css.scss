@@ -1,0 +1,23 @@
+.apprenticeship-container{
+
+
+
+  .apprenticeship-form{
+    @include outer-container;
+    @include span-columns(6);
+    margin-right:0px;
+    background: whitesmoke;
+    color: #4b7e91;
+    fieldset{
+      box-shadow: 0.3px 0.3px 0.1px darkgrey;
+    }
+  }
+
+  .skill-bio{
+    @include span-columns(3);
+    text-align: start;
+    margin-right:5px;
+    margin-left:0px;
+    padding:0px 0px 0px 20px;
+  }
+}

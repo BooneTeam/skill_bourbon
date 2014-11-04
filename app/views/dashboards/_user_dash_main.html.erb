@@ -3,6 +3,12 @@
     <div class="row" id='new-apprentice-requests'>
       <!-- <div class='tooltip-item'> -->
 
+      <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Recent Notifications - Some may require action.</div></i><%= current_user.notifications.count %> Unseen notifications</h5>
+      <%= render partial: 'refills/notification_table' %>
+    </div>
+    <div class="row" id='new-apprentice-requests'>
+      <!-- <div class='tooltip-item'> -->
+
       <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">New requests that a user has sent you that need action.</div></i>New student requests</h5>
         <!-- Confirm: Accept request as is. Deny: Deny request completely. Modify: Modify a few fields and re-send the request back the user so they can review and accept the changes. Note: Add some notes for you and the user such as what they will need to bring or extra directions. -->
       <!-- </div> -->

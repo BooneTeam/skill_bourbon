@@ -32,8 +32,12 @@
  @import "refills/comment";
  @import "refills/hover_tile";
  @import "refills/browser";
+ @import "refills/notifications";
+ @import "refills/notification_modal";
+ @import "refills/notification";
  @import "skills";
  @import "dashboard";
+ @import "apprenticeship";
 
 
 // all custom stuff should go in here or in the refills/* stylesheets dont mess with anything under sass/*

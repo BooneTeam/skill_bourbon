@@ -1,3 +1,29 @@
+// Uncomment this for a sticky footer.
+
+// .wrapper-for-content-outside-of-footer {
+//   min-height: 100%;
+//   height: auto !important;
+//   height: 100%;
+//   margin: 0 auto -4em;
+// }
+
+// html, body {
+//  height: 100%;
+// }
+
+// .wrapper-for-content-outside-of-footer:after {
+//   content: "";
+//   display: block;
+// }
+
+// .footer-2, .wrapper-for-content-outside-of-footer:after {
+//   height: 17em;
+
+//   @include media($large-screen) {
+//     height: 4em;
+//   }
+// }
+
 .footer {
   $footer-background: desaturate(darken($base-accent-color, 20), 30);
   $footer-color: white;
@@ -5,48 +31,44 @@
   $footer-disclaimer-color: transparentize($footer-color, .6);
 
   background: $footer-background;
-  @include texture(180deg, lighten(#000, 1), darken(#fff, 10), 67, 0);
-  padding: $base-line-height*2 $gutter;
+  padding: 40px;
   width: 100%;
-  //you added the clear
-  clear:both;
-  .footer-logo {
-    text-align: center;
-    margin-bottom: 2em;
+  // @include texture(180deg, lighten(#000, 1), darken(#fff, 10), 67, 0);
 
-    img {
-      height: 3em;
+  .footer-logo {
+    margin-right: 1em;
+    margin-bottom: 1em;
+
+    @include media($large-screen) {
+      float: left;
+      margin-bottom: 0;
     }
   }
 
-  .footer-links {
-    @include clearfix;
-    margin-bottom: $base-line-height;
-
-    @include media($medium-screen) {
-      @include shift(3);
-    }
+  .footer-logo img {
+    height: 1.6em;
   }
 
   ul {
-    margin-bottom: $base-line-height*2;
-
-    @include media($medium-screen) {
-      @include span-columns(3);
-      @include omega(3n);
-      @include clearfix;
+    margin-bottom: 1em;
+    @include media($large-screen) {
+      float: left;
+      margin-left: 1em;
+      margin-bottom: 0;
     }
   }
 
-  li {
-    text-align: center;
+  ul li {
+    padding-right: 1em;
+    font-weight: 800;
 
-    @include media($medium-screen) {
+    @include media($large-screen) {
+      display: inline;
       text-align: left;
     }
   }
 
-  li a {
+  ul li a {
     color: $footer-link-color;
 
     &:hover {
@@ -54,25 +76,43 @@
     }
   }
 
-  li h3 {
-    color: $footer-color;
-    font-size: 1em;
-    font-weight: 800;
-    margin-bottom: .4em;
-  }
+  .footer-secondary-links {
+    @include media($large-screen) {
+      float: right;
+    }
 
-  hr {
-    border: 1px solid transparentize($footer-disclaimer-color, .3);
-    margin: 0 auto $base-line-height;
-    width: 12em;
-  }
+    li {
+      font-size: .8em;
+      font-weight: 400;
+    }
 
-  p {
-    color: $footer-disclaimer-color;
-    font-size: .9em;
-    line-height: 1.5em;
-    margin: auto;
-    max-width: 35em;
-    text-align: center;
+    ul.footer-social {
+      margin-top: 1em;
+
+      @include media($large-screen) {
+        float: right;
+        margin-top: 0;
+      }
+
+      li {
+        float: left;
+        font-size: 1em;
+        padding-right: .7em;
+
+        &:last-child {
+          padding-right: 0;
+        }
+      }
+
+      img {
+        opacity: .7;
+        height: 1.6em;
+        padding: 1px;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
   }
 }

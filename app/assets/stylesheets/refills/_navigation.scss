@@ -20,7 +20,7 @@
   width: 100%;
   z-index: 9999;
   font-size: .8em;
-  background-color:$nav-color;
+  // background-color:$nav-color;
 
 
   // Mobile view
@@ -68,7 +68,7 @@
     @include clearfix;
     position: relative;
     z-index: 999;
-    border-bottom:1px solid #e5e5e5;
+    // border-bottom:1px solid #e5e5e5;
   }
 
   ul.centered-navigation-menu {
