@@ -1,11 +1,13 @@
 <div class="main-dash">
   <div id="selected_content">
+    <% unless current_user.notifications.empty? %>
     <div class="row" id='new-apprentice-requests'>
       <!-- <div class='tooltip-item'> -->
 
-      <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Recent Notifications - Some may require action.</div></i><%= current_user.notifications.count %> Unseen notifications</h5>
+      <h5 class="title"><i class='fa fa-question-circle tooltip-item'><div class="tooltip">Recent Notifications - Some may require action.</div></i><%= current_user.notifications.count %> Unseen notifications</h5><i class='fa fa-chevron-circle-up toggle-info'></i>
       <%= render partial: 'refills/notification_table' %>
     </div>
+    <% end %>
     <div class="row" id='new-apprentice-requests'>
       <!-- <div class='tooltip-item'> -->
 

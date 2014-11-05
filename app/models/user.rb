@@ -23,4 +23,8 @@ class User < ActiveRecord::Base
     apprenticeships.include?(item) || skills.include?(item)
   end
 
+  def is_teacher?(item)
+    created_skills.include?(item)
+  end
+
 end

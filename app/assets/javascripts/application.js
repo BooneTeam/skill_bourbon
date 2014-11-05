@@ -34,10 +34,23 @@ $('#contact-us-modal').on("click",function(e){
 
 $('#about-modal').on("click",function(e){
   e.preventDefault();
-  $("#about-show input").prop("checked", true)
+  $("#about-show input").prop("checked", true);
 });
 
-
+$('.row .toggle-info').on('click',function(){
+  var down = 'fa fa-chevron-circle-down';
+  var up   = 'fa fa-chevron-circle-up';
+  if ($(this).hasClass(down)){
+    $(this).removeClass(down);
+    $(this).addClass(up);
+  }
+  else{
+    $(this).removeClass(up);
+    $(this).addClass(down);
+  }
+  var content = $(this).parent().find('.toggle-content');
+  $(content).toggle('slow');
+});
 
 initialize();
 
