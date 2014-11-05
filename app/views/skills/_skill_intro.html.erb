@@ -6,8 +6,9 @@
       </h4>
       <p class='small-info'><%= "#{@skill.location.city}, #{@skill.location.state}, #{@skill.location.zip}" %></p>
       <h6>Recommended skill level: <%= @skill.skill_level.title %></h6>
-      <% if current_user && current_user.id == @skill.creator_id %>
+      <% if current_user && current_user.is_teacher?(@skill) %>
         <%= button_to "Edit", edit_skill_path(@skill), method: :get %>
+        <%#= button_to "Manage Students", skill_users_path(skill), method:"get"%>
       <% end %>
     </div>
     <div class='profile-image'>
