@@ -93,6 +93,11 @@ class SkillsController < ApplicationController
     end
   end
 
+  def apprentices
+    skill        = Skill.find(params[:id])
+    @apprentices = skill.apprentices
+  end
+
   def destroy
     skill = Skill.find(params['id'])
     skill.destroy()
