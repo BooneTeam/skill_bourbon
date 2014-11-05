@@ -8,4 +8,11 @@ class NotificationsController < ApplicationController
     notification = notification.find(params[:id])
   end
 
+  def destroy
+    notification = Notification.find(params[:id])
+    if notification.destroy
+      redirect_to :back
+    end
+  end
+
 end

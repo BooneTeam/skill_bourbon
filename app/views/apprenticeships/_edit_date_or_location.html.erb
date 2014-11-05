@@ -1,12 +1,23 @@
-    <div class='sidebar'>
-      <h6 class="title">Dates Accepted? </h6>
-      <p><%= @apprenticeship.meeting_date_scheduled ? @apprenticeship.meeting_date_scheduled : "No date agreed upon yet" %></p>
-        <h6 class='title'>Apprentice acceptance? </h6>
-        <p><%= @apprenticeship.apprentice_accept_date ? 'Accepted': 'Not Accepted Yet' %></p>
-        <h6 class='title'>Skill creator acceptance? </h6>
-          <p><%= @apprenticeship.creator_accept_date ? 'Accepted': 'Not Accepted Yet' %></p>
-    </div>
+<!--TODO:Move to partial -->
+<div class='sidebar'>
+  <h6 class="title">Dates Accepted? </h6>
+  <p><%= @apprenticeship.meeting_date_scheduled ? @apprenticeship.meeting_date_scheduled : "No date agreed upon yet" %></p>
+  <h6 class='title'>Apprentice acceptance? </h6>
+  <p><%= @apprenticeship.apprentice_accept_date ? 'Accepted': 'Not Accepted Yet' %></p>
+  <h6 class='title'>Skill creator acceptance? </h6>
+  <p><%= @apprenticeship.creator_accept_date ? 'Accepted': 'Not Accepted Yet' %></p>
+</div>
 <div class='apprenticeship-form'>
+
+<!-- TODO::Move to Partial -->
+<% if @apprenticeship.has_accepted_dates? %>
+<fieldset>
+ <h6 class="title">Apprenticesip takes place on </h6>
+  <p><%= @apprenticeship.meeting_date_scheduled %></p>
+  <h6>@</h6>
+  <h6><%= @apprenticeship.location.address %>,<%= @apprenticeship.location.city %>, <%= @apprenticeship.location.state %></h6>
+</fieldset>
+<% else %>
 <fieldset>
   <%= simple_form_for @apprenticeship do |f| %>
       <%= f.simple_fields_for :location do |c| %>
@@ -27,4 +38,5 @@
       <%= f.submit %>
 <%end%>
 </fieldset>
+<% end %>
 </div>
