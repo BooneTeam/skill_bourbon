@@ -23,7 +23,7 @@ module DashboardHelper
     @earning_skills        = current_user.created_skills
     @apprentice_requests   = current_user.apprentice_requests
     @upcoming_events       = current_user.confirmed_upcoming_events
-    @skill_requests        = current_user.skill_requests
+    @skill_requests        = current_user.skill_requests.where(has_apprenticeship: false)
     #make this better
     @open_requests         = @earning_skills.map(&:categories).flatten.map(&:skill_requests).flatten.select{|x| x.created_at > Time.now - 3.days && x.accepted_status != "confirmed" && x.user != current_user }
   end
