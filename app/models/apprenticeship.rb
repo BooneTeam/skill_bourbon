@@ -18,7 +18,7 @@ class Apprenticeship < ActiveRecord::Base
   accepts_nested_attributes_for :location, :comments
 
   before_save  :check_accepted_date
-  # after_create :set_accxepted_status_to_pending
+  after_create :notify_creator
 
   def creator
     self.skill.creator
@@ -56,7 +56,8 @@ class Apprenticeship < ActiveRecord::Base
 
   #break this out more so if you wnat to explicitly pass :creator you can
   def change_made_by(user)
-    case user_apprenticeship_role(user)
+    binding.pry
+    case user_role(user)
     when :creator # notify the student that creator madde change
       who_to_notify = self.user
     when :apprentice # notify the creator that student made change
@@ -65,6 +66,16 @@ class Apprenticeship < ActiveRecord::Base
     self.changed.each do |change|
       self.notifications << Notification.new(:item_changed => change.to_s , to_notify_id: who_to_notify.id)
     end
+  end
+
+  def send_comment(user)
+    case user_role(user)
+    when :creator # notify the student that creator madde change
+      who_to_notify = self.user
+    when :apprentice # notify the creator that student made change
+      who_to_notify = self.skill.creator
+    end
+    self.notifications << Notification.new(:item_changed => "comment", to_notify_id: who_to_notify.id)
   end
 
   def set_accepted_date(user)
@@ -85,8 +96,12 @@ class Apprenticeship < ActiveRecord::Base
     self.apprentice_accept_date = true
   end
 
-  def user_apprenticeship_role(user)
+  def user_role(user)
     self.user == user ? :apprentice : :creator
+  end
+
+  def notify_creator
+    self.notifications << Notification.new(item_changed: "new_apprenticeship",to_notify_id:self.skill.creator_id)
   end
 
 end
