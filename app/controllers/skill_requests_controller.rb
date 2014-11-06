@@ -100,8 +100,8 @@ class SkillRequestsController < ApplicationController
     case skill_request.accepted_status
     when "confirmed"
       unless skill_request.has_apprenticeship?
-        skill = Skill.new.create_skill_from_request({skill_request:skill_request,user:current_user})
-        apprenticeship = create_apprenticeship_from_skill(skill,skill_request)
+        skill = Skill.new.create_skill_from_request({skill_request:skill_request,user:current_user, is_active: true})
+        apprenticeship = Apprenticeship.new.create_apprenticeship_from_skill({skill:skill,skill_request:skill_request})
         if apprenticeship.valid? && skill.valid?
           skill_request.has_apprenticeship = true
           skill_request.save

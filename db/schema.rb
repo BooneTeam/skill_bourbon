@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20141102230313) do
 
   create_table "apprenticeships", force: true do |t|
     t.text     "request_description"
-    t.string   "completion_status"
+    t.string   "completion_status",      default: "pending"
     t.string   "accepted_status",        default: "pending"
     t.datetime "meeting_date_scheduled"
     t.datetime "meeting_date_requested"
