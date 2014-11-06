@@ -2,8 +2,10 @@ class CommentsController < ApplicationController
 
   def create
   @commentable = find_commentable
-  @comment = @commentable.comments.build(comments_params)
+  @comment     = @commentable.comments.build(comments_params)
+
   if @comment.save
+    @commentable.send_comment(current_user)
     flash[:notice] = "Successfully created comment."
     redirect_to :back
   else

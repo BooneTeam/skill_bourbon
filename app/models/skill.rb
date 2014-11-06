@@ -20,7 +20,7 @@ class Skill < ActiveRecord::Base
 
   has_many :apprenticeships, dependent: :destroy
   has_many :apprentices, through: :apprenticeships, :source => :user
-
+  has_many :notifications, as: :notifiable
   accepts_nested_attributes_for :categories, :location, :skill_categories
   def add_creator_type
     self.creator_type = "User"
@@ -43,6 +43,11 @@ class Skill < ActiveRecord::Base
       self.categories << skill_request.categories
       self.save
       return self
+  end
+
+  #this send comment crap needs to change to something with a block probably
+  def send_comment(user)
+    self.notifications << Notification.new(item_changed: "comment", to_notify_id: self.creator.id)
   end
 
 

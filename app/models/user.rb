@@ -27,4 +27,8 @@ class User < ActiveRecord::Base
     created_skills.include?(item)
   end
 
+  # def send_notification(item_changed)
+    # self.notifications << Notification.new(:item_changed => item_changed, to_notify_id: self.id)
+  # end
+
 end
