@@ -21,7 +21,7 @@
 <%= form_for [@skill, Comment.new] do |f| %>
   <p>
     <%= f.hidden_field :user_id, value: current_user.id %>
-    <%= f.hidden_field :type, value: @apprenticeship.class %>
+    <%= f.hidden_field :type, value: @skill.class %>
     <%= f.label "Enter a new comment" %><br />
     <%= f.text_area :content %>
   </p>
