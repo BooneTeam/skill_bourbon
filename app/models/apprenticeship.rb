@@ -18,7 +18,11 @@ class Apprenticeship < ActiveRecord::Base
   accepts_nested_attributes_for :location, :comments
 
   before_save  :check_accepted_date
-  after_create :set_accepted_status_to_pending
+  # after_create :set_accxepted_status_to_pending
+
+  def creator
+    self.skill.creator
+  end
 
   def check_accepted_date
     set_meeting_date_to_date_requested if has_accepted_dates?
@@ -39,16 +43,19 @@ class Apprenticeship < ActiveRecord::Base
     self.skill_id = skill.id
     self.location_id = skill_request.location_id
     self.request_description = skill_request.full_description
-    self.accepted_status = "confirmed"
     self.skill_level_id =  skill_request.skill_level.id
     self.meeting_date_scheduled = skill_request.meeting_date_scheduled
     self.meeting_date_requested = skill_request.meeting_date_requested
     self.save
+    self.accepted_status = "confirmed"
+    change_made_by(self.creator)
+    #this sucks
+    self.save
     self
   end
 
+  #break this out more so if you wnat to explicitly pass :creator you can
   def change_made_by(user)
-    binding.pry
     case user_apprenticeship_role(user)
     when :creator # notify the student that creator madde change
       who_to_notify = self.user

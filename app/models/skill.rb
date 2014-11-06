@@ -33,6 +33,7 @@ class Skill < ActiveRecord::Base
   def create_skill_from_request(skill_request_params = {})
       skill_request = skill_request_params[:skill_request]
       user = skill_request_params[:user]
+      self.is_active = true
       self.title =  skill_request.title
       self.subtitle =  skill_request.subtitle
       self.full_description =  skill_request.full_description
