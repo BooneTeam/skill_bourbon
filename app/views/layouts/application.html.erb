@@ -9,6 +9,7 @@
 </head>
 <body>
 <%= render "refills/navigation" unless @disable_nav %>
+<div class="wrapper-for-content-outside-of-footer">
 <%= yield %>
 <%= render "refills/footer" %>
 </body>
