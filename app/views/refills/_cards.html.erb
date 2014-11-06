@@ -1,5 +1,8 @@
 
 <div class="cards">
+  <% if @skills.empty? %>
+    <%= render "refills/no_results" %>
+  <% else %>
   <% @skills.each do |skill| %>
   <%= link_to skill.base_uri do %>
   <div class="hover-tile-outer">
@@ -20,6 +23,7 @@
       </div>
     </div>
   </div>
+  <% end %>
   <% end %>
   <% end %>
 </div>

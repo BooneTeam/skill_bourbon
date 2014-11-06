@@ -5,15 +5,13 @@
       <h4 class='subject'>Almost there!</h4>
       <p class='description'>Fill out the form and we'll post it to the <%= link_to 'Requested Skills', skill_requests_path %> page</p>
       <p class='description'>We'll also notify anyone who has similar skills in your surrounding area to see if they can help.</p>
-      <p class='description'>Fill out the form and we'll post it to the <%= link_to 'Requested Skills', skill_requests_path %> page</p>
-      <p class='description'>We'll also notify anyone who has similar skills in your surrounding area to see if they can help.</p>
     </div>
   </div>
   <div id='new-skill-form'>
 
     <fieldset>
       <%= simple_form_for @skill_request do |f| %>
-      <%= f.input :title, as: :string, placeholder:"Enter a Title", label: false%>
+      <%= f.input :title, as: :string, placeholder:"Enter a Title", label: false, maxlength: 35 %>
        <%#= f.label "Categories" %>
       <%= f.input_field :category_ids, style:"width:100%", class: 'select2 categories ajax', placeholder:"Select up to 3 Categories", data: { source: categories_path }, value: '' %>
       <%= f.input :meeting_date_requested, :as => :datetime_picker, placeholder: "Choose a date of when you would like to learn this skill.", label: false %>
@@ -24,7 +22,8 @@
         <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1',:readonly => true %>
         <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
       <% end %>
-      <%= f.input :subtitle, placeholder:"Enter a Subtitle" ,label: false%>
+      <%= f.input :subtitle, placeholder:"Enter a Subtitle" ,label: false,
+       maxlength: 45 %>
       <%= f.input :full_description, placeholder:"Enter a longer full description.\n500 Characters Max. You can discuss further later. \n\nie: I will show you what type of door you need, the tools needed, and how to install it.This includes going to your residence and measuring the door, helping at the store and picking out the correct size doggy door and door and finally installing it. I will help you purchase the correct tools or you can use mine. The only thing I ask for you to purchase for the tools is the saw blade if needed." ,maxlength:500, label:false%>
       <%= f.input :skill_level_id, label: "Your skill level", as: :select, collection: SkillLevel.all, value_method: :id %>
       <%= f.submit %>
