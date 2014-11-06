@@ -49,8 +49,8 @@ class Apprenticeship < ActiveRecord::Base
     self.save
     self.accepted_status = "confirmed"
     change_made_by(self.creator)
-    #this sucks
     self.save
+    #this sucks
     self
   end
 

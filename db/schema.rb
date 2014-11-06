@@ -115,7 +115,7 @@ ActiveRecord::Schema.define(version: 20141102230313) do
     t.integer  "skill_level_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "has_apprenticeship"
+    t.boolean  "has_apprenticeship",     default: false
   end
 
   create_table "skills", force: true do |t|
