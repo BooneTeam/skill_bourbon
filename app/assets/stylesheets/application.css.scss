@@ -106,6 +106,8 @@ button.danger{
   }
 
 .dashboard_container.user-container{
+  @include outer-container;
+  margin-top:5%;
   background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
   background-color:#4b7e91;
   -webkit-background-size: cover;
@@ -114,9 +116,9 @@ button.danger{
   background-size: cover;
 }
 
-.sign-up-container{
-  max-width: 25em;
-}
+// .sign-up-container{
+  // max-width: 50em;
+// }
 
  .sign-up{
   font-size:1em;
@@ -191,6 +193,44 @@ button.danger{
 .apprenticeship-show-header{
   @include outer-container;
   text-align:center;
+}
+
+.sign-in-ad{
+  float:right;
+  padding: 20px;
+}
+
+.no-results{
+  text-align: center;
+  @include outer-container;
+  img{
+    height:200px;
+    width:200px;
+  }
+}
+
+#inner-logo-text{
+  font-family: 'Lobster', cursive;
+  color:white;
+  opacity: 0.2;
+  text-shadow: 1px 1px 1px black;
+  &.left{
+  -ms-transform: rotate(-7deg); /* IE 9 */
+  -webkit-transform: rotate(-7deg); /* Chrome, Safari, Opera */
+  transform: rotate(-7deg);
+  float:left;
+  // @include span-columns(1);
+  // @include shift();
+  }
+  &.right{
+  -ms-transform: rotate(7deg); /* IE 9 */
+  -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+  transform: rotate(7deg);
+  float:right;
+  // @include span-columns(1);
+  // @include shift(10);
+  }
+
 }
  // .sign-out-btn::before{
   // content: "Watqsdf";
