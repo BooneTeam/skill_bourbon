@@ -31,4 +31,13 @@ class Notification < ActiveRecord::Base
     self.description = "Congrats! You've been approved to take this skill! Start communicating with your teaacher now."
   end
 
+  def changed_comment
+    self.title = "You Received a new Comment!"
+    self.description = "You just received a new comment. Check it out!"
+  end
+
+  def changed_new_apprenticeship
+    self.title = "You just got a new student request"
+    self.description = "Make sure you confirm the request below and start communicating in the comments."
+  end
 end
