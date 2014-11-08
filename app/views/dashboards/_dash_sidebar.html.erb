@@ -6,7 +6,8 @@
       <% @apprenticeships.each do |apprenticeship| %>
       <li>
         <h6>
-          <span class='level learning status-<%=apprenticeship.try(:accepted_status)%> tooltip-item'><div class="tooltip pending">Status: <%= apprenticeship.try(:accepted_status)%></div></span> <%=link_to apprenticeship.skill.title, skill_path(apprenticeship.skill)%>
+          <span class='level learning status-<%=apprenticeship.try(:accepted_status)%> tooltip-item'><div class="tooltip pending">Status: <%= apprenticeship.try(:accepted_status)%></div></span>
+          <span class='tooltip-item'><%=link_to truncate(apprenticeship.skill.title, length: 25,seperator:"."), skill_path(apprenticeship.skill)%><div class='tooltip'><%=apprenticeship.skill.title%></div></span>
            <%= link_to apprenticeship_path(apprenticeship) do %>
             <i class="fa fa-gear"></i>
           <% end %>
@@ -24,7 +25,7 @@
       <% @earning_skills.each do |skill| %>
       <li>
         <h6>
-          <span class='level earning'><%=skill.apprenticeships.count %></span> <%=link_to skill.title, skill_path(skill)%>
+          <span class='level earning'><%=skill.apprenticeships.count %></span><span class='tooltip-item'> <%=link_to truncate(skill.title, length:25, seperator: "."), skill_path(skill)%><div class='tooltip'><%= skill.title%></div></span>
           <%= link_to edit_skill_path(skill) do %>
             <i class="fa fa-gear"></i>
           <% end %>

@@ -3,12 +3,29 @@
   <!-- <h5> Basic Skill Information </h5> -->
   <!-- </div> -->
   <fieldset>
-    <h6> Basic Skill Information </h6>
-    <p> Give general information about this skill. This should help others decide if what you are offering is what they need help with.</p>
     <%= simple_form_for @skill do |f| %>
-    <%= f.input :is_active, as: :boolean, label: "Set Skill Active?" %>
+    <%= f.input :is_active, as: :boolean, label: "Set Skill Active? " %>
+    <ul class="accordion-tabs-minimal">
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link is-active">1.) Basic Skill Information</a>
+    <div class="tab-content">
+    <p> Give general information about this skill. This should help others decide if what you are offering is what they need help with.</p>
     <%= f.input :title, as: :string, placeholder:"Enter a Title", label:false, maxlength: 35 %>
-    <%= f.input_field :category_ids,placeholder:"Select up to 3 categories", style:"width:100%", class: 'select2 categories ajax', data: { source: categories_path, initSelection: @skill.categories.map{|category|{id: category.id, text: category.name}}},value:' '%>
+    <%= f.input :subtitle, placeholder:"Enter a Subtitle", label:false, maxlength: 45 %>
+    <%= f.input :skill_level_id, label: "Reccomended skill level for this task", as: :select, collection: SkillLevel.all, value_method: :id %>
+    </div>
+  </li>
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link">2.) Full Description</a>
+    <div class="tab-content">
+            <p> Add a longer description of exactly what you will be teaching. Check out the placeholder text below for an example.</p>
+            <%= f.input :full_description, placeholder:"Enter a longer full description.\n500 Characters Max. You can discuss further later. \n\nie: I will show you what type of door you need, the tools needed, and how to install it.This includes going to your residence and measuring the door, helping at the store and picking out the correct size doggy door and door and finally installing it. I will help you purchase the correct tools or you can use mine. The only thing I ask for you to purchase for the tools is the saw blade if needed." ,maxlength:500, label:false%>
+    </div>
+  </li>
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link">3.) Location And Categories</a>
+    <div class="tab-content">
+    <p>Specify the location where you would like to meet and complete this skill. This can be changed later per studen if you need it to change.</p>
     <%= f.simple_fields_for :location do |c| %>
     <input id="autocomplete" placeholder="Enter an address where you'd like to teach this skill"
     onFocus="geolocate()" type="text"></input>
@@ -16,14 +33,20 @@
     <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
     <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
     <% end %>
-    <%= f.input :subtitle, placeholder:"Enter a Subtitle", label:false, maxlength: 45 %>
-    <%= f.input :full_description, placeholder:"Enter a longer full description.\n500 Characters Max. You can discuss further later. \n\nie: I will show you what type of door you need, the tools needed, and how to install it.This includes going to your residence and measuring the door, helping at the store and picking out the correct size doggy door and door and finally installing it. I will help you purchase the correct tools or you can use mine. The only thing I ask for you to purchase for the tools is the saw blade if needed." ,maxlength:500, label:false%>
-    <%= f.input :skill_level_id, label: "Reccomended skill level for this task", as: :select, collection: SkillLevel.all, value_method: :id %>
-    <%= f.input :path_id, label: "Add to already created path (optional)", as: :select, collection: current_user.paths, value_method: :id %>
+    <%= f.input_field :category_ids,placeholder:"Select up to 3 categories", style:"width:100%", class: 'select2 categories ajax', data: { source: categories_path, initSelection: @skill.categories.map{|category|{id: category.id, text: category.name}}},value:' '%>
+    </div>
+  </li>
+  <li class="tab-header-and-content">
+    <a href="#" class="tab-link">4.) Ready to Submit. </a>
+    <div class="tab-content">
+    <%= f.input :path_id, label: "Add to already created path (optional)", as: :select, collection: @paths, value_method: :id %>
     <%= f.submit %>
     <%= button_to 'Create a new path', new_path_path, id:'create-new-path-button' %>
     <p> Paths are a collection of skills, or waypoints as we like to call them. Create a path with waypoints to achieve a longer term goal. </p>
     <%= render '/paths/new' %>
+    </div>
+  </li>
+</ul>
     <%= link_to "Need help creating a new skill or path?", creating_skills_help_path %>
     <br/>
     <%end%>

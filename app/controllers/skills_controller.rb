@@ -49,6 +49,7 @@ class SkillsController < ApplicationController
     @categories = Category.order('name')
     @skill = Skill.new
     @path  = Path.new
+    @paths = current_user.paths
     @skill.categories.build
     @skill.build_location
   end
@@ -71,6 +72,7 @@ class SkillsController < ApplicationController
     skill = Skill.find(params[:id])
     if current_user == skill.creator
       @skill = skill
+      @paths = current_user.paths
       @path  = skill.path || skill.build_path
     else
       redirect_to root_path

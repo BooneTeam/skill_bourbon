@@ -143,7 +143,6 @@ class SkillRequestsController < ApplicationController
     end
 
     def find_location(skill_request = SkillRequest.new)
-      binding.pry
       skill_request.location_id.to_s.blank? ? Location.find_or_create_by(params[:skill_request][:location_attributes].symbolize_keys).id : skill_request.location_id
     end
 
