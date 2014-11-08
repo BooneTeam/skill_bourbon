@@ -1,6 +1,6 @@
 <div id='new-path-form'>
     <fieldset>
-      <%= simple_form_for @path, remote:true do |f| %>
+      <%= simple_form_for @path, remote:true, method: :post do |f| %>
       <%= f.input :name, as: :string, placeholder:"Enter a Title", label: false%>
       <%= f.input :description, placeholder:"Enter a longer full description.\n500 Characters Max. You can discuss further later. \n\nie: I will show you what type of door you need, the tools needed, and how to install it.This includes going to your residence and measuring the door, helping at the store and picking out the correct size doggy door and door and finally installing it. I will help you purchase the correct tools or you can use mine. The only thing I ask for you to purchase for the tools is the saw blade if needed." ,maxlength:500, label:false%>
       <%= f.submit %>
