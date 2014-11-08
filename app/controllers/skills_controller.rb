@@ -72,6 +72,7 @@ class SkillsController < ApplicationController
     skill = Skill.find(params[:id])
     if current_user == skill.creator
       @skill = skill
+      @paths = current_user.paths
       @path  = skill.path || skill.build_path
     else
       redirect_to root_path
