@@ -4,11 +4,17 @@ class PathsController < ApplicationController
 
   end
 
+
   def new
-    @path = Path.new
+    @path  = Path.new
+    @paths = current_user.paths
   end
 
   def edit
+
+  end
+
+  def show
 
   end
 
@@ -17,10 +23,14 @@ class PathsController < ApplicationController
   end
 
   def create
-    path = Path.new(path_params)
-    path.user = current_user
-    if path.save!
-      redirect_to :back
+    @path = Path.new(path_params)
+    @path.user = current_user
+    if @path.save!
+      @paths = current_user.paths
+      respond_to do |format|
+        format.html
+        format.json {render json: @path}
+      end
     else
       redirect_to :back
     end

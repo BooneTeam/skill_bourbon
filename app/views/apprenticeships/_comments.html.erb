@@ -2,7 +2,7 @@
 <% @apprenticeship.comments.each do |comment| %>
 <div class="comment">
   <div class="comment-image">
-    <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_2.png" alt="">
+    <%=image_tag src:"mtn.png" %>
   </div>
   <div class="comment-content">
     <h6><%= comment.user.username %></h6>
