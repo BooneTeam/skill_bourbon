@@ -49,6 +49,7 @@ class SkillsController < ApplicationController
     @categories = Category.order('name')
     @skill = Skill.new
     @path  = Path.new
+    @paths = current_user.paths
     @skill.categories.build
     @skill.build_location
   end

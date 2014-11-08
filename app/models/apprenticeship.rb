@@ -56,7 +56,6 @@ class Apprenticeship < ActiveRecord::Base
 
   #break this out more so if you wnat to explicitly pass :creator you can
   def change_made_by(user)
-    binding.pry
     case user_role(user)
     when :creator # notify the student that creator madde change
       who_to_notify = self.user
