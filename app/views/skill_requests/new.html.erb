@@ -12,9 +12,10 @@
      <%= simple_form_for @skill_request do |f| %>
     <ul class="accordion-tabs-minimal">
   <li class="tab-header-and-content">
-    <a href="#" class="tab-link is-active">Basic Information</a>
+    <a href="#" class="tab-link">Basic Information</a>
     <div class="tab-content">
-      <p> Give general information about this skill. This should help others decide if what you are offering is what they need help with.</p>
+      <p> Give general information about this skill.</p>
+      <p>This should help others decide if what you are offering is what they need help with.</p>
       <%= f.input :title, as: :string, placeholder:"Enter a Title", label: false, maxlength: 35 %>
       <%= f.input :subtitle, placeholder:"Enter a Subtitle" ,label: false,
        maxlength: 45 %>

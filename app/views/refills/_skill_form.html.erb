@@ -7,9 +7,10 @@
     <%= f.input :is_active, as: :boolean, label: "Set Skill Active? " %>
     <ul class="accordion-tabs-minimal">
   <li class="tab-header-and-content">
-    <a href="#" class="tab-link is-active">1.) Basic Skill Information</a>
+    <a href="#" class="tab-link">1.) Basic Skill Information</a>
     <div class="tab-content">
-    <p> Give general information about this skill. This should help others decide if what you are offering is what they need help with.</p>
+    <p> Give general information about this skill.</p>
+    <p>This should help others decide if what you are offering is what they need help with.</p>
     <%= f.input :title, as: :string, placeholder:"Enter a Title", label:false, maxlength: 35 %>
     <%= f.input :subtitle, placeholder:"Enter a Subtitle", label:false, maxlength: 45 %>
     <%= f.input :skill_level_id, label: "Reccomended skill level for this task", as: :select, collection: SkillLevel.all, value_method: :id %>
@@ -37,12 +38,13 @@
     </div>
   </li>
   <li class="tab-header-and-content">
-    <a href="#" class="tab-link">4.) Ready to Submit. </a>
+    <a href="#" class="tab-link">4.) Add path & Submit. </a>
     <div class="tab-content">
     <%= f.input :path_id, label: "Add to already created path (optional)", as: :select, collection: @paths, value_method: :id %>
     <%= f.submit %>
     <%= button_to 'Create a new path', new_path_path, id:'create-new-path-button' %>
-    <p> Paths are a collection of skills, or waypoints as we like to call them. Create a path with waypoints to achieve a longer term goal. </p>
+    <p> Paths are a collection of skills.</p>
+    <p> Create a path with multiple skills to help others achieve a longer term goal. </p>
     <%= render '/paths/new' %>
     </div>
   </li>

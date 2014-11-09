@@ -9,7 +9,6 @@ $(document).ready(function(){
   });
 
   $(".title .fa-chevron-down").on("click",function(){
-    debugger;
     $(this).find(".toggled-content").toggle("slow");
   });
 

@@ -18,6 +18,7 @@ module DashboardHelper
 
   def current_user_dash_items
     @apprenticeships       = current_user.apprenticeships
+    @paths                 = current_user.paths
     # .where(accepted_status: "confirmed")
     # @pending_learnings     = current_user.apprenticeships.where(accepted_status: "pending")
     @earning_skills        = current_user.created_skills
