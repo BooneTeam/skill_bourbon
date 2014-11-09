@@ -8,6 +8,11 @@ $(document).ready(function(){
     // $('.main-dash #selected_content').html('<p>Form Yay</p>');
   });
 
+  $(".title .fa-chevron-down").on("click",function(){
+    debugger;
+    $(this).find(".toggled-content").toggle("slow");
+  });
+
   // $('button#confirm-skill-request').on('click',function(e){
     // e.preventDefault();
     // var id = $(this).data("id");
