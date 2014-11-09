@@ -3,9 +3,9 @@
     <a class="menu-trigger"> </a>
   </h1>
   <div class="module-content" style="height: auto;">
-    <ul class="alert-list" id="yui_3_2_0pr1_1_14151086192831282">
-      <% current_user.notifications.each do |notification| %>
-      <li class="financeCharge fee-icon short" id="alert-72176791-bankAtmFee">
+    <ul class="alert-list">
+      <% current_user.notifications.sort_by{|x| x.created_at}.reverse.each do |notification| %>
+      <li>
         <span class="fa fa-exclamation-circle"></span>
         <a class="dismiss" href="javascript://" title="Dismiss Alert">x</a>
         <span class='title headline'><%=  notification.title %></span><span class="date"><%= notification.created_at %></span><span>          <%= link_to notification_path(notification), method: "DELETE" do %>
