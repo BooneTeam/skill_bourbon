@@ -1,10 +1,12 @@
 
 <div class="sidebar">
   <div id="learning">
-    <h5 class="title">
-      <i class="toggle-info fa fa-chevron-circle-up"></i> Learning
-      <span class="title-action"><%= fa_icon "search-plus"%> <%= link_to "Find More", skills_path, id:'dash-learning-search' %></span>
-    </h5>
+    <h6 class="title">
+      <i class="toggle-info fa fa-chevron-circle-up"></i> Learning Skills
+      <span class="title-action"> <%= link_to skills_path, id:'dash-learning-search' do %>
+        <%= fa_icon "search-plus"%>
+        <% end %></span>
+    </h6>
     <ul class='toggle-content'>
       <% @apprenticeships.each do |apprenticeship| %>
       <li>
@@ -24,9 +26,11 @@
   </div>
   <div id="earning">
 
-    <h5 class="title">
+    <h6 class="title">
       <i class="toggle-info fa fa-chevron-circle-up"></i>
-     Earning<span class="title-action"><%= fa_icon "plus"%> <%= link_to "Add Skill",new_skill_path, id:'dash-new-skill-btn'%></span></h5>
+     Earning Skills<span class="title-action"><%= link_to new_skill_path, id:'dash-new-skill-btn' do %>
+     <%= fa_icon "plus"%>
+     <% end %></span></h6>
     <ul class="toggle-content">
       <% @earning_skills.each do |skill| %>
       <li>
@@ -43,9 +47,30 @@
       <%end%>
     </ul>
   </div>
+  <div id="paths">
+    <h6 class="title">
+      <i class="toggle-info fa fa-chevron-circle-up"></i> Earning Paths
+    </h6>
+    <ul class='toggle-content'>
+      <% @paths.each do |path| %>
+      <li>
+        <h6>
+          <span class='level paths status-<%=path.try(:accepted_status)%> tooltip-item'><div class="tooltip pending">Status: <%= path.try(:accepted_status)%></div></span>
+          <span class='tooltip-item'><%=link_to truncate(path.name, length: 20,seperator:"."), path_path(path)%><div class='tooltip'><%=path.name%></div></span>
+           <%= link_to path_path(path) do %>
+            <i class="fa fa-gear"></i>
+          <% end %>
+        </h6>
+        <h6 class="category">
+          <%=path.skills.count%> skills in this path.
+        </h6>
+      </li>
+      <%end%>
+    </ul>
+  </div>
   <div id="requests">
-    <h5 class="title">
-      <i class="toggle-info fa fa-chevron-circle-up"></i> Wanting<span class="title-action"></h5>
+    <h6 class="title">
+      <i class="toggle-info fa fa-chevron-circle-up"></i> Wanted Skills<span class="title-action"></h6>
     <ul class="toggle-content">
       <% @skill_requests.each do |request| %>
       <li>

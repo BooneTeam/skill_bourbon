@@ -78,7 +78,7 @@ class Apprenticeship < ActiveRecord::Base
   end
 
   def set_accepted_date(user)
-    case user_apprenticeship_role(user)
+    case user_role(user)
     when :creator
       creator_accepts_date
     when :apprentice

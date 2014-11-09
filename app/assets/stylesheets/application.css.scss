@@ -36,6 +36,7 @@
  @import "refills/notification_modal";
  @import "refills/notification";
  @import "refills/accordion-tabs-minimal";
+ @import "refills/vertical-tabs";
  @import "skills";
  @import "dashboard";
  @import "apprenticeship";
@@ -231,6 +232,11 @@ button.danger{
   // @include span-columns(1);
   // @include shift(10);
   }
+
+  .pull-right{
+    float:right;
+  }
+
 
 }
  // .sign-out-btn::before{
