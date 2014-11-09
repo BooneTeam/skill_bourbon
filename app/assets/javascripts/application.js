@@ -37,7 +37,7 @@ $('#about-modal').on("click",function(e){
   $("#about-show input").prop("checked", true);
 });
 
-$('.toggle-info').on('click',function(){
+$(document).on('click','.toggle-info',function(){
   var down = 'fa fa-chevron-circle-down';
   var up   = 'fa fa-chevron-circle-up';
   if ($(this).hasClass(down)){

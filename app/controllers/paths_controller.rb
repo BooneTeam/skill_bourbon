@@ -15,7 +15,7 @@ class PathsController < ApplicationController
   end
 
   def show
-
+    @path = Path.find(params[:id])
   end
 
   def update

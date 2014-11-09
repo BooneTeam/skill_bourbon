@@ -1,9 +1,9 @@
 .accordion-tabs-minimal {
-  $tab-border-color: $base-border-color;
+  $tab-border-color: black;
   $tab-border: 1px solid $tab-border-color;
   $tab-content-background: $base-background-color;
-  $tab-active-background: $tab-content-background;
-  $tab-inactive-color: $base-background-color;
+  $tab-active-background: $tab-border-color;
+  $tab-inactive-color: $base-accent-color;
   $tab-inactive-hover-color: darken($light-gray, 5);
   $tab-mode: $medium-screen;
 
@@ -30,7 +30,7 @@
     }
 
     &:hover {
-      color: $base-link-color;
+      color: white;
     }
 
     &:focus {
@@ -39,9 +39,10 @@
 
     &.is-active {
       border-bottom: 0;
-
+      color:white;
       @include media($tab-mode) {
-        border: $tab-border;
+        // border: $tab-border;
+        box-shadow:1px 1px 1px black;
         border-bottom-color: $tab-active-background;
         margin-bottom: -1px;
       }
@@ -49,11 +50,12 @@
   }
 
   .tab-content {
+    @include span-columns(12);
     display: none;
     padding: $base-line-height $gutter;
 
     @include media($tab-mode) {
-      border-top: $tab-border;
+      // border-top: $tab-border;
       float: left;
     }
   }
