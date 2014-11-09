@@ -37,7 +37,7 @@ $('#about-modal').on("click",function(e){
   $("#about-show input").prop("checked", true);
 });
 
-$('.row .toggle-info').on('click',function(){
+$('.toggle-info').on('click',function(){
   var down = 'fa fa-chevron-circle-down';
   var up   = 'fa fa-chevron-circle-up';
   if ($(this).hasClass(down)){
@@ -48,8 +48,15 @@ $('.row .toggle-info').on('click',function(){
     $(this).removeClass(up);
     $(this).addClass(down);
   }
-  var content = $(this).parent().find('.toggle-content');
-  $(content).toggle('slow');
+  //fix this to be more dynamic
+  if ($(this).parent().find('.toggle-content').length === 0){
+    var content = $(this).parent().parent().find('.toggle-content');
+    $(content).toggle('slow');
+  }
+  else{
+    var content = $(this).parent().find('.toggle-content');
+    $(content).toggle('slow');
+  }
 });
 
 initialize();
