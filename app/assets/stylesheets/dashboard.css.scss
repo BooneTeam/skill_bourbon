@@ -10,10 +10,21 @@ body{
   -o-background-size: cover;
   background-size: cover;
 }
+#dash-logo{
+  position:relative;
+}
+.logo-text{
+  position:absolute;
+  font-size:1.25em;
+  top:16px;
+  text-shadow:1px 1px 1px black;
+}
+#logo-and-tabs{
+  @include outer-container;  
+}
 .dashboard_container{
   &.raised-center{
     @include outer-container;
-    margin:15px auto 15px auto;
   }
   // @include outer-container;
   // margin:15px auto 15px auto;
@@ -28,10 +39,11 @@ body{
 }
 .dashboard{
   .title{
+    padding:5px;
     text-decoration: none;
   }
   @include outer-container;
-  padding:30px 30px 30px 0px;
+  padding:30px 0px 30px 0px;
   .headline{
     font-weight: bold;
   }
@@ -46,7 +58,7 @@ body{
   border-left-width: 0;
   border-right-width: 0;
   box-shadow: 5px 0 5px -5px rgba(0, 0, 0, 0.2);
-  font-size: 15px;
+  font-size: .75em;
   color: black;
   font-weight: normal;
   position: relative;
@@ -58,7 +70,7 @@ body{
     margin:10px;
     li{
       h6{
-        font-size:.7em;
+        font-size:1em;
         padding:.6em;
       }
     .category{

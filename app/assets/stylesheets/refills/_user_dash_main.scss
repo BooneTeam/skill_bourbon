@@ -1,5 +1,5 @@
 .main-dash{
-  font-size:.7em;
+  font-size:.75em;
   @include span-columns(9);
   .row .title{
     border-bottom:solid thin black;
@@ -17,7 +17,7 @@
     border-spacing: 0;
 
     tbody {
-      font-size:0.8em;
+      font-size:0.75em;
       tr:hover > td, tr:hover > th {
         background-color: $table-hover-color;
       }

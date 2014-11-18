@@ -2,10 +2,10 @@
 	$hero-background: desaturate(darken($base-accent-color, 20), 30);
 	$hero-color: white;
 
-	background: url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png);
+	// background: url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png);
 	// background:url(https://0.s3.envato.com/files/18026350/IMG_2785.JPG) no-repeat center center fixed;
 	// background:url("mtn.png");
-	background-color: $hero-background;
+	// background-color: $hero-background;
 	background-repeat: no-repeat;
 	background-position: top;
 	background-size: cover;
@@ -34,11 +34,11 @@
 			text-align: center;
 
 			h1 {
-				font-size: 1.4em;
+				font-size: 1.5em;
 				margin-bottom: .2em;
 
 				@include media($large-screen) {
-					font-size: 1.8em;
+					font-size: 1.75em;
 				}
 			}
 
@@ -48,7 +48,7 @@
 				font-weight: 200;
 
 				@include media($large-screen) {
-					font-size: 1.2em;
+					font-size: 1.25em;
 					max-width: 40%;
 				}
 			}

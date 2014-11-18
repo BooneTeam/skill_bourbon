@@ -2,6 +2,7 @@ class Skill < ActiveRecord::Base
 
   include Rails.application.routes.url_helpers
 
+
   validates :title, :subtitle, :full_description,:creator_id, :skill_level_id, :location_id, :presence => true
   validates_presence_of :categories
 
@@ -22,6 +23,10 @@ class Skill < ActiveRecord::Base
   has_many :apprentices, through: :apprenticeships, :source => :user
   has_many :notifications, as: :notifiable
   accepts_nested_attributes_for :categories, :location, :skill_categories
+  def to_param
+    "#{id} #{title}".parameterize
+  end
+
   def add_creator_type
     self.creator_type = "User"
   end
