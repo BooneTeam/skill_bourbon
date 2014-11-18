@@ -52,7 +52,7 @@
     .title{
       color:#67bcdb;
       font-weight:bold;
-      font-size:1.2em;
+      font-size:1.25em;
       text-decoration: none;
       margin-bottom:0px;
     }
@@ -61,7 +61,7 @@
       font-weight:bold;
     }
     color: transparentize(black, .3);
-    font-size: .8em;
+    font-size: .75em;
     font-weight: 200;
     padding-top: 2em;
     text-align: center;
@@ -70,7 +70,7 @@
 
   .hover-tile-hidden {
     background: transparentize(black, .5);
-    font-size: .7em;
+    font-size: .75em;
     h4 {
       margin-bottom: .5em;
     }

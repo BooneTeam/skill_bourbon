@@ -37,7 +37,7 @@
     background-color: $tooltip-background;
     border-radius: $base-border-radius;
     color: $tooltip-color;
-    font-size: .9em; // Make sure you use -webkit-backface-visibility: hidden; on the body element to prevent 1px nudging bugs.
+    font-size: 1em; // Make sure you use -webkit-backface-visibility: hidden; on the body element to prevent 1px nudging bugs.
     line-height: 1.5em;
     margin-left: -($tooltip-width/2);
     opacity: 0;
@@ -60,7 +60,7 @@
       color: $tooltip-background;
       content: '▼';
       text-shadow: $tooltip-shadow;
-      font-size: 1.4em;
+      font-size: 1.5em;
       pointer-events: none;
       bottom: $tooltip-arrow-distance-from-box;
     }
