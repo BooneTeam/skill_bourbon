@@ -103,4 +103,29 @@ class Apprenticeship < ActiveRecord::Base
     self.notifications << Notification.new(item_changed: "new_apprenticeship",to_notify_id:self.skill.creator_id)
   end
 
+  def changed_new_apprenticeship
+    {title:"You just got a new student request".freeze,
+    description: "Make sure you confirm the request below and start communicating in the comments.".freeze}
+  end
+
+  def changed_creator_accept_date
+    {title: "Meeting Date has been accepted by Skill Creator.".freeze,
+    description: "The date has been accepted by your teacher. Please accept this date or change it if you haven't already.".freeze}
+  end
+
+  def changed_apprentice_accept_date
+    {title: "Meeting Date has been accepted by your student".freeze,
+    description: "The date has been accepted by your student. Please accept this date or change it you haven't already.".freeze}
+  end
+
+  def changed_meeting_date_requested
+    {title: "Meeting date has been changed".freeze,
+    description: "The time scheduled to meet has been changed please accept or change the meeting date.".freeze}
+  end
+
+  def changed_location_id
+    {title: "Location has been changed".freeze,
+    description: "The meeting location has been changed please accept or change the location.".freeze}
+  end
+
 end

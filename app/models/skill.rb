@@ -55,5 +55,9 @@ class Skill < ActiveRecord::Base
     self.notifications << Notification.new(item_changed: "comment", to_notify_id: self.creator.id)
   end
 
+  def changed_comment
+    {title: "Your skill just received a new comment", description:"Go check it out."}
+  end
+
 
 end

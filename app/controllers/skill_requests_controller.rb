@@ -24,13 +24,13 @@ class SkillRequestsController < ApplicationController
       end
       results = ActiveRecord::Base.connection.execute(query);
       skill_ids = results.map{|r| r["skill_request_id"]}
-      @skills = SkillRequest.find(skill_ids)
+      @skills = SkillRequest.includes(:categories,:location).find(skill_ids)
       respond_to do |format|
         format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
         format.html
       end
     else
-      @skills = SkillRequest.where("accepted_status != 'confirmed' ")
+      @skills = SkillRequest.where("accepted_status != 'confirmed' ").includes(:categories,:location)
       respond_to do |format|
         format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
         format.html

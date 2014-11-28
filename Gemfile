@@ -48,6 +48,7 @@ gem 'spring',        group: :development
 #Debugging
 gem 'pry',       group:[:development, :test]
 gem "binding_of_caller",group:[:development, :test]
+gem "bullet", group:[:development]
 
 group :test do
   gem 'database_cleaner'
