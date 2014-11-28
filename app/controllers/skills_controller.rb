@@ -24,13 +24,13 @@ class SkillsController < ApplicationController
       end
       results = ActiveRecord::Base.connection.execute(query);
       skill_ids = results.map{|r| r["skill_id"]}
-      @skills = Skill.find(skill_ids)
+      @skills = Skill.includes(:categories,:location).find(skill_ids)
       respond_to do |format|
         format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
         format.html
       end
     else
-      @skills = Skill.where(is_active: true)
+      @skills = Skill.where(is_active: true).includes(:categories,:location)
       respond_to do |format|
         format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
         format.html

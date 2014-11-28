@@ -15,18 +15,15 @@ module DashboardHelper
    @sym_dates
   end
 
-
   def current_user_dash_items
     @apprenticeships       = current_user.apprenticeships
     @paths                 = current_user.paths
-    # .where(accepted_status: "confirmed")
-    # @pending_learnings     = current_user.apprenticeships.where(accepted_status: "pending")
-    @earning_skills        = current_user.created_skills
+    @earning_skills        = current_user.created_skills.includes(:categories)
     @apprentice_requests   = current_user.apprentice_requests
     @upcoming_events       = current_user.confirmed_upcoming_events
     @skill_requests        = current_user.skill_requests.where(has_apprenticeship: false)
-    #make this better
-    @open_requests         = @earning_skills.map(&:categories).flatten.map(&:skill_requests).flatten.select{|x| x.created_at > Time.now - 3.days && x.accepted_status != "confirmed" && x.user != current_user }
+    @notifications         = current_user.notifications.includes(:notifiable).sort_by{|x| x.created_at}.reverse
+    @open_requests         = @earning_skills.map(&:categories).flatten.map{|x| x.skill_requests.includes(:user)}.flatten.select{|x| x.created_at > Time.now - 3.days && x.accepted_status != "confirmed" && x.user != current_user }
   end
 
 end
