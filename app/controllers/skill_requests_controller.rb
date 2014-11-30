@@ -1,36 +1,19 @@
 class SkillRequestsController < ApplicationController
-  before_filter :login_required, only:[:new]
-  # after_filter :check_accepted_status, :only => :update
+
+  include SearchHelper
   include DashboardHelper
+
+  before_filter :login_required, only:[:new]
 
   def index
     if params[:search]
-      search_hash = params[:search]
-      zip   = search_hash[:location][:zip].blank?   ? "%%" : search_hash[:location][:zip]
-      city  = search_hash[:location][:city].blank?  ? "%%" : search_hash[:location][:city]
-      state = search_hash[:location][:state].blank? ? "%%" : search_hash[:location][:state]
-      categories = search_hash[:categories].split(',').map{|x| "\'" + x + "\'"}.join(',')
-      locations = Location.where("city LIKE ? AND state LIKE ? AND zip LIKE ?", city,state,zip)
-      query = "SELECT * FROM skill_requests
-      JOIN locations on locations.id = skill_requests.location_id
-      JOIN skill_request_categories on skill_request_categories.skill_request_id = skill_requests.id
-      JOIN categories on skill_request_categories.category_id = categories.id
-      WHERE locations.zip LIKE '#{zip}'
-      AND locations.city LIKE '#{city}'
-      AND locations.state LIKE '#{state}'
-      AND skill_requests.accepted_status != 'confirmed' "
-      unless categories.blank?
-        query += " AND categories.id IN (#{categories})"
-      end
-      results = ActiveRecord::Base.connection.execute(query);
-      skill_ids = results.map{|r| r["skill_request_id"]}
-      @skills = SkillRequest.includes(:categories,:location).find(skill_ids)
+      @skills = search_for(SkillRequest, params, {ands: [{string: "accepted_status != ?",q: 'confirmed'}] }).paginate(:page => params[:page])
       respond_to do |format|
         format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
         format.html
       end
     else
-      @skills = SkillRequest.where("accepted_status != 'confirmed' ").includes(:categories,:location)
+      @skills = SkillRequest.where("accepted_status != 'confirmed' ").includes(:categories,:location).paginate(:page => params[:page], :per_page => 3)
       respond_to do |format|
         format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
         format.html
@@ -100,8 +83,8 @@ class SkillRequestsController < ApplicationController
     case skill_request.accepted_status
     when "confirmed"
       unless skill_request.has_apprenticeship?
-        skill = Skill.new.create_skill_from_request({skill_request:skill_request,user:current_user, is_active: true})
-        apprenticeship = Apprenticeship.new.create_apprenticeship_from_skill({skill:skill,skill_request:skill_request})
+        skill = Skill.create_skill_from_request({skill_request:skill_request,user:current_user, is_active: true})
+        apprenticeship = Apprenticeship.create_apprenticeship_from_skill({skill:skill,skill_request:skill_request})
         if apprenticeship.valid? && skill.valid?
           skill_request.has_apprenticeship = true
           skill_request.save
@@ -123,20 +106,6 @@ class SkillRequestsController < ApplicationController
   end
 
   private
-
-    # def create_apprenticeship_from_skill(skill, skill_request)
-    #   apprenticeship = Apprenticeship.new(
-    #     user_id:  skill_request.user_id,
-    #     skill_id: skill.id,
-    #     location_id: skill_request.location_id,
-    #     request_description: skill_request.full_description,
-    #     accepted_status:"confirmed",
-    #     skill_level_id:  skill_request.skill_level.id,
-    #     meeting_date_scheduled: skill_request.meeting_date_scheduled,
-    #     meeting_date_requested: skill_request.meeting_date_requested)
-    #   apprenticeship.save
-    #   apprenticeship
-    # end
 
     def skill_request_params
       params.require(:skill_request).permit(:title,:subtitle,:accepted_status,:meeting_date_requested,:skill_level_id,:full_description,:user_id,:location_id,category_ids:[])

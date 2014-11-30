@@ -16,9 +16,9 @@ module DashboardHelper
   end
 
   def current_user_dash_items
-    @apprenticeships       = current_user.apprenticeships
+    @apprenticeships       = current_user.apprenticeships.includes(:skill,:location)
     @paths                 = current_user.paths
-    @earning_skills        = current_user.created_skills.includes(:categories)
+    @earning_skills        = current_user.created_skills.includes(:categories,:creator)
     @apprentice_requests   = current_user.apprentice_requests
     @upcoming_events       = current_user.confirmed_upcoming_events
     @skill_requests        = current_user.skill_requests.where(has_apprenticeship: false)
