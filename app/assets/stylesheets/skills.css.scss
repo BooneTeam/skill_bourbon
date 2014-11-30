@@ -9,7 +9,7 @@
   margin-top: 1em;
   .categories{
     padding:10px;
-    font-size:.7em;
+    font-size:.75em;
     @include shift(1);
   }
 }
@@ -38,14 +38,14 @@
         content:"";
       }
     }
-    font-size:.8em;
+    font-size:.75em;
     padding:10px;
     float:left;
     @include shift(1);
     @include span-columns(8);
   }
   .profile-image{
-    font-size:.8em;
+    font-size:.75em;
     float:right;
     padding:10px;
     img{
@@ -70,10 +70,10 @@
   @include span-columns(4);
   @include shift(1);
   padding:1em;
-  font-size:.8em;
+  font-size:.75em;
   // background:transparentize(white, .3);
   button{
-    font-size:.5em;
+    font-size:.50em;
     @include media($medium-screen-up){
       font-size:1em;
   }
@@ -89,13 +89,13 @@
   @include shift(1);
   margin-right:0px;
   .comments{
-    font-size: .8em;
+    font-size: .75em;
   }
   ul{
     // border-left: solid gray 1px;
     box-shadow: 1px 3px 8px rgba(0, 0, 0, 0.2);
     li{
-      font-size:.8em;
+      font-size:.75em;
       padding:1em;
       border-bottom:dashed 1px gray;
       &:last-child{
@@ -110,7 +110,7 @@
   @include span-columns(10);
   @include shift(1);
   clear:both;
-  font-size:.8em;
+  font-size:.75em;
 }
 
 #new_apprenticeship_true,

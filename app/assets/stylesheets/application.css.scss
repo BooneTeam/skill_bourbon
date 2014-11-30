@@ -68,16 +68,16 @@ button.danger{
   border: 1px solid #dddddd !important;
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06) !important;
   font-family: Raleway !important;
-  font-size: 0.7em !important;
+  font-size: 0.75em !important;
   width: 100% !important;
 .select2-search-field input {
   font-family: Raleway !important;
-  font-size: 0.7em !important;
+  font-size: 0.75em !important;
   }
 }
 .filterDrop{
   font-family: Raleway !important;
-  font-size: 0.7em !important;
+  font-size: 0.75em !important;
 }
 
 .filter input[type="text"]{
@@ -111,7 +111,7 @@ button.danger{
   @include outer-container;
   margin-top:5%;
   background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
-  background-color:#4b7e91;
+  background-color:#2F4F4F;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -163,7 +163,7 @@ button.danger{
  }
 
  .small-info{
-  font-size:.7em;
+  font-size:.75em;
   color:$base-font-color;
   font-style: italic;
  }
@@ -179,7 +179,7 @@ button.danger{
  .error{
   color:red;
   font-weight:bold;
-  font-size:.8em;
+  font-size:.75em;
  }
 
  .form-description{
@@ -237,8 +237,49 @@ button.danger{
     float:right;
   }
 
-
 }
+
+.pagination {
+  .next_page,.previous_page {
+    @include button(simple, white);
+    font-size:.75em;
+  }
+}
+
+.hidden { display: none; }
  // .sign-out-btn::before{
   // content: "Watqsdf";
  // }/
+/*flash*/
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+
+#contact_message{
+  height: 150px;
+}
