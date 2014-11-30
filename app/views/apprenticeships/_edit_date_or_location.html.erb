@@ -22,6 +22,7 @@
   <%= simple_form_for @apprenticeship do |f| %>
       <%= f.simple_fields_for :location do |c| %>
       <h6>Current Location: <%= @apprenticeship.location.address %>,<%= @apprenticeship.location.city %>, <%= @apprenticeship.location.state %></h6>
+      <h6>Date Requested: <%= @apprenticeship.meeting_date_requested %> </h6>
        <input id="autocomplete" placeholder="Enter new address if you would like to change where to meet."
              onFocus="geolocate()" type="text"></input>
         <%= c.hidden_field :address, label: "City", placeholder:"Select Address", class: 'street_number route',:readonly => true %>
@@ -29,11 +30,9 @@
         <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
         <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
       <% end %>
-      <h6>Date Requested: <%= @apprenticeship.meeting_date_requested %> </h6>
       <%= link_to accept_date_apprenticeship_path(@apprenticeship), method: :post do %>
         <i class="fa fa-thumbs-o-up">Accept Date</i>
       <% end %>
-      <h6> Or </h6>
       <%= f.input :meeting_date_requested, :as => :datetime_picker, required: false, label:"Request to change the date" %>
       <%= f.submit %>
 <%end%>

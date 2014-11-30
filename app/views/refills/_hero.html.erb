@@ -1,14 +1,16 @@
 <div class="hero">
 	<div class="hero-inner">
-    <a href="" class="hero-logo"><%= image_tag("http://33.media.tumblr.com/f2033cae50aa722d209ad106b6b89f4f/tumblr_mfspw6aC0I1rha3vbo1_1280.png")%></a>
-    <h6>Skill-Climb</h6>
+    <!-- <a href="" class="hero-logo"><%= image_tag("skillclimb-logo.png")%></a> -->
+    <!-- <h6>Skill-Climb</h6> -->
 		<div class="hero-copy">
 			<h1>Learn By Doing $ Earn by Sharing</h1>
       <h6>Connect, Learn, and Make Some Cash.</h6>
+      <%= image_tag("skillclimb-logo.png", height: 100,width:130)%>
+      <h4>Welcome to Skill Climb</h4>
 		</div>
     <% if current_user %>
-      <%= button_to "Your dashboard", dashboard_path, method:"get" %>
-      <h6> Or </h6>
+      <%= button_to "Go to dashboard", dashboard_path, method:"get" %>
+      <br>
       <%= button_to "Browse all skills", skills_path, method:"get" %>
     <% else %>
       <fieldset id='skill-search-box'>

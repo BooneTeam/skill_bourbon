@@ -6,6 +6,7 @@
   @include span-columns(9);
   @include shift(3);
   border:none;
+  float:none;
   padding: $gutter / 2;
 
   .filter {
@@ -37,7 +38,7 @@
     button {
       @include button(simple, lighten($search-tools-background, 10));
       @include position(absolute, 5px 5px auto auto);
-      font-size: .7em;
+      font-size: .75em;
     }
 
     .hide-options {
@@ -61,7 +62,7 @@
       margin-top: 1em;
       padding-top: .7em;
       padding-bottom: .7em;
-      font-size: .7em;
+      font-size: .75em;
 
       @include media($large-screen) {
         margin-top: 1.95em;

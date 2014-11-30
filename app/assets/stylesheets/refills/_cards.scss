@@ -52,7 +52,7 @@
   }
 
   .subtitle{
-    font-size:.8em;
+    font-size:.75em;
     color:gray;
   }
 
@@ -79,7 +79,7 @@
     right: -1px;
 
     .ribbon {
-      font-size: .8em;
+      font-size: .75em;
       font-weight: 800;
       text-align: center;
       @include transform(rotate(45deg));
@@ -105,7 +105,7 @@
 
   .card-copy {
     padding: $base-line-height/2 $gutter/2;
-    font-size: .9em;
+    font-size: 1em;
     line-height: 1.5em;
     height:170px;
     text-overflow:clip;
@@ -122,10 +122,10 @@
       display: inline;
       color: $card-stats-color;
       font-weight: 800;
-      font-size: 1.2em;
+      font-size: 1.25em;
       float: left;
       border-right: 1px solid transparentize($base-font-color, .8);
-      line-height: 1.1em;
+      line-height: 1em;
       padding: 0 .7em 0 .7em;
 
       &:first-child {
@@ -138,7 +138,7 @@
 
       span {
         color: $base-font-color;
-        font-size: .7em;
+        font-size: .75em;
         display: block;
         font-weight: normal;
       }

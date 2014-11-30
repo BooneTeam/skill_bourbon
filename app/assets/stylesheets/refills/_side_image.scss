@@ -23,7 +23,7 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
   //this is the actual background for whole page
   // background: #F9F9F9;
 
-  font-size:.7em;
+  font-size:.75em;
   @include media($large-screen) {
     @include row(table);
   }

@@ -4,16 +4,16 @@
   </h1>
   <div class="module-content" style="height: auto;">
     <ul class="alert-list">
-      <% current_user.notifications.sort_by{|x| x.created_at}.reverse.each do |notification| %>
+      <% @notifications.each do |notification| %>
       <li>
         <span class="fa fa-exclamation-circle"></span>
         <a class="dismiss" href="javascript://" title="Dismiss Alert">x</a>
-        <span class='title headline'><%=  notification.title %></span><span class="date"><%= notification.created_at %></span><span>          <%= link_to notification_path(notification), method: "DELETE" do %>
+        <span class='title headline'><%=  notification.meta_desc[:title] %></span><span class="date"><%= notification.created_at %></span><span>          <%= link_to notification_path(notification), method: "DELETE" do %>
             <i class="fa fa-times"></i>
           <% end %></span>
         <div class='notification-content'>
           <span class="description">
-            <p><%= notification.description %></p>
+            <p><%= notification.meta_desc[:description] %></p>
           </span>
           <%= button_to "Go to #{notification.notifiable.class.to_s}",url_for(notification.notifiable), method: "get" %>
         </div>
