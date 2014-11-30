@@ -19,6 +19,7 @@ set :user, 'root'
 set :rvm_path, '/etc/profile'
 set :term_mode, :system
 set :application, 'skillclimb'
+set :rails_env, 'production'
 
 # For system-wide RVM install.
 #   set :rvm_path, '/usr/local/rvm/bin/rvm'
