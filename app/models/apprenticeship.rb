@@ -39,19 +39,20 @@ class Apprenticeship < ActiveRecord::Base
   def create_apprenticeship_from_skill(apprentice_params = {})
     skill = apprentice_params[:skill]
     skill_request = apprentice_params[:skill_request]
-    self.user_id =  skill_request.user_id
-    self.skill_id = skill.id
-    self.location_id = skill_request.location_id
-    self.request_description = skill_request.full_description
-    self.skill_level_id =  skill_request.skill_level.id
-    self.meeting_date_scheduled = skill_request.meeting_date_scheduled
-    self.meeting_date_requested = skill_request.meeting_date_requested
-    self.save
-    self.accepted_status = "confirmed"
-    change_made_by(self.creator)
-    self.save
-    #this sucks
-    self
+    apprenticeship = self.new({
+     user_id:  skill_request.user_id,
+     skill_id: skill.id,
+     location_id: skill_request.location_id,
+     request_description: skill_request.full_description,
+     skill_level_id:  skill_request.skill_level.id,
+     meeting_date_scheduled: skill_request.meeting_date_scheduled,
+     meeting_date_requested: skill_request.meeting_date_requested,
+    })
+    apprenticeship.save
+    apprenticeship.accepted_status = "confirmed"
+    change_made_by(apprenticeship.creator)
+    apprenticeship.save
+    apprenticeship
   end
 
   #break this out more so if you wnat to explicitly pass :creator you can
@@ -106,6 +107,11 @@ class Apprenticeship < ActiveRecord::Base
   def changed_new_apprenticeship
     {title:"You just got a new student request".freeze,
     description: "Make sure you confirm the request below and start communicating in the comments.".freeze}
+  end
+
+  def changed_accepted_status
+    {title: "Your skill request has been accepted.".freeze,
+     description: "Congratulations! Now start learning.".freeze}
   end
 
   def changed_creator_accept_date

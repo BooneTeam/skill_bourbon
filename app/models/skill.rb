@@ -23,6 +23,7 @@ class Skill < ActiveRecord::Base
   has_many :apprentices, through: :apprenticeships, :source => :user
   has_many :notifications, as: :notifiable
   accepts_nested_attributes_for :categories, :location, :skill_categories
+
   def to_param
     "#{id} #{title}".parameterize
   end
@@ -35,19 +36,21 @@ class Skill < ActiveRecord::Base
     skill_path(self)
   end
 
-  def create_skill_from_request(skill_request_params = {})
+  def self.create_skill_from_request(skill_request_params = {})
       skill_request = skill_request_params[:skill_request]
       user = skill_request_params[:user]
-      self.is_active = true
-      self.title =  skill_request.title
-      self.subtitle =  skill_request.subtitle
-      self.full_description =  skill_request.full_description
-      self.location_id =  skill_request.location_id
-      self.creator_id =  user.id
-      self.skill_level_id = skill_request.skill_level.id
-      self.categories << skill_request.categories
-      self.save
-      return self
+      skill = self.new({
+                           is_active: true,
+                           title:  skill_request.title,
+                           subtitle:  skill_request.subtitle,
+                           full_description:  skill_request.full_description,
+                           location_id:  skill_request.location_id,
+                           creator_id:  user.id,
+                           skill_level_id: skill_request.skill_level.id,
+                           categories: skill_request.categories
+                       })
+      skill.save
+      skill
   end
 
   #this send comment crap needs to change to something with a block probably

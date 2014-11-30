@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   # Example of regular route:
   get 'what_is/'  => 'static_pages#what_is'
   get 'faq/'      => 'static_pages#faq'
-  get 'contact/'  => 'static_pages#contact'
+  get 'contact/'  => 'contacts#new'
   get 'coming_soon/'  => 'static_pages#coming_soon'
   get 'creating_skills_help/'  => 'static_pages#creating_skills_help'
 
   get 'dashboard/' => 'dashboards#show'
+
+  resources "contacts", only: [:new, :create]
 
   resources :skills do
     resources :comments

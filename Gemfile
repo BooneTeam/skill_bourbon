@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.0'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -20,7 +20,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
-
+gem 'mina'
 
 #Devise for Authentication and Authorization
 gem 'devise'
@@ -32,11 +32,13 @@ gem 'neat'
 gem 'bitters'
 gem 'bourbon'
 gem 'refills'
+gem 'will_paginate', '~> 3.0.6'
 
 #Forms
 gem 'momentjs-rails'
 gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'master', :submodules => true
 gem 'simple_form'
+gem 'mail_form'
 gem "select2-rails"
 gem 'country_select'
 

@@ -111,7 +111,7 @@ button.danger{
   @include outer-container;
   margin-top:5%;
   background:url(https://raw.github.com/Magnus-G/Random/master/lake-transparent.png) no-repeat center center fixed;
-  background-color:#4b7e91;
+  background-color:#2F4F4F;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -237,8 +237,49 @@ button.danger{
     float:right;
   }
 
-
 }
+
+.pagination {
+  .next_page,.previous_page {
+    @include button(simple, white);
+    font-size:.75em;
+  }
+}
+
+.hidden { display: none; }
  // .sign-out-btn::before{
   // content: "Watqsdf";
  // }/
+/*flash*/
+
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+}
+
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+}
+
+#contact_message{
+  height: 150px;
+}
