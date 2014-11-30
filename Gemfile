@@ -39,6 +39,7 @@ gem 'momentjs-rails'
 gem 'datetimepicker-rails', :git => 'git://github.com/zpaulovics/datetimepicker-rails.git', :branch => 'master', :submodules => true
 gem 'simple_form'
 gem 'mail_form'
+gem 'figaro'
 gem "select2-rails"
 gem 'country_select'
 
