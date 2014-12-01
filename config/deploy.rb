@@ -80,6 +80,11 @@ task :deploy => :environment do
   end
 end
 
+task :seed => :environment do
+  queue "cd /var/www/skillclimb"
+  queue "bundle exec rake db:seed RAILS_ENV=production"
+end
+
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - http://nadarei.co/mina
