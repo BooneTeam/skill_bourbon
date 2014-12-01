@@ -2,20 +2,18 @@
 $side-image-background-top: #B5EBEB;
 $side-image-background-bottom: #5DAC5D;
 $side-image-border: 1px solid darken(transparentize($side-image-background-bottom, .8), 30);
-.example-climb{
-  .images-wrapper{
-    @include background(url('https://0.s3.envato.com/files/7159000/Kosilica.jpg'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
-  }
+.skill-climb-logo-text{
+  text-align: center;
 }
 .whats-on-here{
   .images-wrapper{
-    @include background(url('https://0.s3.envato.com/files/80863065/PHBUSI-FOR-013-045.jpg'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
+//    @include background(url('https://0.s3.envato.com/files/80863065/PHBUSI-FOR-013-045.jpg'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
   }
 }
 
 .learning-and-teaching{
   .images-wrapper{
-    @include background(url('https://0.s3.envato.com/files/93982586/Education-Videos.jpg'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
+//    @include background(url('https://0.s3.envato.com/files/93982586/Education-Videos.jpg'), linear-gradient($side-image-background-top, $side-image-background-bottom), no-repeat $side-image-background-top scroll);
   }
 }
 
@@ -48,11 +46,11 @@ $side-image-border: 1px solid darken(transparentize($side-image-background-botto
     //per side image thing
     // @include Gradient;
     // background:$hero-background;
-    @include span-columns(12);
+//    @include span-columns(12);
     padding: 1em 1em 4em 1em;
 
     @include media($large-screen) {
-      @include span-columns(8);
+//      @include span-columns(8);
       padding: 4em 4em 8em 4em;
     }
   }
