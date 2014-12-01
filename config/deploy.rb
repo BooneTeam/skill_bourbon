@@ -81,7 +81,7 @@ task :deploy => :environment do
 end
 
 task :seed => :environment do
-  queue "cd /var/www/skillclimb"
+  queue "cd /var/www/skillclimb/current"
   queue "bundle exec rake db:seed RAILS_ENV=production"
 end
 
