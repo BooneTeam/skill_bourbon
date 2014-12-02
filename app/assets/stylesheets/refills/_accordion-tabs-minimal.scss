@@ -13,6 +13,7 @@
   li.tab-header-and-content {
     @include media($tab-mode) {
       display: inline;
+      padding:1.5em 1.618em;
     }
   }
 
