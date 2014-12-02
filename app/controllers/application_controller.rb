@@ -1,9 +1,5 @@
 class ApplicationController < ActionController::Base
-
-  def is_beta?
-    true
-  end
-
+  $is_beta = true
   # add_flash_types :error
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -20,11 +16,11 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    if (is_beta? && current_user.username.include?("test_beta"))
+    if ($is_beta && current_user.username.include?("test_beta"))
       session[:return_to_url] = request.url
-    elsif (is_beta? && !current_user.username.include?("test_beta"))
+    elsif ($is_beta && !current_user.username.include?("test_beta"))
       redirect_to what_is_path
-    elsif current_user && !is_beta?
+    elsif current_user && !$is_beta
         session[:return_to_url] = request.url
     else
       redirect_to new_user_registration_path
