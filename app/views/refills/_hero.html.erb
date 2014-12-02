@@ -1,7 +1,6 @@
 <div class="hero">
 	<div class="hero-inner">
-    <!-- <a href="" class="hero-logo"><%= image_tag("skillclimb-logo.png")%></a> -->
-    <!-- <h6>Skill-Climb</h6> -->
+    <%= image_tag("skillclimb-logo.png")%></a>
 		<div class="hero-copy">
 			<h1>Learn By Doing $ Earn by Sharing</h1>
       <h6>Connect, Learn, and Make Some Cash.</h6>
@@ -16,7 +15,6 @@
       <fieldset id='skill-search-box'>
         <%= render partial: "refills/search_bar", locals: {button_text: 'Search for a skill to learn today.', action: '/skills', is_remote:false } %>
         <br />
-        <h6> Or</h6>
         <%= button_to "Browse all skills", skills_path, method:"get" %>
       </fieldset>
     <% end %>
