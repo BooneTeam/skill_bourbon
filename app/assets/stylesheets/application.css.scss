@@ -291,3 +291,14 @@ button.danger{
 #dash-upcoming-calendar{
   padding: 1.5em 1.618em;
 }
+
+#message-us{
+  padding:5%;
+  color:white;
+  .contact_name,.contact_email{
+    float:left;
+    padding-top:30px;
+    padding-right:10px;
+    width:30%;
+  }
+}
