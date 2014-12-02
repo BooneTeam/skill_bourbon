@@ -1,7 +1,7 @@
 <div class="skill-climb-logo-text">
   <%= image_tag("skillclimb-logotext.png") %>
 </div>
-<% if ($is_beta && !current_user.username.include?("test_beta")) %>
+<% if ($is_beta && current_user && !current_user.username.include?("test_beta")) %>
 <div class="beta" style="width:100%; text-align: center">
   <h1>Hey!</h1>
   <p>Thanks for signing up and checking us out.</p>
