@@ -16,9 +16,9 @@ class ApplicationController < ActionController::Base
   end
 
   def login_required
-    if ($is_beta && current_user.username.include?("test_beta"))
+    if ($is_beta && current_user && current_user.username.include?("test_beta"))
       session[:return_to_url] = request.url
-    elsif ($is_beta && !current_user.username.include?("test_beta"))
+    elsif ($is_beta && current_user && !current_user.username.include?("test_beta"))
       redirect_to what_is_path
     elsif current_user && !$is_beta
         session[:return_to_url] = request.url
