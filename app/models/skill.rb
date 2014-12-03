@@ -59,7 +59,7 @@ class Skill < ActiveRecord::Base
   end
 
   def changed_comment
-    {title: "Your skill just received a new comment", description:"Go check it out."}
+    {title: "Your skill just received a new comment", description: self.comments.last.content}
   end
 
 

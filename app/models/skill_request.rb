@@ -11,6 +11,10 @@ class SkillRequest < ActiveRecord::Base
 
   accepts_nested_attributes_for :location
 
+  def to_param
+    "#{id} #{title}".parameterize
+  end
+
   def base_uri
     skill_request_path(self)
   end
