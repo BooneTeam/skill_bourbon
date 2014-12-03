@@ -6,7 +6,7 @@
     <h6 class='title'>Recent Student Projects</h6>
     <% unless @skill.apprenticeships.empty?  %>
     <ul>
-      <% @skill.apprenticeships.each do |apprenticeship| %>
+      <% @skill.apprenticeships.limit(3).each do |apprenticeship| %>
       <li>
         <h6>Requested Project</h6>
         <p><%= apprenticeship.request_description %></p>
