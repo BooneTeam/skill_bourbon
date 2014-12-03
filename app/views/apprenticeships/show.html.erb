@@ -4,8 +4,12 @@
     <h1><%= @apprenticeship.user.username %> & <%= @apprenticeship.skill.creator.username %></h1>
     <p class='small-info'>Communicate with each other here</p>
     <p class='small-info'>You can leave comments or change the scheduled time and place you'd like to meet.</p>
-  <%= render 'apprenticeships/edit_date_or_location' %>
-  <%= render 'skills/skill_bio' %>
+    <%= render 'apprenticeships/edit_date_or_location' %>
+    <%= render 'skills/skill_bio' %>
+    <div class="row skill-bio apprenticeship-extra">
+      <h6 class="title">Additional requests from apprentice.</h6>
+      <%= @apprenticeship.request_description %>
+    </div>
   </div>
   <div class='skill-comments'>
     <h5 class='title'>Communication</h5>

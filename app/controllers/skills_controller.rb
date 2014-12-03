@@ -3,6 +3,7 @@ class SkillsController < ApplicationController
   include SearchHelper
 
   before_filter :login_required, only:[:new]
+
   def index
     if params[:search]
       @skills = search_for(Skill, params, {ands: [{string: "is_active = ?",q: true }] }).paginate(:page => params[:page])

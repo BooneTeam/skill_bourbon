@@ -104,6 +104,11 @@ class Apprenticeship < ActiveRecord::Base
     self.notifications << Notification.new(item_changed: "new_apprenticeship",to_notify_id:self.skill.creator_id)
   end
 
+  def changed_comment
+    {title: "You just received a commnet",
+     description: self.comments.last.content }
+  end
+
   def changed_new_apprenticeship
     {title:"You just got a new student request".freeze,
     description: "Make sure you confirm the request below and start communicating in the comments.".freeze}

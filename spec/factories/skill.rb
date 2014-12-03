@@ -6,7 +6,8 @@ FactoryGirl.define do
   sequence(:skill_full_description) { |n| "Full Description#{n}" }
   sequence(:skill_price) { |n| "#{n}.00" }
   factory :skill do
-    association :creator, factory: [:user]
+    # association :author, :factory => :user, :username => 'admin'
+    association :creator, :factory => :user
     association :skill_level, factory: [:skill_level]
     association :location, factory: [:location]
     categories [FactoryGirl.build(:category)]

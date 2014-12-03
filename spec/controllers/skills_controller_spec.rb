@@ -7,14 +7,14 @@ RSpec.describe SkillsController, :type => :controller do
     expect(response).to render_template(:index)
   end
 
-  it "should redirect to sign_up url if not signed in" do
+  it "new action should redirect to sign_up url if not signed in" do
 
     get :new
     expect(response).to redirect_to '/users/sign_up'
   end
 
-  it "new action should render new template" do
-    sign_in
+  it "new action should render new template if signed_in" do
+    sign_in(User.first)
 
     get :new
     expect(response).to render_template(:new)
