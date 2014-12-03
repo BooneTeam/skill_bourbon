@@ -39,20 +39,18 @@ class Apprenticeship < ActiveRecord::Base
   def create_apprenticeship_from_skill(apprentice_params = {})
     skill = apprentice_params[:skill]
     skill_request = apprentice_params[:skill_request]
-    apprenticeship = self.new({
-     user_id:  skill_request.user_id,
-     skill_id: skill.id,
-     location_id: skill_request.location_id,
-     request_description: skill_request.full_description,
-     skill_level_id:  skill_request.skill_level.id,
-     meeting_date_scheduled: skill_request.meeting_date_scheduled,
-     meeting_date_requested: skill_request.meeting_date_requested,
-    })
-    apprenticeship.save
-    apprenticeship.accepted_status = "confirmed"
-    change_made_by(apprenticeship.creator)
-    apprenticeship.save
-    apprenticeship
+    self.user_id=   skill_request.user_id
+    self.skill_id= skill.id
+    self.location_id= skill_request.location_id
+    self.request_description= skill_request.full_description
+    self.skill_level_id=  skill_request.skill_level.id
+    self.meeting_date_scheduled= skill_request.meeting_date_scheduled
+    self.meeting_date_requested= skill_request.meeting_date_requested
+    self.save
+    self.accepted_status = "confirmed"
+    change_made_by(self.creator)
+    self.save
+    self
   end
 
   #break this out more so if you wnat to explicitly pass :creator you can
@@ -105,7 +103,7 @@ class Apprenticeship < ActiveRecord::Base
   end
 
   def changed_comment
-    {title: "You just received a commnet",
+    {title: "You just received a comment",
      description: self.comments.last.content }
   end
 
