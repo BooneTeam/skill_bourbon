@@ -14,9 +14,6 @@
 <div class='filter'>
   <%= f.input_field :categories, required: false, class: 'select2 categories ajax', label:false ,placeholder:"Select Up To 3 Categories",  data: { source: categories_path }%>
 </div>
-<!-- <div class='filter'> -->
-  <%#= f.input :keywords, required: false, label:false,placeholder: "Search Keywords" %>
-<!-- </div> -->
 </div>
 <%= f.submit value: "#{button_text}"%>
 <% end %>

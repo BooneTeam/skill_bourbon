@@ -35,7 +35,9 @@
       <% @earning_skills.each do |skill| %>
       <li>
         <h6>
-          <span class='level earning'><%=skill.apprenticeships.count %></span><span class='tooltip-item'> <%=link_to truncate(skill.title, length:20, seperator: "."), skill_path(skill)%><div class='tooltip'><%= skill.title%></div></span>
+          <% active_text = skill.is_active ? '' : '(inactive)' %>
+          <%= active_text %>
+          <span class='level earning'><%=skill.apprenticeships.count %></span><span class='tooltip-item'> <%=link_to truncate(skill.title, length:20, seperator: "."), skill_path(skill)%><div class='tooltip'><%= skill.title%><%= active_text %></div></span>
           <%= link_to edit_skill_path(skill) do %>
             <i class="fa fa-gear"></i>
           <% end %>
