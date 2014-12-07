@@ -4,6 +4,9 @@
   <!-- </div> -->
   <fieldset>
     <%= simple_form_for @skill do |f| %>
+    <% @errors.each do |error| %>
+      <p><%= error %></p>
+    <% end %>
     <%= f.input :is_active, as: :boolean, label: "Set Skill Active? " %>
     <ul class="accordion-tabs-minimal">
   <li class="tab-header-and-content">
@@ -40,7 +43,7 @@
   <li class="tab-header-and-content">
     <a href="#" class="tab-link">4.) Set price & submit. </a>
     <div class="tab-content">
-    <%= f.input :path_id, label: "Add to already created path (optional)", as: :select, collection: @paths, value_method: :id %>
+    <%= f.input :path_id, label: "Add to already created path (optional)", as: :select, collection: current_user.paths, value_method: :id %>
     <%= f.input :price, label: "Set Price" %>
     <%= f.submit %>
     <%= button_to 'Create a new path', new_path_path, id:'create-new-path-button' %>

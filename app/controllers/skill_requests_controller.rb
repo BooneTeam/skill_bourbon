@@ -6,18 +6,11 @@ class SkillRequestsController < ApplicationController
   before_filter :login_required, only:[:new]
 
   def index
-    if params[:search]
-      @skills = search_for(SkillRequest, params, {ands: [{string: "accepted_status != ?",q: 'confirmed'}] }).paginate(:page => params[:page])
-      respond_to do |format|
-        format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
-        format.html
-      end
-    else
-      @skills = SkillRequest.where("accepted_status != 'confirmed' ").includes(:categories,:location).paginate(:page => params[:page], :per_page => 3)
-      respond_to do |format|
-        format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
-        format.html
-      end
+    skills  = search_for(SkillRequest, params).not_confirmed.includes(:location,:categories)
+    @skills = skills.paginate(:page => params[:page])
+    respond_to do |format|
+      format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
+      format.html
     end
   end
 

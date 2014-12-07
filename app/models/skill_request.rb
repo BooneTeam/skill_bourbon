@@ -1,5 +1,10 @@
 class SkillRequest < ActiveRecord::Base
   include Rails.application.routes.url_helpers
+
+  scope :not_confirmed, ->{ where.not(accepted_status:'confirmed')}
+  scope :in_location, ->(ids) { where('location_id in (?)',ids)}
+  scope :in_categories,  ->(ids) { joins(:categories).where('categories.id in (?)', ids)}
+
   validates :title, :subtitle, :full_description,:user_id,:meeting_date_requested,:location_id, :presence => true
 
   has_many :skill_request_categories, dependent: :destroy
