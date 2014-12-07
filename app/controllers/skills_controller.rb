@@ -5,19 +5,11 @@ class SkillsController < ApplicationController
   before_filter :login_required, only:[:new]
 
   def index
-    if params[:search]
-      @skills = search_for(Skill, params, {ands: [{string: "is_active = ?",q: true }] }).paginate(:page => params[:page])
-      respond_to do |format|
-        format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
-        format.html
-      end
-    else
-      skills  = Skill.where(is_active: true).includes(:categories,:location)
-      @skills = skills.paginate(:page => params[:page])
-      respond_to do |format|
-        format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
-        format.html
-      end
+    skills  = search_for(Skill,params).active.includes(:location,:categories)
+    @skills = skills.ordered_by_date.paginate(:page => params[:page])
+    respond_to do |format|
+      format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
+      format.html
     end
   end
 
@@ -46,7 +38,7 @@ class SkillsController < ApplicationController
     if @skill.save
       redirect_to dashboard_path
     else
-      # flash[:errors] = "#{@skill.errors.messages}"
+      @errors = @skill.errors.full_messages
       render 'new'
     end
   end

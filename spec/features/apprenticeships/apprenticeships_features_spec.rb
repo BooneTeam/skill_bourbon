@@ -29,12 +29,6 @@ RSpec.describe "apprenticeship", :type => :feature do
      expect(page).to have_button("Request Apprenticeship")
    end
 
-   it "can see button to  sign up for a 'similar' skill/apprenticeship" do
-     visit '/skills'
-     click_on(@skill.title)
-     expect(page).to have_button("Request Similar Apprenticeship")
-   end
-
     it "can  sign up for a skill/apprenticeship button" do
       visit '/skills'
       click_on(@skill.title)
@@ -44,7 +38,6 @@ RSpec.describe "apprenticeship", :type => :feature do
         find('#apprenticeship_skill_level_id').find(:xpath, 'option[2]').select_option
         click_button("Submit Request")
       end
-      binding.pry
       expect(@user.skills.count).to eq 1
     end
 
@@ -68,36 +61,36 @@ RSpec.describe "apprenticeship", :type => :feature do
     #   expect(@user.apprenticeships.first.accepted_status).to eq "pending"
     # end
 
-   it "can change the date of an apprenticeship" do
-     pending "Need to Implement"
+   describe "can change the date of an apprenticeship" do
+     it "Needs to be implemented"
    end
 
-   it "notifies the teacher of change in date" do
-     pending "Need to Implement"
+   describe "notifies the teacher of change in date" do
+     it "Needs to be implemented"
    end
 
-   it "notifies the teacher of change in location" do
-     pending "Need to Implement"
+   describe "notifies the teacher of change in location" do
+     it "Needs to be implemented"
    end
 
-   it "notifies the teacher of acceptance of date" do
-     pending "Need to Implement"
+   describe "notifies the teacher of acceptance of date" do
+     it "Needs to be implemented"
    end
 
-   it "notifies the student of change in date" do
-     pending "Need to Implement"
+   describe "notifies the student of change in date" do
+     it "Needs to be implemented"
    end
 
-   it "notifies the student of change in location" do
-     pending "Need to Implement"
+   describe "notifies the student of change in location" do
+     it "Needs to be implemented"
    end
 
-   it "notifies the student of acceptance of date" do
-     pending "Need to Implement"
+   describe "notifies the student of acceptance of date" do
+     it "Needs to be implemented"
    end
 
-   it "is commentable" do
-     pending "Need to Implement"
+   describe "is commentable" do
+     it "Needs to be implemented"
    end
 end
 

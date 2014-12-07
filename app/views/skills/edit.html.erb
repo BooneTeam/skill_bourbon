@@ -2,10 +2,18 @@
   <%= render "refills/skill_form" %>
    <div class='form-description raised-box-content'>
    <div class='content'>
+     <% if @skill.apprenticeships.empty? %>
      <h4 class='subject'>Deleting this skill will remove it permanently.</h4>
-     <%= button_to skill_path(@skill), method: :delete, class: "danger" do  %>
-       Delete Skill
-     <% end %>
+       <%= button_to skill_path(@skill), method: :delete, class: "danger" do  %>
+         Delete Skill
+       <% end %>
+     <%else%>
+       <h4 class='subject'>You cannot delete this skill as it has apprentices. You can archive it so it doesn't display in your dashboard.</h4>
+       <%= button_to skill_path(@skill), method: :put, class: "warning" do  %>
+         Archive Skill
+       <% end %>
+     <%end%>
+
    </div>
   <!-- <%= render 'refills/categories' %> -->
 </div>

@@ -1,7 +1,12 @@
 class Skill < ActiveRecord::Base
+  include HashModifiers
 
   include Rails.application.routes.url_helpers
 
+  scope :ordered_by_date, ->{ order("skills.created_at DESC") }
+  scope :active, ->{ where(is_active:true)}
+  scope :in_location, ->(ids) { where('location_id in (?)',ids)}
+  scope :in_categories,  ->(ids) { joins(:categories).where('categories.id in (?)', ids)}
 
   validates :title, :subtitle, :full_description,:creator_id, :skill_level_id, :location_id, :presence => true
   validates_presence_of :categories
@@ -23,6 +28,16 @@ class Skill < ActiveRecord::Base
   has_many :apprentices, through: :apprenticeships, :source => :user
   has_many :notifications, as: :notifiable
   accepts_nested_attributes_for :categories, :location, :skill_categories
+
+  delegate :username,
+           to: :creator,
+           prefix: true
+
+  delegate :city,
+           :state,
+           :zip,
+           to: :location,
+           prefix: true
 
   def to_param
     "#{id} #{title}".parameterize

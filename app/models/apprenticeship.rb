@@ -20,6 +20,10 @@ class Apprenticeship < ActiveRecord::Base
   before_save  :check_accepted_date
   after_create :notify_creator
 
+  delegate :title,
+           :to => :skill_level,
+           :prefix => true
+
   def creator
     self.skill.creator
   end

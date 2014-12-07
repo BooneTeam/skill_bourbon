@@ -7,13 +7,14 @@ RSpec.describe "Skills", :type => :feature do
     @user_with_inactive_skills = create(:user_with_inactive_skills)
   end
 
-  context "while NOT signed in" do
-    it "cannot sign up for a skill/apprenticeship" do
-      visit '/skills'
-
-      pending "Need to Implement"
+  # context "while NOT signed in" do
+    describe "cannot sign up for a skill/apprenticeship" do
+      it "Need to Implement"
+        # pending("something else getting finished")
+        # visit '/skills'
+      # end
     end
-  end
+  # end
 
   context "while signed in" do
     describe "index page"   do
