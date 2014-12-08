@@ -44,6 +44,10 @@ class Skill < ActiveRecord::Base
     "#{id} #{title}".parameterize
   end
 
+  def created_by?(user)
+    user == creator
+  end
+
   def add_creator_type
     self.creator_type = "User"
   end
