@@ -14,7 +14,7 @@
             <div class="tooltip pending">Status: <%= apprenticeship.try(:accepted_status)%></div>
           </span>
           <span class='tooltip-item'>
-            <%=link_to truncate(apprenticeship.skill.title, length: 20,seperator:"."), skill_path(apprenticeship.skill)%>
+            <%=link_to item_title_link(apprenticeship) {|s| s.skill.title}, skill_path(apprenticeship.skill) %>
             <div class='tooltip'><%=apprenticeship.skill.title%></div>
           </span>
           <%= link_to apprenticeship_path(apprenticeship) do %>
@@ -22,7 +22,7 @@
           <% end %>
         </h6>
         <h6 class="category">
-          <%=apprenticeship.skill.categories.map{|category| category.name}.join(",").to_s%>
+          <%= dash_item_categories(apprenticeship.skill.categories) %>
         </h6>
       </li>
     <%end%>
