@@ -1,12 +1,9 @@
 <div id='new-skill-form'>
-  <!-- <div class='sidebar'> -->
-  <!-- <h5> Basic Skill Information </h5> -->
-  <!-- </div> -->
   <fieldset>
     <%= simple_form_for @skill do |f| %>
     <% @errors.each do |error| %>
       <p><%= error %></p>
-    <% end %>
+    <% end if @errors %>
     <%= f.input :is_active, as: :boolean, label: "Set Skill Active? " %>
     <ul class="accordion-tabs-minimal">
   <li class="tab-header-and-content">
@@ -37,8 +34,9 @@
     <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
     <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
     <% end %>
-    <%= f.input_field :category_ids,placeholder:"Select up to 3 categories", style:"width:100%", class: 'select2 categories ajax', data: { source: categories_path, initSelection: @skill.categories.map{|category|{id: category.id, text: category.name}}},value:' '%>
+      <%= f.input_field :category_ids,placeholder:"Select up to 3 categories", style:"width:100%", class: 'select2 categories ajax', data: { source: categories_path, initselection: @skill.categories.map{|category|{id: category.id, text: category.name}}}%>
     </div>
+
   </li>
   <li class="tab-header-and-content">
     <a href="#" class="tab-link">4.) Set price & submit. </a>

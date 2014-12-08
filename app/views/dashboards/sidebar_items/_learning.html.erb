@@ -1,0 +1,30 @@
+<div id="learning">
+  <h6 class="title">
+    <i class="toggle-info fa fa-chevron-circle-up"></i> Learning Skills
+    <span class="title-action"> <%= link_to skills_path, id:'dash-learning-search' do %>
+      <%= fa_icon "search-plus"%>
+      <% end %>
+    </span>
+  </h6>
+  <ul class='toggle-content'>
+    <% @apprenticeships.each do |apprenticeship| %>
+      <li>
+        <h6>
+          <span class='level learning status-<%=apprenticeship.try(:accepted_status)%> tooltip-item'>
+            <div class="tooltip pending">Status: <%= apprenticeship.try(:accepted_status)%></div>
+          </span>
+          <span class='tooltip-item'>
+            <%=link_to truncate(apprenticeship.skill.title, length: 20,seperator:"."), skill_path(apprenticeship.skill)%>
+            <div class='tooltip'><%=apprenticeship.skill.title%></div>
+          </span>
+          <%= link_to apprenticeship_path(apprenticeship) do %>
+            <i class="fa fa-gear"></i>
+          <% end %>
+        </h6>
+        <h6 class="category">
+          <%=apprenticeship.skill.categories.map{|category| category.name}.join(",").to_s%>
+        </h6>
+      </li>
+    <%end%>
+  </ul>
+</div>

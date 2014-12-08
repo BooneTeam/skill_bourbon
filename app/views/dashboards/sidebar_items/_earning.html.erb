@@ -1,0 +1,30 @@
+<div id="earning">
+  <h6 class="title">
+    <i class="toggle-info fa fa-chevron-circle-up"></i>Earning Skills
+    <span class="title-action"><%= link_to new_skill_path, id:'dash-new-skill-btn' do %>
+     <%= fa_icon "plus"%>
+     <% end %>
+    </span>
+  </h6>
+  <ul class="toggle-content">
+    <% @earning_skills.each do |skill| %>
+      <li>
+        <h6>
+          <% active_text = skill.is_active ? '' : '(inactive)' %>
+          <%= active_text %>
+          <span class='level earning'><%=skill.apprenticeships.count %></span>
+          <span class='tooltip-item'>
+            <%=link_to truncate(skill.title, length:20, seperator: "."), skill_path(skill)%>
+            <div class='tooltip'><%= skill.title%><%= active_text %></div>
+          </span>
+          <%= link_to edit_skill_path(skill) do %>
+            <i class="fa fa-gear"></i>
+          <% end %>
+        </h6>
+        <h6 class="category">
+          <%=skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>
+        </h6>
+      </li>
+    <%end%>
+  </ul>
+</div>

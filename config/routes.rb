@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources "contacts", only: [:new, :create]
 
   resources :skills do
+    # put 'archived', on: :member
     resources :comments
     collection do
       resources :apprenticeships do
@@ -27,6 +28,7 @@ Rails.application.routes.draw do
       end
       get 'teaching'
       get 'learning'
+      get 'archived'
     end
   end
 
