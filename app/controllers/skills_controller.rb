@@ -58,6 +58,7 @@ class SkillsController < ApplicationController
     params[:skill]["category_ids"] ||= ''
     @skill = Skill.find(params['id'])
     category_ids = params[:skill]["category_ids"].split(',')
+
     if !category_ids.empty?
       params[:skill].merge!({category_ids: category_ids})
     end
