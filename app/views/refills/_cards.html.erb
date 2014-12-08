@@ -1,33 +1,9 @@
-
 <div class="cards">
   <% if @skills.empty? %>
     <%= render "refills/no_results" %>
   <% else %>
-  <% @skills.each do |skill| %>
-  <%= link_to skill.base_uri do %>
-  <div class="hover-tile-outer">
-    <div class="hover-tile-container">
-      <div class="hover-tile hover-tile-visible">
-        <div class='hover-tile-categories'>
-          <% skill.categories.each do |cat| %>
-            <p class='small-info'><%= cat.name %></p>
-            <% end %>
-        </div>
-        <h6 class='title'><%= skill.title %></h6>
-        <p class='small-info card-city'><%= skill.location.city %>,<%= skill.location.state %></p>
-        <p class='subtitle'><%= skill.subtitle %></p>
-      </div>
-      <div class="hover-tile hover-tile-hidden">
-        <p><%= truncate(skill.full_description, length: 250, separator: '.') %></p>
-        <p class="text-link">Read More</p>
-      </div>
-    </div>
-  </div>
+    <%= render :partial => 'refills/card', :collection => @skills, as: :skill %>
+    <%= will_paginate @skills %>
   <% end %>
-
-  <% end %>
-  <%= will_paginate @skills %>
-  <% end %>
-
 </div>
 

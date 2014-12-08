@@ -1,4 +1,6 @@
 class SkillRequest < ActiveRecord::Base
+  include HashModifiers
+
   include Rails.application.routes.url_helpers
 
   scope :not_confirmed, ->{ where.not(accepted_status:'confirmed')}
@@ -15,6 +17,12 @@ class SkillRequest < ActiveRecord::Base
   belongs_to :user
 
   accepts_nested_attributes_for :location
+
+  delegate :city,
+           :state,
+           :zip,
+           to: :location,
+           prefix: true
 
   def to_param
     "#{id} #{title}".parameterize

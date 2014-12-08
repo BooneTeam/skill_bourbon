@@ -24,11 +24,14 @@
             Confirm
           <% end %>
       <%else %>
-      <td><% if data_row.class == Apprenticeship %>
+      <td>
+        <% if data_row.class == Apprenticeship %>
           <%= link_to apprenticeship_path(data_row) do %>
             <i class="fa fa-gear"></i>
           <% end %>
-        <% end %><%= data_row.user == current_user ? data_row.skill.creator.username : data_row.user.username %></td>
+        <% end %>
+        <%= data_row.user == current_user ? data_row.skill.creator.username : data_row.user.username %>
+      </td>
       <td><%= link_to truncate(data_row.skill.title, length: 30, seperator:"."), apprenticeship_path(data_row) %></td>
       <td><%= data_row.location.try(:address) %></td>
       <td><%= data_row.meeting_date_scheduled || "Pending Acceptance"%></td>
