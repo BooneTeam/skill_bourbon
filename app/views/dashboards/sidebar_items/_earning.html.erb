@@ -14,7 +14,7 @@
           <%= active_text %>
           <span class='level earning'><%=skill.apprenticeships.count %></span>
           <span class='tooltip-item'>
-            <%=link_to truncate(skill.title, length:20, seperator: "."), skill_path(skill)%>
+            <%=link_to item_title_link(skill) {|s| s.title}, skill_path(skill) %>
             <div class='tooltip'><%= skill.title%><%= active_text %></div>
           </span>
           <%= link_to edit_skill_path(skill) do %>
@@ -22,7 +22,7 @@
           <% end %>
         </h6>
         <h6 class="category">
-          <%=skill.categories.limit(3).map{|category| category.name}.join(",").to_s%>
+          <%= dash_item_categories(skill.categories) %>
         </h6>
       </li>
     <%end%>

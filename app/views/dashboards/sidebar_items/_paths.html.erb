@@ -10,7 +10,7 @@
             <div class="tooltip pending">Status: <%= path.try(:accepted_status)%></div>
           </span>
           <span class='tooltip-item'>
-            <%=link_to truncate(path.name, length: 20,seperator:"."), path_path(path)%>
+            <%=link_to item_title_link(path) {|s| s.name}, path_path(path) %>
             <div class='tooltip'><%=path.name%></div>
           </span>
           <%= link_to path_path(path) do %>

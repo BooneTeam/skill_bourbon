@@ -27,4 +27,12 @@ module DashboardHelper
     @open_requests         = @earning_skills.map(&:categories).flatten.map{|x| x.skill_requests.includes(:user)}.flatten.select{|x| x.created_at > Time.now - 3.days && x.accepted_status != "confirmed" && x.user != current_user }
   end
 
+  def item_title_link(object)
+    truncate(yield(object), length:20, seperator: ".")
+  end
+
+  def dash_item_categories(categories)
+    categories.limit(3).map{|category| category.name}.join(",").to_s
+  end
+
 end
