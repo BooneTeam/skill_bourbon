@@ -301,7 +301,6 @@ $(function() {
   options = {
     initSelection : function (e, callback) {
         var data = [];
-        // vals = JSON.parse(e.val());
         vals = e.data('initselection')
         $(vals).each(function () {
           if (this.id !== null){

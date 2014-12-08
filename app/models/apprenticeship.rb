@@ -1,18 +1,21 @@
 class Apprenticeship < ActiveRecord::Base
 
   validates  :user_id, :location_id, :request_description,:skill_id, :skill_level_id, :meeting_date_requested, :presence => true
+
   belongs_to :user
   belongs_to :skill
   belongs_to :location
   has_many   :notes
   has_many   :comments, :as => :commentable, dependent: :destroy
-  belongs_to  :skill_level
-  scope :learning, -> {where(apprentice:true, accepted_status: "confirmed")}
-  scope :earning,  -> {where(apprentice:false)}
-  scope :denied,  -> {where(accepted_status:"denied")}
-  scope :confirmed,  -> {where(accepted_status:"confirmed")}
-  scope :pending,  -> {where(accepted_status:"pending")}
+  belongs_to :skill_level
+
+  scope :learning,            -> {where(apprentice:true, accepted_status: "confirmed")}
+  scope :earning,             -> {where(apprentice:false)}
+  scope :denied,              -> {where(accepted_status:"denied")}
+  scope :confirmed,           -> {where(accepted_status:"confirmed")}
+  scope :pending,             -> {where(accepted_status:"pending")}
   scope :confirmed_upcoming,  -> {confirmed.where('meeting_date_scheduled >= ? AND meeting_date_scheduled <= ?', DateTime.now.beginning_of_day, DateTime.now + 18.days)}
+
   has_many :notifications, :as => :notifiable
 
   accepts_nested_attributes_for :location, :comments
@@ -24,7 +27,7 @@ class Apprenticeship < ActiveRecord::Base
            :to => :skill_level,
            :prefix => true
 
-  def creator
+  def skill_creator
     self.skill.creator
   end
 
@@ -52,58 +55,46 @@ class Apprenticeship < ActiveRecord::Base
     self.meeting_date_requested= skill_request.meeting_date_requested
     self.save
     self.accepted_status = "confirmed"
-    change_made_by(self.creator)
+    change_made_by(self.skill_creator)
     self.save
     self
   end
 
-  #break this out more so if you wnat to explicitly pass :creator you can
-  def change_made_by(user)
+  def who_to_notify(user)
     case user_role(user)
-    when :creator # notify the student that creator madde change
-      who_to_notify = self.user
-    when :apprentice # notify the creator that student made change
-      who_to_notify = self.skill.creator
+      when :creator # notify the student that creator madde change
+        to_notify_id = self.user.id
+      when :apprentice # notify the creator that student made change
+        to_notify_id = self.skill_creator.id
     end
+  end
+
+  def change_made_by(user)
     self.changed.each do |change|
-      self.notifications << Notification.new(:item_changed => change.to_s , to_notify_id: who_to_notify.id)
+      self.notifications << Notification.new(:item_changed => change.to_s, to_notify_id: who_to_notify(user))
     end
   end
 
   def send_comment(user)
-    case user_role(user)
-    when :creator # notify the student that creator madde change
-      who_to_notify = self.user
-    when :apprentice # notify the creator that student made change
-      who_to_notify = self.skill.creator
-    end
-    self.notifications << Notification.new(:item_changed => "comment", to_notify_id: who_to_notify.id)
-  end
-
-  def set_accepted_date(user)
-    case user_role(user)
-    when :creator
-      creator_accepts_date
-    when :apprentice
-      apprentices_accepts_date
-    end
-    change_made_by(user)
-  end
-
-  def creator_accepts_date
-    self.creator_accept_date = true
-  end
-
-  def apprentices_accepts_date
-    self.apprentice_accept_date = true
-  end
-
-  def user_role(user)
-    self.user == user ? :apprentice : :creator
+    self.notifications << Notification.new(:item_changed => "comment", to_notify_id: who_to_notify(user))
   end
 
   def notify_creator
     self.notifications << Notification.new(item_changed: "new_apprenticeship",to_notify_id:self.skill.creator_id)
+  end
+
+  def set_accepted_date(user)
+    who = user_role(user)
+    accept_date(who)
+    change_made_by(user)
+  end
+
+  def accept_date(who)
+    self.send("#{who}_accept_date=",true)
+  end
+
+  def user_role(user)
+    self.user == user ? :apprentice : :creator
   end
 
   def changed_comment

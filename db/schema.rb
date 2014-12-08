@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102230313) do
+ActiveRecord::Schema.define(version: 20141207212046) do
 
   create_table "apprenticeships", force: true do |t|
     t.text     "request_description"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 20141102230313) do
     t.boolean  "is_active",                                default: false
     t.decimal  "price",            precision: 8, scale: 2, default: 0.0
     t.integer  "path_id"
+    t.boolean  "archived",                                 default: false
   end
 
   create_table "users", force: true do |t|

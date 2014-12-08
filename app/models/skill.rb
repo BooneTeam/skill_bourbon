@@ -3,10 +3,11 @@ class Skill < ActiveRecord::Base
 
   include Rails.application.routes.url_helpers
 
-  scope :ordered_by_date, ->{ order("skills.created_at DESC") }
-  scope :active, ->{ where(is_active:true)}
-  scope :in_location, ->(ids) { where('location_id in (?)',ids)}
+  scope :ordered_by_date,->{ order("skills.created_at DESC") }
+  scope :active,         ->{ where(is_active:true)}
+  scope :in_location,    ->(ids) { where('location_id in (?)',ids)}
   scope :in_categories,  ->(ids) { joins(:categories).where('categories.id in (?)', ids)}
+  scope :archived,   ->(boolean) {where(archived:boolean)}
 
   validates :title, :subtitle, :full_description,:creator_id, :skill_level_id, :location_id, :presence => true
   validates_presence_of :categories

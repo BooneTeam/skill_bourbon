@@ -18,8 +18,9 @@ module DashboardHelper
   def current_user_dash_items
     @apprenticeships       = current_user.apprenticeships.includes(:skill,:location)
     @paths                 = current_user.paths
-    @earning_skills        = current_user.created_skills.includes(:categories,:creator)
-    @apprentice_requests   = current_user.apprentice_requests
+    @earning_skills        = current_user.created_skills.archived(false).includes(:categories,:creator)
+    @archived_skills       = current_user.created_skills.archived(true)
+    @apprentice_requests   = current_user.apprentice_requests.includes(:skill,:location,:user)
     @upcoming_events       = current_user.confirmed_upcoming_events
     @skill_requests        = current_user.skill_requests.where(has_apprenticeship: false)
     @notifications         = current_user.notifications.includes(:notifiable).sort_by{|x| x.created_at}.reverse

@@ -5,7 +5,7 @@ class SkillsController < ApplicationController
   before_filter :login_required, only:[:new]
 
   def index
-    skills  = search_for(Skill,params).active.includes(:location,:categories)
+    skills  = search_for(Skill,params).active.archived(false).includes(:location,:categories)
     @skills = skills.ordered_by_date.paginate(:page => params[:page])
     respond_to do |format|
       format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
@@ -55,11 +55,16 @@ class SkillsController < ApplicationController
   end
 
   def update
+    params[:skill]["category_ids"] ||= ''
     @skill = Skill.find(params['id'])
     category_ids = params[:skill]["category_ids"].split(',')
-    params[:skill].merge!({category_ids: category_ids})
+    if !category_ids.empty?
+      params[:skill].merge!({category_ids: category_ids})
+    end
     if @skill.update_attributes(skill_params)
-      @skill.location_id = find_location
+      if params[:skill][:location_id]
+        @skill.location_id = find_location
+      end
       if @skill.save
        redirect_to @skill
       else
@@ -84,7 +89,7 @@ class SkillsController < ApplicationController
   private
 
     def skill_params
-      params.require(:skill).permit(:title,:subtitle,:full_description,:price,:skill_level_id,:creator_id,:is_active,:path_id,category_ids:[],location_attributes:[:city,:state,:zip, :id])
+      params.require(:skill).permit(:title,:subtitle,:full_description,:price,:skill_level_id,:creator_id,:is_active,:path_id,:archived,category_ids:[],location_attributes:[:city,:state,:zip, :id])
     end
 
     def find_location

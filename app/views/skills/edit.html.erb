@@ -9,11 +9,11 @@
        <% end %>
      <%else%>
        <h4 class='subject'>You cannot delete this skill as it has apprentices. You can archive it so it doesn't display in your dashboard.</h4>
-       <%= button_to skill_path(@skill), method: :put, class: "warning" do  %>
-         Archive Skill
+       <%= simple_form_for @skill do |f| %>
+         <%= f.hidden_field :archived, value: true %>
+         <%= f.submit class: "warning", value:"Archive Skill" %>
        <% end %>
      <%end%>
-
    </div>
   <!-- <%= render 'refills/categories' %> -->
 </div>
