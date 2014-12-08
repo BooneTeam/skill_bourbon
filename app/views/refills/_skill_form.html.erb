@@ -34,7 +34,7 @@
     <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
     <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
     <% end %>
-      <%= f.input_field :category_ids,placeholder:"Select up to 3 categories", style:"width:100%", class: 'select2 categories ajax', data: { source: categories_path, initselection: @skill.categories.map{|category|{id: category.id, text: category.name}}}%>
+      <%= f.input_field :category_ids, placeholder:"Select up to 3 categories", style:"width:100%", class: 'select2 categories ajax', data: { source: categories_path, initselection: @skill.categories.map{|category| {'id' => category.id, 'text' => category.name} }}%>
     </div>
 
   </li>

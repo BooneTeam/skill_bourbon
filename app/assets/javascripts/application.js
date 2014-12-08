@@ -297,21 +297,23 @@ $(function() {
   })
 
   $('.select2').each(function(i, e){
-  var select = $(e)
+  var select = $(e);
+  var initselect = [];
   options = {
     initSelection : function (e, callback) {
-        var data = [];
-        vals = e.data('initselection')
+//        var initselect = [];
+
+        vals = e.data('initselection');
         $(vals).each(function () {
           if (this.id !== null){
-            data.push({id: this.id, text: this.text});
+            initselect.push({id: this.id, text: this.text});
           }
         });
-        if (data.length <= 0 ){
-          select.select2("val", "");
+        if (initselect.length <= 0 ){
+          select.select2("val", '');
         }
         else {
-          callback(data);
+          callback(initselect);
         }
     },
     allowClear: true,
@@ -328,7 +330,8 @@ $(function() {
     }
     options.dropdownCssClass = "filterDrop"
   }
-  select.select2(options)
+  select.select2(options);
+  select.select2('val',initselect);
 })
 
   function ShowTooltip(selector) {
