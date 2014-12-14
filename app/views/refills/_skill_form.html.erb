@@ -11,10 +11,34 @@
     <div class="tab-content">
     <p> Give general information about this skill.</p>
     <p>This should help others decide if what you are offering is what they need help with.</p>
-    <%= f.input :title, as: :string, placeholder:"Enter a Title", label:false, maxlength: 35 %>
-    <%= f.input :subtitle, placeholder:"Enter a Subtitle", label:false, maxlength: 45 %>
-    <%= f.input :skill_level_id, label: "Reccomended skill level for this task", as: :select, collection: SkillLevel.all, value_method: :id %>
-    </div>
+      <div class="tooltip2-item">
+        <%= f.input :title, as: :string, placeholder:"Enter a Title", label:false, maxlength: 35 %>
+        <div class="tooltip2" id="title-tip">
+          <ul>Examples of a title:
+            <li>Learn Ruby</li>
+            <li>Learn Fly Fishing Skills</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tooltip2-item">
+        <%= f.input :subtitle, placeholder:"Enter a Subtitle", label:false, maxlength: 45 %>
+        <div class="tooltip2" id="subtitle-tip">
+          <ul>Examples of a subtitle:
+            <li>Beginner Ruby Development Skills</li>
+            <li>Intermediate Fly Fishing techniques</li>
+          </ul>
+        </div>
+      </div>
+      <div class="tooltip2-item">
+        <%= f.input :skill_level_id, label: "Recommended skill level for this task", as: :select, collection: SkillLevel.all, value_method: :id %>
+        <div class="tooltip2" id="title-tip">
+          <ul>Skill Levels:
+            <% SkillLevel.all.each do |sl| %>
+              <li><p class="title"><%= sl.title %></p><%= sl.description %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
   </li>
   <li class="tab-header-and-content">
     <a href="#" class="tab-link">2.) Full Description</a>
@@ -28,13 +52,13 @@
     <div class="tab-content">
     <p>Specify the location where you would like to meet and complete this skill. This can be changed later per studen if you need it to change.</p>
     <%= f.simple_fields_for :location do |c| %>
-    <input id="autocomplete" placeholder="Enter an address where you'd like to teach this skill"
+      <input id="autocomplete" placeholder="Enter an address where you'd like to teach this skill"
     onFocus="geolocate()" type="text"></input>
-    <%= c.hidden_field :city, label: "City", placeholder:"Select City", class: 'locality',:readonly => true %>
-    <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
-    <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
+      <%= c.hidden_field :city, label: "City", placeholder:"Select City", class: 'locality',:readonly => true %>
+      <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
+      <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
     <% end %>
-      <%= f.input_field :category_ids, placeholder:"Select up to 3 categories", style:"width:100%", class: 'select2 categories ajax', data: { source: categories_path, initselection: @skill.categories.map{|category| {'id' => category.id, 'text' => category.name} }}%>
+    <%= f.input_field :category_ids, placeholder:"Select up to 3 categories", style:"width:100%", class: 'select2 categories ajax', data: { source: categories_path, initselection: @skill.categories.map{|category| {'id' => category.id, 'text' => category.name} }}%>
     </div>
 
   </li>

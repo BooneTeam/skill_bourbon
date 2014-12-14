@@ -134,8 +134,9 @@
   font-size:.5em;
 }
 
-#new-skill-form{
-  @include outer-container;
+#new_skill input{
+  max-width:30%;
+//  @include outer-container;
   // @include span-columns(5)
 }
 

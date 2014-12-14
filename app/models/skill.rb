@@ -82,5 +82,8 @@ class Skill < ActiveRecord::Base
     {title: "Your skill just received a new comment", description: self.comments.last.content}
   end
 
+  def self.search
+    active.archived(false).includes(:location,:categories).ordered_by_date
+  end
 
 end
