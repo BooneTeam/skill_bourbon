@@ -44,9 +44,7 @@
 
 // all custom stuff should go in here or in the refills/* stylesheets dont mess with anything under sass/*
 // maybe make a custom/* folder with all custom things.
-body{
-  // overflow-x:hidden;
-}
+
 button.danger{
   @include button(simple, red);
 }
@@ -247,10 +245,6 @@ button.danger{
 }
 
 .hidden { display: none; }
- // .sign-out-btn::before{
-  // content: "Watqsdf";
- // }/
-/*flash*/
 
 .alert-error {
   background-color: #f2dede;
@@ -301,4 +295,13 @@ button.danger{
     padding-right:10px;
     width:30%;
   }
+}
+
+li.left{
+   float:left;
+   margin:1em;
+}
+
+.in-container{
+  @include outer-container;
 }

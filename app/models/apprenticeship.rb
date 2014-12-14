@@ -27,6 +27,15 @@ class Apprenticeship < ActiveRecord::Base
            :to => :skill_level,
            :prefix => true
 
+  STATUSES = ['pending','confirmed','denied']
+
+  # Define Methods to check accepted status
+  STATUSES.each do |status|
+    define_method("#{status}?") do
+      self.accepted_status == status
+    end
+  end
+
   def skill_creator
     self.skill.creator
   end

@@ -6,8 +6,7 @@ class SkillRequestsController < ApplicationController
   before_filter :login_required, only:[:new]
 
   def index
-    skills  = search_for(SkillRequest, params).not_confirmed.includes(:location,:categories)
-    @skills = skills.paginate(:page => params[:page])
+    @skills  = search_for(SkillRequest, params).paginate(:page => params[:page])
     respond_to do |format|
       format.js { render :partial =>  'refills/cards', :content_type => 'text/html', layout:false }
       format.html

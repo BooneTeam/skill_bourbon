@@ -1,11 +1,9 @@
 <div class="hero">
   <a href="javascript:void(0)" class="hero-inner">
-    <!-- <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_1.png" alt=""> -->
     <h2 class='uppercase'>Teach others new skills</h2>
     <h2 class='uppercase'>Learn New Skills</h2>
     <h5>Earn some dough for your time & helping out your fellow SkillClimber.</h5>
+    <%= button_to "Teach a skill", new_skill_path, method: "get" %>
     <p> Add your skills or hobbies to get started.</p>
-    <!-- <h6>Don't worry We'll walk you through the rest. It's basically those three little steps below.</h6> -->
-    <%= button_to "Add a skill", new_skill_path, method: "get" %>
   </a>
 </div>

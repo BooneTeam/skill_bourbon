@@ -1,11 +1,12 @@
 <fieldset id='skill-search-box'>
   <h4 id="inner-logo-text" class="left"> Skill Climb </h4>
   <h4 id="inner-logo-text" class="right"> Learn & Earn </h4>
-      <!-- <h4 class='title'> <%= @skills.first.class.model_name.human + 's' if !@skills.empty? %> </h4> -->
     <%= render partial: "refills/search_bar", locals: {button_text: "Search Skills", is_remote:true, action: '/skills'} %>
-    <p>Can't find what you're looking for? <%= link_to "Post a Skill Request", new_skill_request_path, method: :get %>
-    <p>Wanna teach a skill? <%= link_to "Create One!", new_skill_path, method: :get %>
 </fieldset>
 <div class="dashboard_container cards-container">
+  <ul class="in-container">
+    <li class="left"><%= button_to "Teach a skill", new_skill_path, method: :get %></li>
+    <li class="left"><%= button_to "Request a new skill to learn", new_skill_request_path, method: :get %></li>
+  </ul>
 <%= render "refills/cards" %>
 </div>

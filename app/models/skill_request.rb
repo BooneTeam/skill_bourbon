@@ -32,6 +32,10 @@ class SkillRequest < ActiveRecord::Base
     skill_request_path(self)
   end
 
+  def self.search
+    not_confirmed.includes(:location,:categories)
+  end
+
   def changed_accepted_status
     {title: "Enrollment in skill has been approved".freeze,
     description:"Congrats! You've been approved to take this skill! Start communicating with your teacher now.".freeze}
