@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  $is_beta = true
+  $is_beta = false
   # add_flash_types :error
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
