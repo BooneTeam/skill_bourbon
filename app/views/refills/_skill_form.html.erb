@@ -11,34 +11,40 @@
     <div class="tab-content">
     <p> Give general information about this skill.</p>
     <p>This should help others decide if what you are offering is what they need help with.</p>
-      <div class="tooltip2-item">
-        <%= f.input :title, as: :string, placeholder:"Enter a Title", label:false, maxlength: 35 %>
-        <div class="tooltip2" id="title-tip">
-          <ul>Examples of a title:
-            <li>Learn Ruby</li>
-            <li>Learn Fly Fishing Skills</li>
-          </ul>
-        </div>
+      <div class="form-fields">
+      <!--<div class="tooltip2-item">-->
+        <%= f.input :title, as: :string, placeholder:"Enter a Title", label:false, maxlength: 35, input_html: { data: { tip_id: "skill_title_tip"}, class:'tooltip2-item' }%>
+      <!--</div>-->
+      <!--<div class="tooltip2-item">-->
+        <%= f.input :subtitle,placeholder:"Enter a Subtitle", label:false, maxlength: 45,input_html: { data: { tip_id: "skill_subtitle_tip"}, class:'tooltip2-item' } %>
+      <!--</div>-->
+      <!--<div class="tooltip2-item">-->
+        <%= f.input :skill_level_id, label: "Recommended skill level for this task", as: :select, collection: SkillLevel.all, value_method: :id,input_html: { data: { tip_id: "skill_skill_level_tip"}, class:'tooltip2-item' } %>
+      <!--</div>-->
       </div>
-      <div class="tooltip2-item">
-        <%= f.input :subtitle, placeholder:"Enter a Subtitle", label:false, maxlength: 45 %>
-        <div class="tooltip2" id="subtitle-tip">
-          <ul>Examples of a subtitle:
-            <li>Beginner Ruby Development Skills</li>
-            <li>Intermediate Fly Fishing techniques</li>
-          </ul>
+        <div class="form-tips">
+          <div class="tooltip2" id="skill_title_tip">
+            <ul>
+              <h6>Examples of a title</h6>
+              <li>Learn Ruby</li>
+              <li>Learn Fly Fishing Skills</li>
+            </ul>
+          </div>
+          <div class="tooltip2" id="skill_subtitle_tip">
+            <ul><h6>Examples of a subtitle</h6>
+              <li>Beginner Ruby Development Skills</li>
+              <li>Intermediate Fly Fishing techniques</li>
+            </ul>
+          </div>
+          <div class="tooltip2" id="skill_skill_level_id_tip">
+            <ul>Skill Levels:
+              <% SkillLevel.all.each do |sl| %>
+                <li><p class="title"><%= sl.title %></p><%= sl.description %></li>
+              <% end %>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div class="tooltip2-item">
-        <%= f.input :skill_level_id, label: "Recommended skill level for this task", as: :select, collection: SkillLevel.all, value_method: :id %>
-        <div class="tooltip2" id="title-tip">
-          <ul>Skill Levels:
-            <% SkillLevel.all.each do |sl| %>
-              <li><p class="title"><%= sl.title %></p><%= sl.description %></li>
-            <% end %>
-          </ul>
-        </div>
-      </div>
+        <!--end tab content-->
   </li>
   <li class="tab-header-and-content">
     <a href="#" class="tab-link">2.) Full Description</a>

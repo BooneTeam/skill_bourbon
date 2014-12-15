@@ -134,10 +134,14 @@
   font-size:.5em;
 }
 
-#new_skill input{
-  max-width:30%;
-//  @include outer-container;
-  // @include span-columns(5)
+#new_skill .form-fields{
+  @include outer-container;
+  @include span-columns(4);
+}
+
+#new_skill .form-tips{
+  float:left;
+  @include span-columns(4);
 }
 
 #skill_full_description{
