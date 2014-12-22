@@ -24,7 +24,7 @@
       <h6>Current Location: <%= @apprenticeship.location.address %>,<%= @apprenticeship.location.city %>, <%= @apprenticeship.location.state %></h6>
       <h6>Date Requested: <%= @apprenticeship.meeting_date_requested %> </h6>
        <input id="autocomplete" placeholder="Enter new address if you would like to change where to meet."
-             onFocus="geolocate()" type="text"></input>
+             onFocus="geolocate()" type="text" data-geoType="address"></input>
         <%= c.hidden_field :address, label: "City", placeholder:"Select Address", class: 'street_number route',:readonly => true %>
         <%= c.hidden_field :city, label: "City", placeholder:"Select City", class: 'locality',:readonly => true %>
         <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>

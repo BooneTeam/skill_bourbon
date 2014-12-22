@@ -1,7 +1,7 @@
 <%= simple_form_for Apprenticeship.new, html: {id: 'new_apprenticeship_'+new_request.to_s} do |f| %>
 <%= f.hidden_field :skill_id, value: @skill.id %>
 <%= f.input :request_description, input_html: {maxlength:500, placeholder:"Enter any questions or extra requests you may have for this skill. \n Max Characters: 500."}%>
-<%= f.input :meeting_date_requested, :as => :datetime_picker, label: "When Would you Like to Meet With #{@skill.creator_username}" %>
+<%= f.input :meeting_date_requested,readonly: true, :as => :datetime_picker,placeholder:'Click on the calendar to pick a date.', label: "When Would you Like to Meet With #{@skill.creator_username}" %>
 <% location = new_request ? Location.new : @skill.location %>
 <%= f.simple_fields_for location do |c| %>
 <%= c.input :address, label: "Address" %>

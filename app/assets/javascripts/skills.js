@@ -16,7 +16,8 @@ $(document).ready(function(){
   });
 
 // Render datetime picker for meeting dates
-  $('.datepicker').datetimepicker();
+  $('.datetimepicker').datetimepicker({
+  });
 
 // Watch for empty fields if user has clicked inside
 // field and then clicked off without filling in

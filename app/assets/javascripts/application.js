@@ -95,9 +95,17 @@ var componentForm = {
 function initialize() {
   // Create the autocomplete object, restricting the search
   // to geographical location types.
+  var addressType  = document.getElementById('autocomplete');
+  if($(addressType).data('geoType') !== undefined){
+      var autoCompleteType = $(addressType).data('geoType');
+  } else{
+      var autoCompleteType = 'geocode';
+  }
+
   autocomplete = new google.maps.places.Autocomplete(
-      /** @type {HTMLInputElement} */(document.getElementById('autocomplete')),
-      { types: ['geocode'] });
+      /** @type {HTMLInputElement} */
+      (document.getElementById('autocomplete')),
+      { types: [autoCompleteType] });
   // When the user selects an address from the dropdown,
   // populate the address fields in the form.
   google.maps.event.addListener(autocomplete, 'place_changed', function() {
@@ -109,7 +117,6 @@ function initialize() {
 function fillInAddress() {
   // Get the place details from the autocomplete object.
   var place = autocomplete.getPlace();
-
   for (var component in componentForm) {
     $("form ."+component).value = '';
     $("form ."+component).disabled = false;
