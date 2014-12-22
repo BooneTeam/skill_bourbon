@@ -53,10 +53,10 @@ THE SOFTWARE.
         var defaults = $.fn.datetimepicker.defaults,
 
             icons = {
-                time: 'glyphicon glyphicon-time',
-                date: 'glyphicon glyphicon-calendar',
-                up: 'glyphicon glyphicon-chevron-up',
-                down: 'glyphicon glyphicon-chevron-down'
+                time: 'fa fa-time',
+                date: 'fa fa-calendar',
+                up: 'fa fa-chevron-up',
+                down: 'fa fa-chevron-down'
             },
 
             picker = this,
