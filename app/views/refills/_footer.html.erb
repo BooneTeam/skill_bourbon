@@ -7,10 +7,11 @@
     <%= image_tag("skillclimb-logo.png") %>
   </div>
   <ul>
-    <li><a id='about-modal' href="javascript:void(0)">About</a></li>
-    <li><a id='contact-us-modal' href="javascript:void(0)">Contact Us</a></li>
-    <%= render 'refills/contact_modal' %>
-    <%= render 'refills/about_modal' %>
+    <!--<li><a id='about-modal' href="javascript:void(0)">About</a></li>-->
+    <li><%= link_to "Contact Us", new_contact_path %></li>
+    <!--<li><a id='contact-us-modal' href="javascript:void(0)">Contact Us</a></li>-->
+    <!--<%#= render 'refills/contact_modal' %>-->
+    <%#= render 'refills/about_modal' %>
   </ul>
     <div class="footer-secondary-links">
       <ul>

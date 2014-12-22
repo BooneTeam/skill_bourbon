@@ -59,7 +59,7 @@
     <p>Specify the location where you would like to meet and complete this skill. This can be changed later per studen if you need it to change.</p>
     <%= f.simple_fields_for :location do |c| %>
       <input id="autocomplete" placeholder="Enter an address where you'd like to teach this skill"
-    onFocus="geolocate()" type="text"></input>
+    onFocus="geolocate()" type="text" data-geoType="address"></input>
       <%= c.hidden_field :city, label: "City", placeholder:"Select City", class: 'locality',:readonly => true %>
       <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
       <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>

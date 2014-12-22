@@ -305,3 +305,10 @@ li.left{
 .in-container{
   @include outer-container;
 }
+
+input.datetime_picker {
+  background: none;
+  text-align: center;
+  box-shadow: 0 0 0 0 !important;
+  border: none;
+}

@@ -2,8 +2,10 @@
   <!--TODO::Make only for skill creator-->
   <h6 class="title">The apprenticeship has not been confirmed yet.</h6>
   <p><%= @apprenticeship.meeting_date_scheduled %></p>
-  <%= button_to apprenticeship_path(@apprenticeship.id, apprenticeship:{accepted_status:'confirmed'}), :method => :put, :remote => true do %>
-    Confirm
+  <% if @apprenticeship.skill.created_by?(current_user) %>
+    <%= button_to apprenticeship_path(@apprenticeship.id, apprenticeship:{accepted_status:'confirmed'}), :method => :put, :remote => true do %>
+      Confirm
+    <% end %>
   <% end %>
   <h6><%= @apprenticeship.location.address %>,<%= @apprenticeship.location.city %>, <%= @apprenticeship.location.state %></h6>
 </fieldset>
