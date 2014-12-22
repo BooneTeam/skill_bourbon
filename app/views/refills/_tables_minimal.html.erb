@@ -16,7 +16,7 @@
         <td><%= data_row.location.try(:address) %></td>
         <td><%= data_row.created_at %></td>
         <td><%= simple_form_for(data_row, :html => {:multipart => true, :class=> '.form-inline'} ) do |f| %>
-          <%= f.input :meeting_date_requested, :as => :datetime_picker, label:false,class: 'dash-date-change' %>
+          <%= f.input :meeting_date_requested, :as => :datetime_picker, placeholder:'Click on the calendar to pick a date.',label:false,class: 'dash-date-change' %>
           <%= f.button :submit, value:"Save Date" %>
           <% end %></td>
         <td>

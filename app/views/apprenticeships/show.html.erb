@@ -1,9 +1,9 @@
 <%= render 'skills/skill_intro' %>
-<% if @apprenticeship.pending? %>
-  <%= render 'pending' %>
-<% else %>
   <div class='skill-container apprenticeship-container'>
     <div class='apprenticeship-show-header'>
+      <% if @apprenticeship.pending? %>
+        <%= render 'pending' %>
+      <% else %>
       <h1><%= @apprenticeship.user.username %> & <%= @apprenticeship.skill.creator.username %></h1>
       <p class='small-info'>Communicate with each other here</p>
       <p class='small-info'>You can leave comments or change the scheduled time and place you'd like to meet.</p>
@@ -14,10 +14,11 @@
         <%= @apprenticeship.request_description %>
       </div>
     </div>
+      <% end %>
     <div class='skill-comments'>
       <h5 class='title'>Communication</h5>
       <%= render 'apprenticeships/comments' %>
     </div>
   </div>
-<% end %>
+
 

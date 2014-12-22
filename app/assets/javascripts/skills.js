@@ -16,14 +16,15 @@ $(document).ready(function(){
   });
 
 // Render datetime picker for meeting dates
-  $('.datepicker').datetimepicker();
+  $('.datetimepicker').datetimepicker({
+  });
 
 // Watch for empty fields if user has clicked inside
 // field and then clicked off without filling in
   $('input.required').on("blur",function(){
     if ($(this).val() === ""){
       if ($(this).parent().find('.error').length <= 0 ){
-       $(this).parent().append("<p class='error'>This cannot be blank</p>");
+        $(this).parent().append("<p class='error'>This cannot be blank</p>");
       }
     }
   });
@@ -37,6 +38,15 @@ $(document).ready(function(){
       });
     }
   });
+
+//  Show tooltips on mousedown of input
+  $(".tooltip2").hide();
+  $(".tooltip2-item").on('mousedown',function(){
+      $(".tooltip2").hide();
+      var tipId = $(this).data('tip-id');
+      $('#'+tipId).toggle();
+  })
+
 
 
 });

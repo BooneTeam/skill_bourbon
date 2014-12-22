@@ -15,7 +15,7 @@ class ApprenticeshipsController < ApplicationController
 
   def create
     apprenticeship = Apprenticeship.new(apprenticeship_params)
-    apprenticeship.user_id = current_user.id
+    apprenticeship.user = current_user
     apprenticeship.location_id = find_location
     if apprenticeship.save
       redirect_to dashboard_path
