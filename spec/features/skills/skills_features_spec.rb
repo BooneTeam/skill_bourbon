@@ -20,6 +20,7 @@ RSpec.describe "Skills", :type => :feature do
     describe "index page"   do
       it "can see all active skills" do
         visit '/skills'
+        binding.pry
         expect(page).to have_css(".title", count: @user_with_active_skills.created_skills.count)
         @user_with_active_skills.created_skills.each do |skill|
           expect(page).to have_css(".title", text: skill.title)

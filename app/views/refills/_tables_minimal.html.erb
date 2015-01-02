@@ -20,7 +20,7 @@
           <%= f.button :submit, value:"Save Date" %>
           <% end %></td>
         <td>
-          <%= button_to check_accepted_status_skill_request_path(data_row.id, skill_request:{accepted_status:'confirmed'}), :method => :post, :remote => true,data: { disable_with: 'loading...'},class: 'confirm update-status', id:"skill-id-#{data_row.id}-button" do %>
+          <%= button_to skill_request_accept_date_index_path(data_row), :method => :post, :remote => true,data: { disable_with: 'loading...'},class: 'confirm update-status', id:"skill-id-#{data_row.id}-button" do %>
             Confirm
           <% end %>
       <%else %>

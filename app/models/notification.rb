@@ -8,8 +8,8 @@ class Notification < ActiveRecord::Base
   #creates text for notifications base on and changed_ method in model that was changed and @notification#item_changed
   def meta_desc
     @notifiable = notifiable
-    shit = Notification.define_notification_text("changed_#{item_changed}")
-    self.send(shit)
+    method_to_call = Notification.define_notification_text("changed_#{item_changed}")
+    self.send(method_to_call)
   end
 
   def self.define_notification_text(name)

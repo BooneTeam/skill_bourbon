@@ -11,4 +11,5 @@ class Category < ActiveRecord::Base
   def as_json(options)
     { id: id, text: name }
   end
+
 end

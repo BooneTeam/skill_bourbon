@@ -23,7 +23,7 @@
     <% if current_user && current_user.id == @skill_request.user_id %>
     <p class='small-info'>You are the owner of this skill_request and so you cannot sign up to teach yourself. But you can edit it if you wish.<%= button_to "Edit", edit_skill_request_path, method: :get %></p>
     <% elsif current_user && current_user.id != @skill_request.user_id %>
-    <%= button_to 'Take on this skill request.', {:controller => "skill_requests", :action => "check_accepted_status", :skill_request => {accepted_status:"confirmed"}, :id=> @skill_request.id , :method=>:post},id:'same-request-button' %>
+    <%= button_to 'Take on this skill request.', skill_request_accept_date_index_path(@skill_request), method:'post' , id:'same-request-button' %>
     <% else %>
     <%= button_to "Sign up and teach this skill", new_user_registration_path, method: :get %>
     <% end %>

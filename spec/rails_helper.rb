@@ -35,15 +35,25 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
-
+  config.include Capybara::DSL
+  Capybara.javascript_driver = :webkit
   #Allow create(:foo) instead of FactoryGirl.create(:foo)
   config.include FactoryGirl::Syntax::Methods
   config.before(:suite) do
     FactoryGirl.lint
   end
 
-  config.after(:suite) do
+  config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.clean
+  end
+
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
     DatabaseCleaner.clean
   end
 
