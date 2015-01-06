@@ -30,7 +30,7 @@
         <%= c.hidden_field :state, label: "State", placeholder:"Select State", class: 'administrative_area_level_1', :readonly => true %>
         <%= c.hidden_field :zip, placeholder:"Select Zip", class: 'postal_code', :readonly => true%>
       <% end %>
-      <%= link_to accept_date_apprenticeship_path(@apprenticeship), method: :post do %>
+      <%= link_to accept_date_index_path(params: {id:@apprenticeship.id, type:'accept_date'}), method: :post do %>
         <i class="fa fa-thumbs-o-up">Accept Date</i>
       <% end %>
       <%= f.input :meeting_date_requested, :as => :datetime_picker, required: false, label:"Request to change the date" %>

@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     collection do
       resources :apprenticeships do
         resources :comments
+
         # resources :confirmations, on: :member, as: 'accept_date', only:[:new, :update, :delete]
       end
       get 'teaching'
@@ -44,8 +45,9 @@ Rails.application.routes.draw do
     end
   end
   resources :skill_requests do
-    resources :confirmations, on: :member, as: 'accept_date', only:[:new, :update, :delete, :create]
+    # resources :confirmations, on: :member, as: 'accept_date', only:[:new, :update, :delete, :create]
   end
+  resources :confirmations, on: [:apprenticeships,:skill_requests], as: 'accept_date', only:[:new, :update, :delete, :create]
   resources :categories
   resources :locations
   resources :notifications
