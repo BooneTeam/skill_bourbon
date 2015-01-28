@@ -28,3 +28,5 @@
     rake db:migrate
 
     rails s
+    
+    you need a config/database.yml file
