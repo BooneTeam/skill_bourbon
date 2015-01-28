@@ -6,7 +6,7 @@
 
 ### App Vitals
 
-**DB:** Sqlite3 (Changing to Postgres)
+**DB:** MySQL
 
 **Ruby:** Ruby 2.1.1
 
@@ -16,15 +16,11 @@
 
 1. **Base Styling:** Neat, Bourbon, Bitters, and Refills.
 2. **Auth:** Devise
-3. **Image Placeholder** No Real Icons or backgrounds yet. Images are from Envato,Thoughtbot or Tumblr.
 
 ###Things to Do
 
-  1.Front-End still needs to be finished.
-
-  2.All Backend Stuff except signup/in/out (no welcome emails yet)
-
-  3.Sign in/Up should be able to use Twitter or Facebook..others?
+  1.Sign in/Up should be able to use Twitter or Facebook etc..
+  2. Notifications
 
 
 ### Installation
