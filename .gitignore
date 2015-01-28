@@ -19,5 +19,4 @@ app/.DS_Store
 
 # Ignore application configuration
 config/*.yml
-config/deploy.rb
 
